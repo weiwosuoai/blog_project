@@ -1,0 +1,75 @@
+@CHARSET "UTF-8";
+
+.sub-article-meta {
+	color: #999;
+	font-size: 12px;
+}
+
+.sub-article-body {
+	margin-top: 10px;
+}
+
+.main .sub-article-header .m-page-header {
+	margin-bottom: 10px;
+}
+
+.article-priview-next {
+	margin-top: 80px;
+}
+
+.nav-pagination {
+	margin-top: 40px;
+}
+
+.main .col-md-container {
+	padding-left: 70px;
+	padding-right: 70px;
+}
+
+.main .col-md-container a{
+	font-size: 14px;
+}
+
+.main .m-panel-margin {
+	margin-top: 20px;
+}
+
+.main .m-panel {
+	border-radius: 0px;
+}
+
+.main .m-panel h2{
+	margin-top: 20px;
+}
+
+.main .m-panel p{
+	margin-bottom: 0;
+}
+
+.main .user {
+	text-align: center;
+}
+
+.main .no-border {
+	border: 0;
+}
+
+.main .article-title a{
+	color: #242729;
+}
+
+.main .m-btn-success {
+	color: #07c;
+    background-color: rgba(0,119,204,0);
+    border: 1px solid #0095ff;
+    box-shadow: none;
+    margin-top: 10px;
+}
+
+.main .m-btn-success:hover {
+	color: #07c;
+    background-color: #cae8fe;
+    border: 1px solid #0095ff;
+    box-shadow: none;
+}
+

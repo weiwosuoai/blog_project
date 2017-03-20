@@ -1,0 +1,73 @@
+@CHARSET "UTF-8";
+
+body {
+	font: 14px/1.7 "Helvetica Neue", Helvetica, Arial, "Hiragino Sans GB",
+		"Hiragino Sans GB W3", "WenQuanYi Micro Hei", "Microsoft YaHei UI",
+		"Microsoft YaHei", sans-serif;
+}
+
+.m-container {
+	width: 678px;
+}
+
+.main ul {
+	font-size: 14px;
+}
+
+.main img {
+	display: inline-block;
+	max-width: 100%;
+	height: auto;
+	padding: 4px;
+	line-height: 1.42857143;
+	background-color: #fff;
+	border: 1px solid #ddd;
+	/*border-radius: 4px;*/
+	-webkit-transition: all .2s ease-in-out;
+	-o-transition: all .2s ease-in-out;
+	transition: all .2s ease-in-out;
+}
+
+.m-center-col-md {
+	width: 680px;
+}
+
+blockquote,p {
+	font-size: 15px;
+}
+
+.navbar .container .m-navbar-brand {
+	padding: 0;
+}
+
+.main {
+	padding-top: 60px;
+}
+
+.footer {
+	margin-top: 20px;
+	padding-bottom: 10px;
+	background-color: #f8f8f8;
+	border-color: #e7e7e7;
+	/* 	margin: 0 auto; */
+	/* 	text-align: center; */
+}
+
+.footer p {
+	font-size: 14px;
+}
+
+.footer .copy-right {
+	margin-top: 20px;
+}
+
+/* 自定义 h2,使其带分界线 */
+h2 {
+	padding-bottom: 9px;
+	margin: 30px 0 20px;
+	border-bottom: 1px solid #eee;
+}
+
+a {
+	color: #0c73c2;
+}

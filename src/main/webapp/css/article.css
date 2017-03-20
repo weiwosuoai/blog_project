@@ -1,0 +1,22 @@
+@CHARSET "UTF-8";
+
+.main .sub-article-header .m-page-header {
+	margin-bottom: 10px;
+}
+
+.sub-article-body {
+	margin-top: 10px;
+}
+
+.sub-article-meta {
+	color: #999;
+	font-size: 12px;
+}
+
+.m-pre {
+	font-size: 14px;
+	padding: 10px;
+}
+
+
+

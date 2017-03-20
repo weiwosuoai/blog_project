@@ -1,0 +1,30 @@
+@CHARSET "UTF-8";
+
+.m-list-group {
+	margin-top: 20px;
+}
+
+.main .container .list-group a {
+	font-size: 16px;
+}
+
+.m-breadcrumb {
+	margin-top: 10px;
+}
+
+.main .container .article-total-no {
+	color: #c7254e;
+}
+
+.article-date {
+	float: right;
+	text-align: center;
+    color: #999;
+}
+
+
+
+
+
+
+

@@ -1,0 +1,39 @@
+@CHARSET "UTF-8";
+
+body {
+	background-color: #f9f9f9;
+}
+
+.sys-login-title {
+	margin: 0 auto;
+	width: 340px;
+	text-align: center;
+}
+
+.sys-login-title h1 {
+	font-size: 24px;
+	font-weight: 300;
+	letter-spacing: -0.5px;
+}
+
+.sys-login-form {
+	margin: 0 auto;
+	border: 1px solid #d8dee2;
+	background-color: #fff;
+	padding: 20px;
+	font-size: 14px;
+	/* 	border-radius: 5px; */
+	width: 340px;
+	margin-top: 30px;
+}
+
+.sys-login-btn {
+	margin-top: 20px;
+}
+
+.footer {
+	background-color: #f9f9f9;
+	margin: 0 auto;
+	text-align: center;
+	margin-top: 100px;
+}
