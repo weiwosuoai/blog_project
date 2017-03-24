@@ -8,40 +8,13 @@
 
 <%@ include file="/includes/header.jsp"%>
 <link href="<%=contextPath%>/css/sys-post-view.css" rel="stylesheet">
-<link href="<%=contextPath%>/css/bootstrap-datetimepicker.min.css"
-	rel="stylesheet">
+<link href="<%=contextPath%>/css/bootstrap-datetimepicker.min.css" rel="stylesheet">
 </head>
 <body>
 
 	<div class="main">
 		<div class="container">
-			<div class="row">
-				<!-- 左边栏 -->
-				<div class="col-md-2 sidebar">
-<!-- 					<ul class="nav nav-sidebar"> -->
-<!-- 						<li class="active"><a href="#">Overview <span -->
-<!-- 								class="sr-only">(current)</span></a></li> -->
-<!-- 						<li><a href="#">Reports</a></li> -->
-<!-- 						<li><a href="#">Analytics</a></li> -->
-<!-- 						<li><a href="#">Export</a></li> -->
-<!-- 					</ul> -->
-<!-- 					<ul class="nav nav-sidebar"> -->
-<!-- 						<li><a href="">Nav item</a></li> -->
-<!-- 						<li><a href="">Nav item again</a></li> -->
-<!-- 						<li><a href="">One more nav</a></li> -->
-<!-- 						<li><a href="">Another nav item</a></li> -->
-<!-- 						<li><a href="">More navigation</a></li> -->
-<!-- 					</ul> -->
-<!-- 					<ul class="nav nav-sidebar"> -->
-<!-- 						<li><a href="">Nav item again</a></li> -->
-<!-- 						<li><a href="">One more nav</a></li> -->
-<!-- 						<li><a href="">Another nav item</a></li> -->
-<!-- 					</ul> -->
-				</div>
-
-				<!-- 右边栏 -->
-				<div class="col-md-9">
-					<div class="sys-login-title">
+			<div class="sys-login-title">
 						<h1>发表文章</h1>
 					</div>
 					<!-- 登录表单 -->
@@ -83,15 +56,14 @@
 								class="btn btn-success btn-block sys-login-btn">确认发表</button>
 						</form>
 					</div>
-				</div>
 			</div>
 
 
 
 		</div>
 		<%@ include file="/includes/footer.jsp"%>
+		<%@ include file="/includes/jquery-bootstrap-js.jsp"%>
 
-	</div>
 	<!-- 日期选择器 -->
 	<script src="<%=contextPath%>/js/bootstrap-datetimepicker.min.js"
 		charset="UTF-8"></script>

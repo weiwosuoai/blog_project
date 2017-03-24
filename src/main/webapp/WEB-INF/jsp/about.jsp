@@ -25,6 +25,8 @@
 		<%@ include file="/includes/footer.jsp"%>
 
 	</div>
+	
+	<%@ include file="/includes/jquery-bootstrap-js.jsp"%>
 	<%@ include file="/includes/top-nav-js.jsp"%>
 
 </body>

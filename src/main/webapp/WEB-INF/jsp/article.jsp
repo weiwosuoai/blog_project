@@ -65,6 +65,7 @@
 		<%@ include file="/includes/footer.jsp"%>
 	</div>
 
+	<%@ include file="/includes/jquery-bootstrap-js.jsp"%>
 	<%@ include file="/includes/top-nav-js.jsp"%>
 	<script src="<%=contextPath%>/js/jquery-ui-1.9.1.custom.min.js"></script>
 	<script src="<%=contextPath%>/js/jquery.tocify.js""></script>
