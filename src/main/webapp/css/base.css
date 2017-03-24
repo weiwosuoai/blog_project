@@ -64,7 +64,7 @@ blockquote,p {
 /* 自定义 h2,使其带分界线 */
 h2 {
 	padding-bottom: 9px;
-	margin: 30px 0 20px;
+	margin: 20px 0 20px;
 	border-bottom: 1px solid #eee;
 }
 
