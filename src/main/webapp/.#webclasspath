@@ -27,6 +27,8 @@ C:\Users\Allen\.m2\repository\com\github\rjeschke\txtmark\0.13\txtmark-0.13.jar
 C:\Users\Allen\.m2\repository\com\fasterxml\jackson\core\jackson-core\2.5.4\jackson-core-2.5.4.jar
 C:\Users\Allen\.m2\repository\com\fasterxml\jackson\core\jackson-databind\2.5.4\jackson-databind-2.5.4.jar
 C:\Users\Allen\.m2\repository\com\fasterxml\jackson\core\jackson-annotations\2.5.0\jackson-annotations-2.5.0.jar
+C:\developer\eclipse-kepler\plugins\org.junit_4.11.0.v201303080030\junit.jar
+C:\developer\eclipse-kepler\plugins\org.hamcrest.core_1.3.0.v201303031735.jar
 C:\developer\java\jdk\jre\lib\resources.jar
 C:\developer\java\jdk\jre\lib\rt.jar
 C:\developer\java\jdk\jre\lib\jsse.jar
@@ -45,5 +47,3 @@ C:\developer\java\jdk\jre\lib\ext\sunjce_provider.jar
 C:\developer\java\jdk\jre\lib\ext\sunmscapi.jar
 C:\developer\java\jdk\jre\lib\ext\sunpkcs11.jar
 C:\developer\java\jdk\jre\lib\ext\zipfs.jar
-C:\developer\eclipse-kepler\plugins\org.junit_4.11.0.v201303080030\junit.jar
-C:\developer\eclipse-kepler\plugins\org.hamcrest.core_1.3.0.v201303031735.jar

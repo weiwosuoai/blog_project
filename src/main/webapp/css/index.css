@@ -38,16 +38,27 @@
 	border-radius: 0px;
 }
 
-.main .m-panel h2{
-	margin-top: 20px;
+.main .m-panel h2 {
+	margin-top: 10px;
+	margin-bottom: 10px;
 }
 
-.main .article-editor{
+.main .article-editor {
 	margin-left: 10px;
 }
 
-.main .m-panel p{
+.main .m-panel p {
 	margin-bottom: 0;
+}
+
+.main .m-panel-heading {
+	padding-top: 6px;
+	padding-bottom: 6px;
+}
+
+.main .m-panel-body {
+	padding-top: 10px;
+	padding-bottom: 10px;
 }
 
 .main .user {
@@ -62,7 +73,7 @@
 /* 	height: 100px; */
 }
 
-.main .article-title a{
+.main .article-title a {
 	color: #242729;
 }
 

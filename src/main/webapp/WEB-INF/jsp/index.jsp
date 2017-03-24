@@ -112,19 +112,19 @@
 
 						<iframe frameborder="no" border="0" marginwidth="0"
 							marginheight="0" width=240 height=86
-							src="//music.163.com/outchain/player?type=2&id=3986017&auto=2&height=66"
+							src="//music.163.com/outchain/player?type=2&id=29750167&auto=2&height=66"
 							style="margin-left: -10px; margin-top: -15px;"></iframe>
 
 						<div class="panel panel-default m-panel">
-							<div class="panel-heading">文章存档</div>
-							<div class="panel-body" id="archive-month">
+							<div class="panel-heading m-panel-heading">文章存档</div>
+							<div class="panel-body m-panel-body" id="archive-month">
 								<!-- 								<p><a href="#">2017年3月</a></p> -->
 							</div>
 						</div>
 
 						<div class="panel panel-default m-panel">
-							<div class="panel-heading">文章分类</div>
-							<div class="panel-body">
+							<div class="panel-heading m-panel-heading">文章分类</div>
+							<div class="panel-body m-panel-body">
 								<p>
 									<a href="<%=contextPath%>/archive/javaweb">Jave Web</a>
 								</p>

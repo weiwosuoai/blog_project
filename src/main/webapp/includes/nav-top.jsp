@@ -14,9 +14,10 @@
 			</button>
 
 			<a class="navbar-brand m-navbar-brand" href="<%=contextPath%>/index">
-				<img alt="江冰的博客" src="<%=contextPath%>/images/logo.png">
-			</a> <a class="navbar-brand" href="<%=contextPath%>/index">Allen's
-				Blog</a>
+<%-- 				<img alt="江冰的博客" src="<%=contextPath%>/images/logo.png"> --%>
+				<span class="logo">Exception</span>
+			</a> 
+			<a class="navbar-brand" href="<%=contextPath%>/index">Allen's Blog</a>
 
 		</div>
 
