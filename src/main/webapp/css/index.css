@@ -42,6 +42,10 @@
 	margin-top: 20px;
 }
 
+.main .article-editor{
+	margin-left: 10px;
+}
+
 .main .m-panel p{
 	margin-bottom: 0;
 }
@@ -52,6 +56,10 @@
 
 .main .no-border {
 	border: 0;
+}
+
+.main .profile-img {
+/* 	height: 100px; */
 }
 
 .main .article-title a{

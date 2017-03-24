@@ -30,6 +30,11 @@ public class ArticleVo extends Article {
 	 */
 	private Integer nums;
 	
+	/**
+	 * 文章内容
+	 */
+	private String content;
+	
 	public List<MultipartFile> getFiles() {
 		return files;
 	}
@@ -68,6 +73,14 @@ public class ArticleVo extends Article {
 
 	public void setYearMonth(String yearMonth) {
 		this.yearMonth = yearMonth;
+	}
+
+	public String getContent() {
+		return content;
+	}
+
+	public void setContent(String content) {
+		this.content = content;
 	}
 
 }

@@ -24,15 +24,13 @@
 		<div class="collapse navbar-collapse"
 			id="bs-example-navbar-collapse-1">
 			<ul class="nav navbar-nav" id="navbar">
-				<%-- 				<li class="active"><a href="<%=contextPath%>/index">首页 <span --%>
-				<!-- 						class="sr-only">(current)</span></a></li> -->
-				<li id="index"><a href="<%=contextPath%>/index">首页 <span
+				<li id="index"><a href="<%=contextPath%>/index" >首页 <span
 								class="sr-only">(current)</span></a></li>
 				<li id="all"><a href="<%=contextPath%>/archive/all">存档</a></li>
 				<li id="java-web"><a href="<%=contextPath%>/archive/javaweb">Java Web</a></li>
 				<li id="android"><a href="<%=contextPath%>/archive/android">Android</a></li>
 <!-- 				<li><a href="http://blog.csdn.net/weiwosuoai?viewmode=contents">CSDN</a></li> -->
-				<li><a href="<%=contextPath%>/about">关于</a></li>
+				<li id="about"><a href="<%=contextPath%>/about">关于</a></li>
 				<!--         <li class="dropdown"> -->
 				<!--           <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Dropdown <span class="caret"></span></a> -->
 				<!--           <ul class="dropdown-menu"> -->

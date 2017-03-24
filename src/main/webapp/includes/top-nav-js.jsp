@@ -17,6 +17,8 @@
 			$("#java-web").addClass("active");
 		} else if (type == 3) {
 			$("#android").addClass("active");
+		} else if (type == 4) {
+			$("#about").addClass("active");
 		}
 	});
 </script>

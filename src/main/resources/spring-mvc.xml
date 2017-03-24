@@ -16,7 +16,9 @@
 	<!-- 注册用于支持基于注解的控制器的请求处理方法的 bean 对象 -->
 	<mvc:annotation-driven conversion-service="conversionService">
 		<mvc:message-converters>
-			<bean class="org.springframework.http.converter.StringHttpMessageConverter" />
+			<bean class="org.springframework.http.converter.StringHttpMessageConverter">
+				<constructor-arg value="UTF-8"/>
+			</bean>
 			<bean
 				class="org.springframework.http.converter.json.MappingJackson2HttpMessageConverter" />
 		</mvc:message-converters>

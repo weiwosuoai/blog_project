@@ -19,6 +19,8 @@ import site.exception.dao.IArticleDao;
 import site.exception.model.Article;
 import site.exception.model.vo.ArticleVo;
 import site.exception.service.IArticleService;
+import site.exception.utils.FileUtil;
+import site.exception.utils.MarkdownUtil;
 
 @Service("articleService")
 public class ArticleService implements IArticleService {
@@ -74,6 +76,44 @@ public class ArticleService implements IArticleService {
 	}
 
 	/**
+	 * 根据文章 id 查找文章内容
+	 */
+	public ArticleVo findArticleContentById(Integer id) {
+		Article article = articleDao.selectByPrimaryKey(id);
+		
+		File file = new File(article.getFilePath());
+		
+		// 先判断文件是否存在
+		if (file.exists()) {
+			try {
+				String mdContent = FileUtil.readFile(article.getFilePath());
+				
+				ArticleVo vo = new ArticleVo();
+				vo.setContent(mdContent);
+				
+				return vo;
+			} catch (Exception e) {
+				logger.info(e);
+			}
+			
+		}
+		return null;
+	}
+
+	/**
+	 * 更新 md 文章内容
+	 */
+	public void updateArticleContent(Integer id, String htmlStr) {
+		Article article = articleDao.selectByPrimaryKey(id);
+		try {
+			String mdStr = MarkdownUtil.htmlStr2MarkdownStr(htmlStr);
+			FileUtil.writeString2File(article.getFilePath(), mdStr);
+		} catch (Exception e) {
+			logger.info(e);
+		}
+	}
+
+	/**
 	 * markdown 文件解析
 	 */
 	public ArticleVo parseMarkdown(Integer id) {
@@ -88,6 +128,7 @@ public class ArticleService implements IArticleService {
 			htmlStr = Processor.process(mdFile);
 			
 			vo = new ArticleVo();
+			vo.setId(article.getId());
 			vo.setTitle(article.getTitle());
 			vo.setCategory(article.getCategory());
 			vo.setCreateTime(article.getCreateTime());

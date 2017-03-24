@@ -10,6 +10,7 @@
 <link href="<%=contextPath%>/css/jquery.tocify.css" rel="stylesheet">
 <link href="<%=contextPath%>/google-code-prettify/prettify.css"
 	rel="stylesheet">
+<link href="<%=contextPath%>/css/summernote.css" rel="stylesheet">
 
 <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
 <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -43,21 +44,7 @@
 							<!-- 文章标题 -->
 							<h1>${article.title}</h1>
 							<!-- 文章发表时间，分类 -->
-							<div class="sub-article-meta">
-								<span>发表于&nbsp;</span> <span class="sub-article-post-time">
-									<fmt:formatDate value="${article.createTime}"
-										pattern="yyyy-MM-dd HH:mm:ss" />
-								</span> <span>&nbsp;|&nbsp;</span> <span>分类于&nbsp;</span><span
-									class="sub-article-category-item"> <c:if
-										test="${article.category == 1}">
-										<a href="<%=contextPath%>/archive/java">Java</a>
-									</c:if> <c:if test="${article.category == 2}">
-										<a href="<%=contextPath%>/archive/android">Android</a>
-									</c:if> <c:if test="${article.category == 3}">
-										<a href="<%=contextPath%>/archive/db">DB</a>
-									</c:if>
-								</span>
-							</div>
+							<%@ include file="/includes/article-meta.jsp"%>
 							<!-- 文章具体内容 -->
 							<div class="sub-article-body">${article.htmlStr}</div>
 						</div>
@@ -74,10 +61,11 @@
 			</div>
 		</div>
 
+		<%@ include file="/includes/edit-modal.jsp"%>
 		<%@ include file="/includes/footer.jsp"%>
 	</div>
 
-	<%@ include file="/includes/js.jsp"%>
+	<%@ include file="/includes/top-nav-js.jsp"%>
 	<script src="<%=contextPath%>/js/jquery-ui-1.9.1.custom.min.js"></script>
 	<script src="<%=contextPath%>/js/jquery.tocify.js""></script>
 	<script src="<%=contextPath%>/google-code-prettify/prettify.js"></script>
@@ -94,16 +82,19 @@
 			$("pre").addClass("prettyprint");
 			prettyPrint();
 			// 			        $(".optionName").popover({ trigger: "hover" });
+			
+			// 富文本编辑器
+			$('#summernote').summernote({
+				 height: 600,                 // set editor height
+				 minHeight: null,             // set minimum height of editor
+				 maxHeight: null,             // set maximum height of editor
+				 focus: true,                 // set focus to editable area after initializing summernote
+				 toolbar: [],                 // 去除工具栏
+				 keyMap: {}
+			});
 		});
 
-		// 		$(document).ready(function() {
-		// 			//Calls the tocify method on your HTML div.
-		// 			$("#toc").tocify();
-
-		// 			$("pre").addClass("prettyprint");
-		// 			prettyPrint();
-
-		// 		})
 	</script>
+	<%@ include file="/includes/edit-modal-js.jsp"%>
 </body>
 </html>

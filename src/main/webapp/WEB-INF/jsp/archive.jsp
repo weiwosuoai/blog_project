@@ -41,6 +41,6 @@
 		<%@ include file="/includes/footer.jsp"%>
 	</div>
 
-	<%@ include file="/includes/js.jsp"%>
+	<%@ include file="/includes/top-nav-js.jsp"%>
 </body>
 </html>

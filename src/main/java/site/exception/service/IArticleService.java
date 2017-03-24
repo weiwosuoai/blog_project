@@ -23,4 +23,8 @@ public interface IArticleService {
 	List<ArticleVo> findArticleNumPerMonth();
 	
 	List<ArticleVo> findArticleByYearMonth(String yearMonth);
+	
+	ArticleVo findArticleContentById(Integer id);
+	
+	void updateArticleContent(Integer id, String content);
 }
