@@ -14,6 +14,10 @@
 		<!-- mybatis 版本号 -->
 		<mybatis.version>3.3.0</mybatis.version>
 		<jackson.version>2.5.4</jackson.version>
+		
+		<!-- 指定项目 build 的编码，和 maven 编译的编码 -->
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>  
+        <maven.compiler.encoding>UTF-8</maven.compiler.encoding>  
 	</properties>
 
 	<dependencies>
@@ -136,19 +140,6 @@
 	</dependencies>
 	<build>
 		<finalName>exception</finalName>
-		<!-- 若不添加，mvn 默认不生成指定目录下的 xml 文件 -->
-<!-- 		<resources> -->
-<!-- 			<resource> -->
-<!-- 				<directory>src/main/java</directory> -->
-<!-- 				<includes> -->
-<!-- 					<include>**/*.xml</include> -->
-<!-- 				</includes> -->
-<!-- 				<filtering>true</filtering> -->
-<!-- 			</resource> -->
-<!-- 			<resource> -->
-<!-- 				<directory>src/main/resources</directory> -->
-<!-- 			</resource> -->
-<!-- 		</resources> -->
 	</build>
 	<packaging>war</packaging>
 </project>
