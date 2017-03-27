@@ -141,7 +141,22 @@ public class ArticleService implements IArticleService {
 		return null;
 	}
 
-	
+	/**
+	 * 删除文章
+	 */
+	public int delete(Integer id) {
+		// 1.先删除文件
+		Article article = articleDao.selectByPrimaryKey(id);
+		
+		File file = new File(article.getFilePath());
+		// TODO 目前只是删除 md 文件，若该父文件夹中只存在此 md 文件，则父文件夹一并删除
+		if (file.exists()) {
+			file.delete();
+		}
+		// 2.删除记录
+		return articleDao.deleteByPrimaryKey(id);
+	}
+
 	/**
 	 * 相应所属文章列表
 	 */

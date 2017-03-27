@@ -23,20 +23,23 @@ import site.exception.service.IArticleService;
 
 /**
  * 文章控制器
+ * 
  * @author Allen
- *
+ * 
  */
 @Controller
 @RequestMapping("/article")
 public class ArticleController {
-	
-	private static final Log logger = LogFactory.getLog(ArticleController.class);
-	
+
+	private static final Log logger = LogFactory
+			.getLog(ArticleController.class);
+
 	@Resource
 	private IArticleService articleService;
-	
+
 	/**
 	 * 文章视图显示
+	 * 
 	 * @param id 文章 id
 	 * @param model
 	 * @return
@@ -48,9 +51,10 @@ public class ArticleController {
 		model.addAttribute("article", articleVo);
 		return "article";
 	}
-	
+
 	/**
 	 * 获取文章 markdown 内容
+	 * 
 	 * @param id 文章 id
 	 * @return 文章 text 数据
 	 */
@@ -61,18 +65,34 @@ public class ArticleController {
 		ArticleVo article = articleService.findArticleContentById(id);
 		return article.getContent();
 	}
-	
+
 	/**
 	 * 更新文章 markdown 内容
+	 * 
 	 * @param id 文章 id
 	 * @return 文章 text 数据
 	 */
 	@ResponseBody
 	@RequestMapping("/{id}/update_md_content")
-	public String updateArticleMarkdownContent(@PathVariable Integer id, HttpServletRequest request) {
+	public String updateArticleMarkdownContent(@PathVariable Integer id,
+			HttpServletRequest request) {
 		logger.info("updateArticleMarkdownContent");
-		articleService.updateArticleContent(id, request.getParameter("content"));
+		articleService
+				.updateArticleContent(id, request.getParameter("content"));
 		return "success";
-	} 
+	}
 	
+	/**
+	 * 删除文章 
+	 * TODO 删除文章前需要模态框提示
+	 * @param id
+	 * @return
+	 */
+	@RequestMapping("/{id}/delete")
+	public String deleteArticle(@PathVariable Integer id) {
+		logger.info("deleteArticle");
+		articleService.delete(id);
+		return "redirect:/index";
+	}
+
 }

@@ -27,4 +27,6 @@ public interface IArticleService {
 	ArticleVo findArticleContentById(Integer id);
 	
 	void updateArticleContent(Integer id, String content);
+	
+	int delete(Integer id);
 }

@@ -9,6 +9,7 @@ import org.apache.commons.logging.LogFactory;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 
 import site.exception.model.User;
 import site.exception.model.vo.ArticleVo;
@@ -32,7 +33,12 @@ public class SysController {
 	private IUserService userService;
 	
 
-	@RequestMapping("/login_view")
+	/**
+	 * 登录视图
+	 * @param request
+	 * @return
+	 */
+	@RequestMapping(value = "/login", method = RequestMethod.GET)
 	public String viewLogin(HttpServletRequest request) {
 		String ip = request.getRemoteAddr();
 		logger.info("request ip ： " + ip);
@@ -41,28 +47,27 @@ public class SysController {
 
 	/**
 	 * 登录
-	 * 
 	 * @return
 	 */
-	@RequestMapping("/login")
+	@RequestMapping(value = "/login", method = RequestMethod.POST)
 	public String login(User user, HttpSession session) {
 		user = userService.findByNameAndPassword(user); 
 		if (user != null) {
 			// 查询数据库，id 存入 session 中
 			session.setAttribute("userid", user.getId());
 			// 重定向到提交文章页面
-			return "redirect:/sys/post_view";
+			return "redirect:/sys/post";
 		}
 
 		// 用户名和密码错误，重新登录
-		return "redirect:/sys/login_view";
+		return "redirect:/sys/login";
 	}
 
 	/**
-	 * 上传博客表单
+	 * 上传博客表单视图
 	 * @return
 	 */
-	@RequestMapping("/post_view")
+	@RequestMapping(value = "/post", method = RequestMethod.GET)
 	public String viewPost() {
 		return "/sys/post-view";
 	}
@@ -71,7 +76,7 @@ public class SysController {
 	 * 发表博客
 	 * @return
 	 */
-	@RequestMapping("/post")
+	@RequestMapping(value = "/post", method= RequestMethod.POST)
 	public String post(HttpServletRequest request, @ModelAttribute ArticleVo vo, HttpSession session) {
 		
 		if (vo.getFiles() == null) 

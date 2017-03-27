@@ -57,7 +57,8 @@
 			</form>
 
 			<ul class="nav navbar-nav navbar-right">
-				<li><a href="<%=contextPath%>/sys/login_view">登录</a></li>
+				<!-- 超链接只能是 GET 方式请求 -->
+				<li><a href="<%=contextPath%>/sys/login">登录</a></li>
 				<li><a href="#">注册</a></li>
 				<!--         <li class="dropdown"> -->
 				<!--           <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Dropdown <span class="caret"></span></a> -->
