@@ -51,7 +51,7 @@ public class IndexService implements IIndexService {
 				
 				articlesVo.add(vo);
 			} catch (IOException e) {
-				logger.info(e.getMessage());
+				logger.info(e);
 			}
 		}
 		return articlesVo;

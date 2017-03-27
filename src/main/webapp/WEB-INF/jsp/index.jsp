@@ -101,7 +101,7 @@
 							<div class="panel-body">
 								<div class="user">
 									<img alt="profile" class="no-border profile-img"
-										src="http://img.hb.aicdn.com/2a949ef8e18e2555bba0f6dc78659c80cb5b7fea28def-24SgFL_fw658">
+										src="/images/profile.jpg">
 
 									<h2>Allen Jiang</h2>
 
