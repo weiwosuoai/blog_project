@@ -58,8 +58,11 @@
 
 			<ul class="nav navbar-nav navbar-right">
 				<!-- 超链接只能是 GET 方式请求 -->
-				<li><a href="<%=contextPath%>/sys/login">登录</a></li>
-				<li><a href="#">注册</a></li>
+<%-- 				<li><a href="<%=contextPath%>/sys/login">登录</a></li> --%>
+				<c:if test="${sessionScope.userid == null}">
+					<li><a href="#" data-toggle="modal" data-target="#modal-login">登录</a></li>
+				</c:if>
+<!-- 				<li><a href="#">注册</a></li> -->
 				<!--         <li class="dropdown"> -->
 				<!--           <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Dropdown <span class="caret"></span></a> -->
 				<!--           <ul class="dropdown-menu"> -->
@@ -76,3 +79,4 @@
 	</div>
 	<!-- /.container-fluid -->
 </nav>
+<%@ include file="/includes/modal-login.jsp"%>

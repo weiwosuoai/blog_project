@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%-- 模态框 --%>
-<div class="modal fade bs-example-modal-lg" id="myModal" tabindex="-1"
+<div class="modal fade bs-example-modal-lg" id="modal-edit" tabindex="-1"
 	role="dialog" aria-labelledby="myModalLabel">
 	<div class="modal-dialog modal-lg" role="document">
 		<div class="modal-content">

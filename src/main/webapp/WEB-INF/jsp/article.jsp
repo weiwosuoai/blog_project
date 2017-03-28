@@ -33,7 +33,7 @@
 			
 			<div class="row">
 				<!-- 左边栏 -->
-				<!-- 				<div class="col-md-2"></div> -->
+				<!-- <div class="col-md-2"></div> -->
 				<!-- 中间栏 -->
 				<div class="col-md-8" role="main">
 					<!-- 文章缩略图 -->
@@ -61,14 +61,14 @@
 			</div>
 		</div>
 
-		<%@ include file="/includes/edit-modal.jsp"%>
+		<%@ include file="/includes/modal-article-edit.jsp"%>
 		<%@ include file="/includes/footer.jsp"%>
 	</div>
 
 	<%@ include file="/includes/jquery-bootstrap-js.jsp"%>
 	<%@ include file="/includes/top-nav-js.jsp"%>
 	<script src="<%=contextPath%>/js/jquery-ui-1.9.1.custom.min.js"></script>
-	<script src="<%=contextPath%>/js/jquery.tocify.js""></script>
+	<script src="<%=contextPath%>/js/jquery.tocify.js"></script>
 	<script src="<%=contextPath%>/google-code-prettify/prettify.js"></script>
 
 	<script type="text/javascript">
@@ -96,6 +96,6 @@
 		});
 
 	</script>
-	<%@ include file="/includes/edit-modal-js.jsp"%>
+	<%@ include file="/includes/modal-article-edit-js.jsp"%>
 </body>
 </html>

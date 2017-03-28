@@ -18,6 +18,7 @@ import site.exception.service.IUserService;
 
 /**
  * 后台控制器
+ * 
  * @author Allen
  * 
  */
@@ -31,10 +32,10 @@ public class SysController {
 	private IArticleService articleService;
 	@Resource
 	private IUserService userService;
-	
 
 	/**
 	 * 登录视图
+	 * 
 	 * @param request
 	 * @return
 	 */
@@ -47,24 +48,26 @@ public class SysController {
 
 	/**
 	 * 登录
+	 * 
 	 * @return
 	 */
 	@RequestMapping(value = "/login", method = RequestMethod.POST)
 	public String login(User user, HttpSession session) {
-		user = userService.findByNameAndPassword(user); 
+		user = userService.findByNameAndPassword(user);
 		if (user != null) {
 			// 查询数据库，id 存入 session 中
 			session.setAttribute("userid", user.getId());
 			// 重定向到提交文章页面
-			return "redirect:/sys/post";
+			// return "redirect:/sys/post";
 		}
 
-		// 用户名和密码错误，重新登录
-		return "redirect:/sys/login";
+		// 重定向到首页
+		return "redirect:/index";
 	}
 
 	/**
 	 * 上传博客表单视图
+	 * 
 	 * @return
 	 */
 	@RequestMapping(value = "/post", method = RequestMethod.GET)
@@ -74,16 +77,18 @@ public class SysController {
 
 	/**
 	 * 发表博客
+	 * 
 	 * @return
 	 */
-	@RequestMapping(value = "/post", method= RequestMethod.POST)
-	public String post(HttpServletRequest request, @ModelAttribute ArticleVo vo, HttpSession session) {
-		
-		if (vo.getFiles() == null) 
+	@RequestMapping(value = "/post", method = RequestMethod.POST)
+	public String post(HttpServletRequest request,
+			@ModelAttribute ArticleVo vo, HttpSession session) {
+
+		if (vo.getFiles() == null)
 			return "/sys/post-view";
-		
+
 		articleService.save(vo, (Integer) session.getAttribute("userid"));
-		
+
 		return "/sys/post-view";
 	}
 

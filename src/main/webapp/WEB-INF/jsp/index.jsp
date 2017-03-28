@@ -136,7 +136,7 @@
 					</div>
 				</div>
 				
-			<%@ include file="/includes/edit-modal.jsp"%>
+			<%@ include file="/includes/modal-article-edit.jsp"%>
 			</div>
 
 		</div>
@@ -186,6 +186,6 @@
 					});
 				});
 	</script>
-	<%@ include file="/includes/edit-modal-js.jsp"%>
+	<%@ include file="/includes/modal-article-edit-js.jsp"%>
 </body>
 </html>

@@ -23,7 +23,7 @@
 	<%-- 用户登录后，才会显示编辑超链接 --%>
 	<c:if test="${sessionScope.userid != null}">
 		<span class="pull-right"><a href="<%=contextPath%>/article/${article.id}/delete">删除</a></span>
-		<span class="pull-right m-pull-right"><a href="#" data-toggle="modal" data-target="#myModal" data-id="${article.id}">编辑</a></span>
+		<span class="pull-right m-pull-right"><a href="#" data-toggle="modal" data-target="#modal-edit" data-id="${article.id}">编辑</a></span>
 	</c:if>
 
 	

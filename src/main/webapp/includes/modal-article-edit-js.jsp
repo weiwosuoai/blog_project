@@ -3,7 +3,7 @@
 <script src="<%=contextPath%>/js/summernote.js"></script>
 <script type="text/javascript">
 	<!-- 模态框触发监听 -->
-	$('#myModal').on('show.bs.modal', function (event) {
+	$('#modal-edit').on('show.bs.modal', function (event) {
 		var btn = $(event.relatedTarget); // button that triggered the modal
 		var article_id = btn.data('id'); // Extract info from data-* attributes
 		// 对文章 id 隐藏域负值
