@@ -14,10 +14,10 @@
 			</button>
 
 			<a class="navbar-brand m-navbar-brand" href="<%=contextPath%>/index">
-<%-- 				<img alt="江冰的博客" src="<%=contextPath%>/images/logo.png"> --%>
+				<%-- 				<img alt="江冰的博客" src="<%=contextPath%>/images/logo.png"> --%>
 				<span class="logo">Exception</span>
-			</a> 
-			<a class="navbar-brand" href="<%=contextPath%>/index">Allen's Blog</a>
+			</a> <a class="navbar-brand" href="<%=contextPath%>/index">Allen's
+				Blog</a>
 
 		</div>
 
@@ -25,12 +25,13 @@
 		<div class="collapse navbar-collapse"
 			id="bs-example-navbar-collapse-1">
 			<ul class="nav navbar-nav" id="navbar">
-				<li id="index"><a href="<%=contextPath%>/index" >首页 <span
-								class="sr-only">(current)</span></a></li>
+				<li id="index"><a href="<%=contextPath%>/index">首页 <span
+						class="sr-only">(current)</span></a></li>
 				<li id="all"><a href="<%=contextPath%>/archive/all">存档</a></li>
-				<li id="java-web"><a href="<%=contextPath%>/archive/javaweb">Java Web</a></li>
+				<li id="java-web"><a href="<%=contextPath%>/archive/javaweb">Java
+						Web</a></li>
 				<li id="android"><a href="<%=contextPath%>/archive/android">Android</a></li>
-<!-- 				<li><a href="http://blog.csdn.net/weiwosuoai?viewmode=contents">CSDN</a></li> -->
+				<!-- 				<li><a href="http://blog.csdn.net/weiwosuoai?viewmode=contents">CSDN</a></li> -->
 				<li id="about"><a href="<%=contextPath%>/about">关于</a></li>
 				<!--         <li class="dropdown"> -->
 				<!--           <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Dropdown <span class="caret"></span></a> -->
@@ -56,29 +57,31 @@
 				</div>
 			</form>
 
-<!-- 			<ul class="nav navbar-nav navbar-right"> -->
-				<!-- 超链接只能是 GET 方式请求 -->
-<%-- 				<li><a href="<%=contextPath%>/sys/login">登录</a></li> --%>
-				<c:choose>
-					<c:when test="${sessionScope.userid == null}">
-						<li><a href="#" data-toggle="modal" data-target="#modal-login">登录</a></li>
-					</c:when>
-					<c:otherwise>
-						<a href="#" class="btn btn-success pull-right btn-article-post" data-toggle="modal" data-target="#modal-article-post">发表博客</a>
-					</c:otherwise>
-				</c:choose>
-<!-- 				<li><a href="#">注册</a></li> -->
-				<!--         <li class="dropdown"> -->
-				<!--           <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Dropdown <span class="caret"></span></a> -->
-				<!--           <ul class="dropdown-menu"> -->
-				<!--             <li><a href="#">Action</a></li> -->
-				<!--             <li><a href="#">Another action</a></li> -->
-				<!--             <li><a href="#">Something else here</a></li> -->
-				<!--             <li role="separator" class="divider"></li> -->
-				<!--             <li><a href="#">Separated link</a></li> -->
-				<!--           </ul> -->
-				<!--         </li> -->
-<!-- 			</ul> -->
+			<!-- 超链接只能是 GET 方式请求 -->
+			<%-- 				<li><a href="<%=contextPath%>/sys/login">登录</a></li> --%>
+			<c:choose>
+				<c:when test="${sessionScope.userid == null}">
+					<ul class="nav navbar-nav navbar-right">
+						<li><a href="#" data-toggle="modal"
+							data-target="#modal-login">登录</a></li>
+					</ul>
+				</c:when>
+				<c:otherwise>
+					<a href="#" class="btn btn-success pull-right btn-article-post"
+						data-toggle="modal" data-target="#modal-article-post">发表博客</a>
+				</c:otherwise>
+			</c:choose>
+			<!-- 				<li><a href="#">注册</a></li> -->
+			<!--         <li class="dropdown"> -->
+			<!--           <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Dropdown <span class="caret"></span></a> -->
+			<!--           <ul class="dropdown-menu"> -->
+			<!--             <li><a href="#">Action</a></li> -->
+			<!--             <li><a href="#">Another action</a></li> -->
+			<!--             <li><a href="#">Something else here</a></li> -->
+			<!--             <li role="separator" class="divider"></li> -->
+			<!--             <li><a href="#">Separated link</a></li> -->
+			<!--           </ul> -->
+			<!--         </li> -->
 		</div>
 		<!-- /.navbar-collapse -->
 	</div>
