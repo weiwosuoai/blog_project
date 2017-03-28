@@ -67,6 +67,7 @@
 
 	<%@ include file="/includes/jquery-bootstrap-js.jsp"%>
 	<%@ include file="/includes/top-nav-js.jsp"%>
+	<%@ include file="/includes/datetimepicker-js.jsp"%>
 	<script src="<%=contextPath%>/js/jquery-ui-1.9.1.custom.min.js"></script>
 	<script src="<%=contextPath%>/js/jquery.tocify.js"></script>
 	<script src="<%=contextPath%>/google-code-prettify/prettify.js"></script>

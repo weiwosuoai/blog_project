@@ -56,12 +56,17 @@
 				</div>
 			</form>
 
-			<ul class="nav navbar-nav navbar-right">
+<!-- 			<ul class="nav navbar-nav navbar-right"> -->
 				<!-- 超链接只能是 GET 方式请求 -->
 <%-- 				<li><a href="<%=contextPath%>/sys/login">登录</a></li> --%>
-				<c:if test="${sessionScope.userid == null}">
-					<li><a href="#" data-toggle="modal" data-target="#modal-login">登录</a></li>
-				</c:if>
+				<c:choose>
+					<c:when test="${sessionScope.userid == null}">
+						<li><a href="#" data-toggle="modal" data-target="#modal-login">登录</a></li>
+					</c:when>
+					<c:otherwise>
+						<a href="#" class="btn btn-success pull-right btn-article-post" data-toggle="modal" data-target="#modal-article-post">发表博客</a>
+					</c:otherwise>
+				</c:choose>
 <!-- 				<li><a href="#">注册</a></li> -->
 				<!--         <li class="dropdown"> -->
 				<!--           <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Dropdown <span class="caret"></span></a> -->
@@ -73,10 +78,11 @@
 				<!--             <li><a href="#">Separated link</a></li> -->
 				<!--           </ul> -->
 				<!--         </li> -->
-			</ul>
+<!-- 			</ul> -->
 		</div>
 		<!-- /.navbar-collapse -->
 	</div>
 	<!-- /.container-fluid -->
 </nav>
 <%@ include file="/includes/modal-login.jsp"%>
+<%@ include file="/includes/modal-article-post.jsp"%>

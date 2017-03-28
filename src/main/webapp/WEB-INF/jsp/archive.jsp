@@ -43,5 +43,6 @@
 
 	<%@ include file="/includes/jquery-bootstrap-js.jsp"%>
 	<%@ include file="/includes/top-nav-js.jsp"%>
+	<%@ include file="/includes/datetimepicker-js.jsp"%>
 </body>
 </html>

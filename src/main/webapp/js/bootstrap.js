@@ -1160,10 +1160,7 @@ if (typeof jQuery === 'undefined') {
     // 居中
     var $modal_dialog = $(this.$element[0]).find('.modal-dialog');
     var m_top = ( $(window).height() - $modal_dialog.height() )/2;
-//    var m_left = ( $(window).width() - $modal_dialog.width() )/2;
     $modal_dialog.css({'margin': m_top + 'px auto'});
-//    $modal_dialog.css({'margin-bottom': m_top + 'px auto'});
-//    $modal_dialog.css({'margin': m_left + 'px auto'});
   }
 
   Modal.prototype.resetAdjustments = function () {

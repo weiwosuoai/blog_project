@@ -85,11 +85,11 @@ public class SysController {
 			@ModelAttribute ArticleVo vo, HttpSession session) {
 
 		if (vo.getFiles() == null)
-			return "/sys/post-view";
+			return "redirect:/index";
 
 		articleService.save(vo, (Integer) session.getAttribute("userid"));
 
-		return "/sys/post-view";
+		return "redirect:/index";
 	}
 
 }

@@ -11,6 +11,7 @@
 <link href="<%=contextPath%>/css/summernote.css" rel="stylesheet">
 <link href="<%=contextPath%>/google-code-prettify/prettify.css"
 	rel="stylesheet">
+<link href="<%=contextPath%>/css/bootstrap-datetimepicker.min.css" rel="stylesheet">
 
 </head>
 <body>
@@ -145,6 +146,7 @@
 	</div>
 	<%@ include file="/includes/jquery-bootstrap-js.jsp"%>
 	<%@ include file="/includes/top-nav-js.jsp"%>
+	<%@ include file="/includes/datetimepicker-js.jsp"%>
 	<script src="<%=contextPath%>/google-code-prettify/prettify.js"></script>
 
 	<script type="text/javascript">

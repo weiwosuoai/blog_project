@@ -93,3 +93,13 @@ a {
 .m-modal-login {
 	width: 393px;
 }
+
+/* 登录后显示的上传文章按钮 */
+.navbar .btn-article-post {
+	margin-top: 8px;
+	margin-right: 5px;
+}
+
+.post-time {
+	margin-bottom: 0;
+}
