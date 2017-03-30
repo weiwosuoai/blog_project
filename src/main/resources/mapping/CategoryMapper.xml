@@ -1,13 +1,16 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="site.exception.dao.ICategoryDao" >
-  <resultMap id="BaseResultMap" type="site.exception.model.Category" >
+  <resultMap id="BaseResultMap" type="site.exception.model.vo.CategoryVo" >
     <id column="id" property="id" jdbcType="INTEGER" />
     <result column="name" property="name" jdbcType="VARCHAR" />
     <result column="create_time" property="createTime" jdbcType="TIMESTAMP" />
     <result column="update_time" property="updateTime" jdbcType="TIMESTAMP" />
     <result column="create_user_id" property="createUserId" jdbcType="INTEGER" />
     <result column="remark" property="remark" jdbcType="VARCHAR" />
+    
+     <!-- 业务字段 -->
+    <result column="nums" property="nums" jdbcType="INTEGER" />
   </resultMap>
   <sql id="Base_Column_List" >
     id, name, create_time, update_time, create_user_id, remark
@@ -19,9 +22,10 @@
     where id = #{id,jdbcType=INTEGER}
   </select>
   <select id="getByCreateUserId" resultMap="BaseResultMap" parameterType="java.lang.Integer">
-  	select id, name
-  	from t_category
-  	where create_user_id = #{create_user_id,jdbcType=INTEGER}
+  	select t.*, COUNT(category) nums from 
+  	(SELECT a.category,c.name,c.id from t_article a 
+  		left join t_category c on a.category = c.id 
+  			where c.create_user_id = #{create_user_id,jdbcType=INTEGER}) t GROUP BY category
   </select>
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
     delete from t_category

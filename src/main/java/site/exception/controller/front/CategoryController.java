@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import site.exception.model.Category;
+import site.exception.model.vo.CategoryVo;
 import site.exception.service.IArticleService;
 import site.exception.service.ICategoryService;
 
@@ -43,7 +44,7 @@ public class CategoryController {
 	 */
 	@ResponseBody
 	@RequestMapping(value = "/category", produces = "application/json", method = RequestMethod.GET)
-	public List<Category> info(Model model, HttpSession session) {
+	public List<CategoryVo> info(Model model, HttpSession session) {
 		return categoryService.getByCreateUserId(1);
 	}
 	

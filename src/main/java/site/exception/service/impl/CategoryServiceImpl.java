@@ -10,6 +10,7 @@ import org.springframework.stereotype.Service;
 
 import site.exception.dao.ICategoryDao;
 import site.exception.model.Category;
+import site.exception.model.vo.CategoryVo;
 import site.exception.service.ICategoryService;
 
 @Service("categoryService")
@@ -20,7 +21,7 @@ public class CategoryServiceImpl implements ICategoryService {
 	@Resource
 	private ICategoryDao categoryDao;
 
-	public List<Category> getByCreateUserId(Integer id) {
+	public List<CategoryVo> getByCreateUserId(Integer id) {
 		return categoryDao.getByCreateUserId(id);
 	}
 

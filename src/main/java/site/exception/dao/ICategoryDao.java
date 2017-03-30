@@ -3,6 +3,7 @@ package site.exception.dao;
 import java.util.List;
 
 import site.exception.model.Category;
+import site.exception.model.vo.CategoryVo;
 
 public interface ICategoryDao {
     int deleteByPrimaryKey(Integer id);
@@ -13,7 +14,7 @@ public interface ICategoryDao {
 
     Category selectByPrimaryKey(Integer id);
     
-    List<Category> getByCreateUserId(Integer id);
+    List<CategoryVo> getByCreateUserId(Integer id);
 
     int updateByPrimaryKeySelective(Category record);
 

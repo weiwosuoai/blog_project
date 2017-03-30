@@ -205,7 +205,7 @@
 					var html = '<ul>';
 					$.each(data, function(i, item) {
 						html += "<li><a href='<%=contextPath%>/archive/category/" + item.id + "'>" + item.name
-								+ "</a></li>";
+								+ "&nbsp;<span style='color:#6a737c'>(" + item.nums + ")</span></a></li>";
 					});
 					html += "</ul>"
 					$('#category').html(html);
