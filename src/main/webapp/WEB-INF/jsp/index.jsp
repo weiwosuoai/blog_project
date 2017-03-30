@@ -157,7 +157,7 @@
 				async: true,
 				url: "<%=contextPath%>/archive/monthInfo",
 				datatype: "json",
-				success : function(data) {
+				success: function(data) {
 					$('#archive-month').html('');
 					
 					var html = '';

@@ -45,6 +45,7 @@ public class IndexService implements IIndexService {
 				vo.setTitle(article.getTitle());
 				vo.setCategory(article.getCategory());
 				vo.setCreateTime(article.getCreateTime());
+				vo.setBeViewdNum(article.getBeViewdNum());
 				
 				// 缩略内容
 				vo.setShortHtmlStr(htmlStr.split("<!-- more -->")[0]);

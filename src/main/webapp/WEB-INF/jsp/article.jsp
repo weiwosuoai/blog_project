@@ -73,7 +73,8 @@
 	<script src="<%=contextPath%>/google-code-prettify/prettify.js"></script>
 
 	<script type="text/javascript">
-		$(function() {
+		$(document).ready(function(){
+			
 			$("#toc").tocify({
 				selectors : "h2, h3, h4",
 				// 关闭页面扩展(body下面多余的空白页)
@@ -83,7 +84,15 @@
 			// 代码高亮
 			$("pre").addClass("prettyprint");
 			prettyPrint();
-			// 			        $(".optionName").popover({ trigger: "hover" });
+			
+			// ajax 为查看的文章，被浏览数增1
+			$.ajax({
+				type: "POST",
+				async: true,
+				url: "<%=contextPath%>/article/${article.id}/viewd_increment",
+				success: function(data) {
+						}
+					});
 			
 			// 富文本编辑器
 			$('#summernote').summernote({

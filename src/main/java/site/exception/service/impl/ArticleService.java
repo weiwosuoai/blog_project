@@ -133,6 +133,7 @@ public class ArticleService implements IArticleService {
 			vo.setCategory(article.getCategory());
 			vo.setCreateTime(article.getCreateTime());
 			vo.setHtmlStr(htmlStr);
+			vo.setBeViewdNum(article.getBeViewdNum());
 			
 			return vo;
 		} catch (IOException e) {
@@ -176,6 +177,13 @@ public class ArticleService implements IArticleService {
 	 */
 	public List<ArticleVo> findArticleByYearMonth(String yearMonth) {
 		return articleDao.selectByYearMonth(yearMonth);
+	}
+
+	/**
+	 * 文章浏览数增加
+	 */
+	public int articleViewdIncrementById(Integer id) {
+		return articleDao.articleViewdIncrementById(id);
 	}
 	
 }

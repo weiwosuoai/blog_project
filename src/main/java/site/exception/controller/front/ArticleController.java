@@ -40,7 +40,8 @@ public class ArticleController {
 	/**
 	 * 文章视图显示
 	 * 
-	 * @param id 文章 id
+	 * @param id
+	 *            文章 id
 	 * @param model
 	 * @return
 	 */
@@ -55,7 +56,8 @@ public class ArticleController {
 	/**
 	 * 获取文章 markdown 内容
 	 * 
-	 * @param id 文章 id
+	 * @param id
+	 *            文章 id
 	 * @return 文章 text 数据
 	 */
 	@ResponseBody
@@ -69,7 +71,8 @@ public class ArticleController {
 	/**
 	 * 更新文章 markdown 内容
 	 * 
-	 * @param id 文章 id
+	 * @param id
+	 *            文章 id
 	 * @return 文章 text 数据
 	 */
 	@ResponseBody
@@ -81,10 +84,10 @@ public class ArticleController {
 				.updateArticleContent(id, request.getParameter("content"));
 		return "success";
 	}
-	
+
 	/**
-	 * 删除文章 
-	 * TODO 删除文章前需要模态框提示
+	 * 删除文章 TODO 删除文章前需要模态框提示
+	 * 
 	 * @param id
 	 * @return
 	 */
@@ -93,6 +96,18 @@ public class ArticleController {
 		logger.info("deleteArticle");
 		articleService.delete(id);
 		return "redirect:/index";
+	}
+
+	/**
+	 * 文章浏览数增加
+	 * 
+	 * @param id
+	 * @return
+	 */
+	@RequestMapping(value = "/{id}/viewd_increment")
+	public void articleViewdIncrement(@PathVariable Integer id) {
+		logger.info("articleViewdIncrement");
+		articleService.articleViewdIncrementById(id);
 	}
 
 }

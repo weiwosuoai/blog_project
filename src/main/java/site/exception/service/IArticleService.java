@@ -29,4 +29,6 @@ public interface IArticleService {
 	void updateArticleContent(Integer id, String content);
 	
 	int delete(Integer id);
+	
+	int articleViewdIncrementById(Integer id);
 }

@@ -4,11 +4,12 @@ import java.util.Date;
 
 /**
  * 文章
+ * 
  * @author Allen
- *
+ * 
  */
 public class Article {
-	
+
 	private Integer id;
 
 	private String title;
@@ -24,8 +25,10 @@ public class Article {
 	private Date updateTime;
 
 	private String remark;
-	
+
 	private Integer createUserId;
+
+	private Integer beViewdNum;
 
 	public Integer getId() {
 		return id;
@@ -98,5 +101,14 @@ public class Article {
 	public void setCreateUserId(Integer createUserId) {
 		this.createUserId = createUserId;
 	}
-	
+
+	public Integer getBeViewdNum() {
+		return beViewdNum;
+	}
+
+	public void setBeViewdNum(Integer beViewdNum) {
+		this.beViewdNum = beViewdNum;
+	}
+
+
 }

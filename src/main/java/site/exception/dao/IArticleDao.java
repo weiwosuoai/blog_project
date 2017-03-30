@@ -26,4 +26,6 @@ public interface IArticleDao {
     List<ArticleVo> selectNumsPerMonth();
     
     List<ArticleVo> selectByYearMonth(String yearMonth);
+    
+    int articleViewdIncrementById(Integer id);
 }

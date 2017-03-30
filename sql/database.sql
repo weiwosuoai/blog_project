@@ -41,4 +41,7 @@ CREATE TABLE t_article (
 -- 文章表中添加文章创建者字段 Create on 2017-03-18 by Allen.
 ALTER TABLE t_article ADD create_user_id INT NOT NULL;
 
+-- 文章表中添加文章被浏览数字段 Create on 2017-03-28 by Allen.
+ALTER TABLE t_article ADD be_viewd_num INT NOT NULL DEFAULT 1;
+
 
