@@ -27,7 +27,7 @@
 }
 
 .main .col-md-container a{
-	font-size: 14px;
+	font-size: 12px;
 }
 
 .main .m-panel-margin {
@@ -52,13 +52,18 @@
 }
 
 .main .m-panel-heading {
-	padding-top: 6px;
-	padding-bottom: 6px;
+	padding: 1px 10px;
+	font: bold 12px/30px Arial;
 }
 
 .main .m-panel-body {
-	padding-top: 10px;
-	padding-bottom: 10px;
+	padding: 5px 10px;
+}
+
+.right-col-md ul {
+	list-style: none; 
+	padding-left: 0;
+	margin-bottom: 0;
 }
 
 .main .user {
@@ -91,4 +96,4 @@
     border: 1px solid #0095ff;
     box-shadow: none;
 }
-
+text-decoration: none;

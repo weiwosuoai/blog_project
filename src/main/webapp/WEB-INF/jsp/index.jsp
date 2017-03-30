@@ -93,7 +93,7 @@
 					</nav>
 				</div>
 				<!-- 右边栏 -->
-				<div class="col-md-4">
+				<div class="col-md-4 right-col-md">
 					<div class="col-md-container">
 
 						<!-- profile -->
@@ -122,16 +122,30 @@
 								<!-- 								<p><a href="#">2017年3月</a></p> -->
 							</div>
 						</div>
-
+						
 						<div class="panel panel-default m-panel">
 							<div class="panel-heading m-panel-heading">文章分类</div>
 							<div class="panel-body m-panel-body">
-								<p>
-									<a href="<%=contextPath%>/archive/javaweb">Jave Web</a>
-								</p>
-								<p>
-									<a href="<%=contextPath%>/archive/android">Android</a>
-								</p>
+								<ul>
+									<li><a href="<%=contextPath%>/archive/javaweb">Jave Web</a></li>
+									<li><a href="<%=contextPath%>/archive/android">Android</a></li>
+								</ul>
+							</div>
+						</div>
+						
+						<div class="panel panel-default m-panel">
+							<div class="panel-heading m-panel-heading">标签</div>
+							<div class="panel-body m-panel-body">
+								<a class="label label-info m-label-info">javascript</a>
+<a class="label label-info m-label-info">html</a>
+<a class="label label-info m-label-info">css</a>
+<a class="label label-info m-label-info">java</a>
+<a class="label label-info m-label-info">html</a>
+<a class="label label-info m-label-info">css</a>
+<a class="label label-info m-label-info">java</a>
+<a class="label label-info m-label-info">html</a>
+<a class="label label-info m-label-info">css</a>
+<a class="label label-info m-label-info">java</a>
 							</div>
 						</div>
 					</div>
@@ -160,15 +174,16 @@
 				success: function(data) {
 					$('#archive-month').html('');
 					
-					var html = '';
+					var html = '<ul>';
 					$.each(data, function(i, item){
-						html += "<p><a href='<%=contextPath%>/archive/"
+						html += "<li><a href='<%=contextPath%>/archive/"
 										+ item.yearMonth + "'>"
 										+ item.yearMonth
 										+ "&nbsp;<span style='color:#999'>("
-										+ item.nums + ")</span></a></p>";
+										+ item.nums + ")</span></a></li>";
 							});
 
+							html += "</ul>"
 							$('#archive-month').html(html);
 						}
 					});

@@ -15,7 +15,11 @@
 			<c:when test="${article.category == 3}">
 				<a href="<%=contextPath%>/archive/db">DB</a>
 			</c:when>
-		</c:choose> &nbsp;&nbsp; <span><i class="glyphicon glyphicon-eye-open"></i>&nbsp;${article.beViewdNum}</span>
+		</c:choose> 
+		&nbsp;&nbsp;
+		<span><i class="glyphicon glyphicon-eye-open"></i>&nbsp;&nbsp;${article.beViewdNum}</span>
+		&nbsp;&nbsp;
+		<span><i class="glyphicon glyphicon-tags"></i>&nbsp;&nbsp;&nbsp;<a class="label label-info m-label-info">javascript</a></span>
 	</span>
 	<%-- 用户登录后，才会显示编辑超链接 --%>
 	<c:if test="${sessionScope.userid != null}">
