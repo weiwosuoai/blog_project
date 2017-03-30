@@ -9,7 +9,7 @@ import site.exception.model.User;
 import site.exception.service.IUserService;
 
 @Service("userService")
-public class UserService implements IUserService {
+public class UserServiceImpl implements IUserService {
 	
 	@Resource
 	private IUserDao userDao;

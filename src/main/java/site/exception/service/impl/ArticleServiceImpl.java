@@ -23,9 +23,9 @@ import site.exception.utils.FileUtil;
 import site.exception.utils.MarkdownUtil;
 
 @Service("articleService")
-public class ArticleService implements IArticleService {
+public class ArticleServiceImpl implements IArticleService {
 	
-	private static final Log logger = LogFactory.getLog(ArticleService.class);
+	private static final Log logger = LogFactory.getLog(ArticleServiceImpl.class);
 	
 	@Resource
 	private IArticleDao articleDao;

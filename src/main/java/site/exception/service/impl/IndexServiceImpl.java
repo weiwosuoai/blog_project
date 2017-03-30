@@ -19,9 +19,9 @@ import site.exception.model.vo.ArticleVo;
 import site.exception.service.IIndexService;
 
 @Service("indexService")
-public class IndexService implements IIndexService {
+public class IndexServiceImpl implements IIndexService {
 	
-	private static final Log logger = LogFactory.getLog(IndexService.class);
+	private static final Log logger = LogFactory.getLog(IndexServiceImpl.class);
 	
 	@Resource
 	private IArticleDao articleDao;

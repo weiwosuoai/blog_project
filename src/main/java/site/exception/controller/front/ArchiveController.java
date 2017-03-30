@@ -75,10 +75,9 @@ public class ArchiveController {
 	 */
 	@ResponseBody
 	@RequestMapping(value = "/monthInfo", produces = "application/json")
-	public List<ArticleVo> articleMonthInfo(Model model) {
+	public List<ArticleVo> articleMonthInfo() {
 		logger.info("articleMonthInfo");
 		List<ArticleVo> articles = articleService.findArticleNumPerMonth();
-		model.addAttribute("articles", articles);
 		return articles;
 	}
 	
@@ -92,6 +91,19 @@ public class ArchiveController {
 	public String viewMonthArchive(@PathVariable String yearMonth, Model model) {
 		logger.info("viewMonthArchive - " + yearMonth);
 		model.addAttribute("articles", articleService.findArticleByYearMonth(yearMonth));
+		model.addAttribute("topNavType", 1);
+		return "archive";
+	}
+	
+	/**
+	 * 根据所属分类获取文章的目录信息
+	 * @param model
+	 * @return
+	 */
+	@RequestMapping("/category/{id}")
+	public String viewArchiveByCategory(@PathVariable Integer id, Model model) {
+		logger.info("viewAndroidArchive");
+		model.addAttribute("articles", articleService.findByCategory(id));
 		model.addAttribute("topNavType", 1);
 		return "archive";
 	}

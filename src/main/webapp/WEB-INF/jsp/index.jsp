@@ -11,7 +11,8 @@
 <link href="<%=contextPath%>/css/summernote.css" rel="stylesheet">
 <link href="<%=contextPath%>/google-code-prettify/prettify.css"
 	rel="stylesheet">
-<link href="<%=contextPath%>/css/bootstrap-datetimepicker.min.css" rel="stylesheet">
+<link href="<%=contextPath%>/css/bootstrap-datetimepicker.min.css"
+	rel="stylesheet">
 
 </head>
 <body>
@@ -119,39 +120,38 @@
 						<div class="panel panel-default m-panel">
 							<div class="panel-heading m-panel-heading">文章存档</div>
 							<div class="panel-body m-panel-body" id="archive-month">
-								<!-- 								<p><a href="#">2017年3月</a></p> -->
+<!-- 																<p><a href="#">2017年3月</a></p> -->
 							</div>
 						</div>
-						
+
 						<div class="panel panel-default m-panel">
 							<div class="panel-heading m-panel-heading">文章分类</div>
-							<div class="panel-body m-panel-body">
+							<div class="panel-body m-panel-body" id="category">
 								<ul>
-									<li><a href="<%=contextPath%>/archive/javaweb">Jave Web</a></li>
-									<li><a href="<%=contextPath%>/archive/android">Android</a></li>
+									<%-- 									<li><a href="<%=contextPath%>/archive/javaweb">Jave Web</a></li> --%>
 								</ul>
 							</div>
 						</div>
-						
+
 						<div class="panel panel-default m-panel">
 							<div class="panel-heading m-panel-heading">标签</div>
 							<div class="panel-body m-panel-body">
-								<a class="label label-info m-label-info">javascript</a>
-<a class="label label-info m-label-info">html</a>
-<a class="label label-info m-label-info">css</a>
-<a class="label label-info m-label-info">java</a>
-<a class="label label-info m-label-info">html</a>
-<a class="label label-info m-label-info">css</a>
-<a class="label label-info m-label-info">java</a>
-<a class="label label-info m-label-info">html</a>
-<a class="label label-info m-label-info">css</a>
-<a class="label label-info m-label-info">java</a>
+								<a class="label label-info m-label-info">javascript</a> <a
+									class="label label-info m-label-info">html</a> <a
+									class="label label-info m-label-info">css</a> <a
+									class="label label-info m-label-info">java</a> <a
+									class="label label-info m-label-info">html</a> <a
+									class="label label-info m-label-info">css</a> <a
+									class="label label-info m-label-info">java</a> <a
+									class="label label-info m-label-info">html</a> <a
+									class="label label-info m-label-info">css</a> <a
+									class="label label-info m-label-info">android</a>
 							</div>
 						</div>
 					</div>
 				</div>
-				
-			<%@ include file="/includes/modal-article-edit.jsp"%>
+
+				<%@ include file="/includes/modal-article-edit.jsp"%>
 			</div>
 
 		</div>
@@ -165,6 +165,11 @@
 
 	<script type="text/javascript">
 		$(document).ready(function(){
+			
+			// 代码高亮
+			$("pre").addClass("prettyprint");
+			prettyPrint();
+			
 			// ajax 异步获取文章存档信息
 			$.ajax({
 				type: "GET",
@@ -179,7 +184,7 @@
 						html += "<li><a href='<%=contextPath%>/archive/"
 										+ item.yearMonth + "'>"
 										+ item.yearMonth
-										+ "&nbsp;<span style='color:#999'>("
+										+ "&nbsp;<span style='color:#6a737c'>("
 										+ item.nums + ")</span></a></li>";
 							});
 
@@ -188,20 +193,35 @@
 						}
 					});
 
-					// 代码高亮
-					$("pre").addClass("prettyprint");
-					prettyPrint();
-					
-					// 富文本编辑器
-					$('#summernote').summernote({
-						 height: 600,                 // set editor height
-						 minHeight: null,             // set minimum height of editor
-						 maxHeight: null,             // set maximum height of editor
-						 focus: true,                 // set focus to editable area after initializing summernote
-						 toolbar: [],                 // 去除工具栏
-						 keyMap: {}
+			// ajax 异步获取分类信息
+			$.ajax({
+				type: "GET",
+				async: true,
+				url: "<%=contextPath%>/category",
+				datatype : "json",
+				success : function(data) {
+					$('#category').html('');
+
+					var html = '<ul>';
+					$.each(data, function(i, item) {
+						html += "<li><a href='<%=contextPath%>/archive/category/" + item.id + "'>" + item.name
+								+ "</a></li>";
 					});
-				});
+					html += "</ul>"
+					$('#category').html(html);
+				}
+			});
+
+			// 富文本编辑器
+			$('#summernote').summernote({
+				height : 600, // set editor height
+				minHeight : null, // set minimum height of editor
+				maxHeight : null, // set maximum height of editor
+				focus : true, // set focus to editable area after initializing summernote
+				toolbar : [], // 去除工具栏
+				keyMap : {}
+			});
+		});
 	</script>
 	<%@ include file="/includes/modal-article-edit-js.jsp"%>
 </body>

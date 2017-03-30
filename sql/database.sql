@@ -44,4 +44,38 @@ ALTER TABLE t_article ADD create_user_id INT NOT NULL;
 -- 文章表中添加文章被浏览数字段 Create on 2017-03-28 by Allen.
 ALTER TABLE t_article ADD be_viewd_num INT NOT NULL DEFAULT 1;
 
+-- 分类表 Create on 2017-03-30 by Allen.
+DROP TABLE IF EXISTS t_category;
+CREATE TABLE t_category (
+	id INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
+	name VARCHAR(500) NOT NULL COMMENT '分类名称',
+	create_time TIMESTAMP NOT NULL DEFAULT NOW(),
+	update_time TIMESTAMP NOT NULL,
+	create_user_id INT NOT NULL COMMENT '创建者id',
+	remark VARCHAR(500)
+) ENGINE=InnoDB DEFAULT CHARSET=UTF8;
+
+-- 标签表 Create on 2017-03-30 by Allen.
+DROP TABLE IF EXISTS t_tag;
+CREATE TABLE t_tag (
+	id INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
+	name VARCHAR(200) NOT NULL COMMENT '分类名称',
+	create_time TIMESTAMP NOT NULL DEFAULT NOW(),
+	update_time TIMESTAMP NOT NULL,
+	remark VARCHAR(500)
+) ENGINE=InnoDB DEFAULT CHARSET=UTF8;
+
+-- 添加文章分类  Create on 2017-03-30 by Allen.
+INSERT INTO t_category(name, create_user_id) VALUES('java', 1);
+INSERT INTO t_category(name, create_user_id) VALUES('android', 1);
+INSERT INTO t_category(name, create_user_id) VALUES('db', 1);
+
+-- 添加常用的标签  Create on 2017-03-30 by Allen.
+INSERT INTO t_tag(name) VALUES('java');
+INSERT INTO t_tag(name) VALUES('mysql');
+INSERT INTO t_tag(name) VALUES('tomcat');
+INSERT INTO t_tag(name) VALUES('eclipse');
+INSERT INTO t_tag(name) VALUES('android');
+
+
 
