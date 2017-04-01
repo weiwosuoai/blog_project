@@ -21,9 +21,12 @@ public class CategoryServiceImpl implements ICategoryService {
 	@Resource
 	private ICategoryDao categoryDao;
 
-	public List<CategoryVo> getByCreateUserId(Integer id) {
-		return categoryDao.getByCreateUserId(id);
+	public List<CategoryVo> getArticleNumByCreateUserId(Integer id) {
+		return categoryDao.getArticleNumByCreateUserId(id);
 	}
 
+	public List<Category> getByCreateUserId(Integer id) {
+		return categoryDao.getByCreateUserId(id);
+	}
 	
 }

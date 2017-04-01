@@ -7,6 +7,7 @@ import javax.servlet.http.HttpSession;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -14,6 +15,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import site.exception.model.User;
 import site.exception.model.vo.ArticleVo;
 import site.exception.service.IArticleService;
+import site.exception.service.ICategoryService;
 import site.exception.service.IUserService;
 
 /**
@@ -32,6 +34,8 @@ public class SysController {
 	private IArticleService articleService;
 	@Resource
 	private IUserService userService;
+	@Resource
+	private ICategoryService categoryService;
 
 	/**
 	 * 登录视图

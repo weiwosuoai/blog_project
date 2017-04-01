@@ -14,7 +14,9 @@ public interface ICategoryDao {
 
     Category selectByPrimaryKey(Integer id);
     
-    List<CategoryVo> getByCreateUserId(Integer id);
+    List<CategoryVo> getArticleNumByCreateUserId(Integer id);
+    
+    List<Category> getByCreateUserId(Integer id);
 
     int updateByPrimaryKeySelective(Category record);
 

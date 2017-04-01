@@ -24,7 +24,7 @@
 							</div>
 							<div class="form-group">
 								<label for="password">所属分类</label> <select class="form-control"
-									name="category">
+									name="category" id="category">
 									<option value="1">Java</option>
 									<option value="2">Android</option>
 									<option value="3">DB</option>

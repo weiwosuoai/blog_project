@@ -12,7 +12,7 @@
 --
 --
 --
---------------------------------------------------------------------------------------------------
+------------------------------------------------------------------------------------------------
 
 -- 用户表 Create on 2017-03-14 by Allen.
 DROP TABLE IF EXISTS t_user;
@@ -76,6 +76,9 @@ INSERT INTO t_tag(name) VALUES('mysql');
 INSERT INTO t_tag(name) VALUES('tomcat');
 INSERT INTO t_tag(name) VALUES('eclipse');
 INSERT INTO t_tag(name) VALUES('android');
+
+-- 文章表中添加标签字段 Create on 2017-03-31 by Allen.
+ALTER TABLE t_article ADD tag_ids VARCHAR(200);
 
 
 

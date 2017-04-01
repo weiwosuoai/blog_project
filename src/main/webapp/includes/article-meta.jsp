@@ -4,7 +4,7 @@
 <div class="sub-article-meta">
 	<span>发表于&nbsp;</span> <span class="sub-article-post-time"> <fmt:formatDate
 			value="${article.createTime}" pattern="yyyy-MM-dd HH:mm:ss" />
-	</span> &nbsp;&nbsp; <span>分类于&nbsp;</span> <span
+	</span> &nbsp;&nbsp;&nbsp; <span>分类于&nbsp;</span> <span
 		class="sub-article-category-item"> <c:choose>
 			<c:when test="${article.category == 1}">
 				<a href="<%=contextPath%>/archive/java">Java</a>
@@ -16,10 +16,15 @@
 				<a href="<%=contextPath%>/archive/db">DB</a>
 			</c:when>
 		</c:choose> 
-		&nbsp;&nbsp;
+		&nbsp;&nbsp;&nbsp;
 		<span><i class="glyphicon glyphicon-eye-open"></i>&nbsp;&nbsp;${article.beViewdNum}</span>
-		&nbsp;&nbsp;
-		<span><i class="glyphicon glyphicon-tags"></i>&nbsp;&nbsp;&nbsp;<a class="label label-info m-label-info">javascript</a></span>
+		&nbsp;&nbsp;&nbsp;
+		<span><i class="glyphicon glyphicon-tags"></i>
+		&nbsp;
+		&nbsp;<a class="label label-info m-label-info">javascript</a>
+		&nbsp;<a class="label label-info m-label-info">android studio</a>
+		&nbsp;<a class="label label-info m-label-info">bug</a>
+		</span>
 	</span>
 	<%-- 用户登录后，才会显示编辑超链接 --%>
 	<c:if test="${sessionScope.userid != null}">

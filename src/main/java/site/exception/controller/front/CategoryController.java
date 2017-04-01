@@ -25,28 +25,43 @@ import site.exception.service.ICategoryService;
  * 
  * @CreatTime 2017年3月30日 下午5:29:05
  * @author Allen
- *
+ * 
  */
 @Controller
 public class CategoryController {
-	
+
 	private static final Log logger = LogFactory
 			.getLog(CategoryController.class);
-	
+
 	@Resource
 	private ICategoryService categoryService;
+
+	/**
+	 * 获取分类信息(包括分类中包含的文章信息)
+	 * 
+	 * @param model
+	 * @param session
+	 * @return
+	 */
+	@ResponseBody
+	@RequestMapping(value = "/category_article_num", produces = "application/json", method = RequestMethod.GET)
+	public List<CategoryVo> articleNumInfo(Model model) {
+		logger.info("articleNumInfo");
+		return categoryService.getArticleNumByCreateUserId(1);
+	}
 	
 	/**
 	 * 获取分类信息
+	 * 
 	 * @param model
 	 * @param session
 	 * @return
 	 */
 	@ResponseBody
 	@RequestMapping(value = "/category", produces = "application/json", method = RequestMethod.GET)
-	public List<CategoryVo> info(Model model, HttpSession session) {
+	public List<Category> info(Model model) {
+		logger.info("info");
 		return categoryService.getByCreateUserId(1);
 	}
-	
 
 }

@@ -29,6 +29,8 @@ public class Article {
 	private Integer createUserId;
 
 	private Integer beViewdNum;
+	
+	private String tagIds;
 
 	public Integer getId() {
 		return id;
@@ -110,5 +112,12 @@ public class Article {
 		this.beViewdNum = beViewdNum;
 	}
 
+	public String getTagIds() {
+		return tagIds;
+	}
+
+	public void setTagIds(String tagIds) {
+		this.tagIds = tagIds;
+	}
 
 }

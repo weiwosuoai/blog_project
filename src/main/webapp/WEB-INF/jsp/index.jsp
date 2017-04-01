@@ -114,7 +114,7 @@
 
 						<iframe frameborder="no" border="0" marginwidth="0"
 							marginheight="0" width=240 height=86
-							src="//music.163.com/outchain/player?type=2&id=29750167&auto=2&height=66"
+							src="//music.163.com/outchain/player?type=2&id=34923114&auto=2&height=66"
 							style="margin-left: -10px; margin-top: -15px;"></iframe>
 
 						<div class="panel panel-default m-panel">
@@ -136,8 +136,8 @@
 						<div class="panel panel-default m-panel">
 							<div class="panel-heading m-panel-heading">标签</div>
 							<div class="panel-body m-panel-body">
-								<a class="label label-info m-label-info">javascript</a> <a
-									class="label label-info m-label-info">html</a> <a
+								<a class="label label-info m-label-info">工具</a> <a
+									class="label label-info m-label-info">并发</a> <a
 									class="label label-info m-label-info">css</a> <a
 									class="label label-info m-label-info">java</a> <a
 									class="label label-info m-label-info">html</a> <a
@@ -197,7 +197,7 @@
 			$.ajax({
 				type: "GET",
 				async: true,
-				url: "<%=contextPath%>/category",
+				url: "<%=contextPath%>/category_article_num",
 				datatype : "json",
 				success : function(data) {
 					$('#category').html('');
@@ -224,5 +224,6 @@
 		});
 	</script>
 	<%@ include file="/includes/modal-article-edit-js.jsp"%>
+	<%@ include file="/includes/modal-article-post-js.jsp"%>
 </body>
 </html>

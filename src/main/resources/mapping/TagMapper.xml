@@ -1,49 +1,34 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
-<mapper namespace="site.exception.dao.ICategoryDao" >
-  <resultMap id="BaseResultMap" type="site.exception.model.vo.CategoryVo" >
+<mapper namespace="site.exception.dao.ITagDao" >
+  <resultMap id="BaseResultMap" type="site.exception.model.Tag" >
     <id column="id" property="id" jdbcType="INTEGER" />
     <result column="name" property="name" jdbcType="VARCHAR" />
     <result column="create_time" property="createTime" jdbcType="TIMESTAMP" />
     <result column="update_time" property="updateTime" jdbcType="TIMESTAMP" />
-    <result column="create_user_id" property="createUserId" jdbcType="INTEGER" />
     <result column="remark" property="remark" jdbcType="VARCHAR" />
-    
-     <!-- 业务字段 -->
-    <result column="nums" property="nums" jdbcType="INTEGER" />
   </resultMap>
   <sql id="Base_Column_List" >
-    id, name, create_time, update_time, create_user_id, remark
+    id, name, create_time, update_time, remark
   </sql>
   <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
     select 
     <include refid="Base_Column_List" />
-    from t_category
+    from t_tag
     where id = #{id,jdbcType=INTEGER}
-  </select>
-  <select id="getArticleNumByCreateUserId" resultMap="BaseResultMap" parameterType="java.lang.Integer">
-  	select t.*, COUNT(category) nums from 
-  	(SELECT a.category,c.name,c.id from t_article a 
-  		left join t_category c on a.category = c.id 
-  			where c.create_user_id = #{create_user_id,jdbcType=INTEGER}) t GROUP BY category
-  </select>
-  <select id="getByCreateUserId" resultMap="BaseResultMap" parameterType="java.lang.Integer">
-  	SELECT id, name FROM t_category WHERE create_user_id = #{create_user_id,jdbcType=INTEGER}
   </select>
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
-    delete from t_category
+    delete from t_tag
     where id = #{id,jdbcType=INTEGER}
   </delete>
-  <insert id="insert" parameterType="site.exception.model.Category" >
-    insert into t_category (id, name, create_time, 
-      update_time, create_user_id, remark
-      )
+  <insert id="insert" parameterType="site.exception.model.Tag" >
+    insert into t_tag (id, name, create_time, 
+      update_time, remark)
     values (#{id,jdbcType=INTEGER}, #{name,jdbcType=VARCHAR}, #{createTime,jdbcType=TIMESTAMP}, 
-      #{updateTime,jdbcType=TIMESTAMP}, #{createUserId,jdbcType=INTEGER}, #{remark,jdbcType=VARCHAR}
-      )
+      #{updateTime,jdbcType=TIMESTAMP}, #{remark,jdbcType=VARCHAR})
   </insert>
-  <insert id="insertSelective" parameterType="site.exception.model.Category" >
-    insert into t_category
+  <insert id="insertSelective" parameterType="site.exception.model.Tag" >
+    insert into t_tag
     <trim prefix="(" suffix=")" suffixOverrides="," >
       <if test="id != null" >
         id,
@@ -56,9 +41,6 @@
       </if>
       <if test="updateTime != null" >
         update_time,
-      </if>
-      <if test="createUserId != null" >
-        create_user_id,
       </if>
       <if test="remark != null" >
         remark,
@@ -77,16 +59,13 @@
       <if test="updateTime != null" >
         #{updateTime,jdbcType=TIMESTAMP},
       </if>
-      <if test="createUserId != null" >
-        #{createUserId,jdbcType=INTEGER},
-      </if>
       <if test="remark != null" >
         #{remark,jdbcType=VARCHAR},
       </if>
     </trim>
   </insert>
-  <update id="updateByPrimaryKeySelective" parameterType="site.exception.model.Category" >
-    update t_category
+  <update id="updateByPrimaryKeySelective" parameterType="site.exception.model.Tag" >
+    update t_tag
     <set >
       <if test="name != null" >
         name = #{name,jdbcType=VARCHAR},
@@ -97,21 +76,17 @@
       <if test="updateTime != null" >
         update_time = #{updateTime,jdbcType=TIMESTAMP},
       </if>
-      <if test="createUserId != null" >
-        create_user_id = #{createUserId,jdbcType=INTEGER},
-      </if>
       <if test="remark != null" >
         remark = #{remark,jdbcType=VARCHAR},
       </if>
     </set>
     where id = #{id,jdbcType=INTEGER}
   </update>
-  <update id="updateByPrimaryKey" parameterType="site.exception.model.Category" >
-    update t_category
+  <update id="updateByPrimaryKey" parameterType="site.exception.model.Tag" >
+    update t_tag
     set name = #{name,jdbcType=VARCHAR},
       create_time = #{createTime,jdbcType=TIMESTAMP},
       update_time = #{updateTime,jdbcType=TIMESTAMP},
-      create_user_id = #{createUserId,jdbcType=INTEGER},
       remark = #{remark,jdbcType=VARCHAR}
     where id = #{id,jdbcType=INTEGER}
   </update>

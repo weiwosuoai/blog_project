@@ -12,6 +12,8 @@ import site.exception.model.vo.CategoryVo;
 
 public interface ICategoryService {
 	
-	List<CategoryVo> getByCreateUserId(Integer id);
+	List<CategoryVo> getArticleNumByCreateUserId(Integer id);
+
+	List<Category> getByCreateUserId(Integer id);
 	
 }

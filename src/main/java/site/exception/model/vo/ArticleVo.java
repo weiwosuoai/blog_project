@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.web.multipart.MultipartFile;
 
 import site.exception.model.Article;
+import site.exception.model.Tag;
 
 public class ArticleVo extends Article {
 	
@@ -34,6 +35,11 @@ public class ArticleVo extends Article {
 	 * 文章内容
 	 */
 	private String content;
+	
+	/**
+	 * 文章标签
+	 */
+	private List<Tag> tags;
 	
 	public List<MultipartFile> getFiles() {
 		return files;
@@ -81,6 +87,14 @@ public class ArticleVo extends Article {
 
 	public void setContent(String content) {
 		this.content = content;
+	}
+
+	public List<Tag> getTags() {
+		return tags;
+	}
+
+	public void setTags(List<Tag> tags) {
+		this.tags = tags;
 	}
 
 }
