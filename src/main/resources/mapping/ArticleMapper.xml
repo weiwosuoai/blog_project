@@ -1,154 +1,187 @@
 <?xml version="1.0" encoding="GB2312" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
-<mapper namespace="site.exception.dao.IArticleDao" >
-  <resultMap id="BaseResultMap" type="site.exception.model.vo.ArticleVo" >
-    <id column="id" property="id" jdbcType="INTEGER" />
-    <result column="title" property="title" jdbcType="VARCHAR" />
-    <result column="category" property="category" jdbcType="INTEGER" />
-    <result column="file_name" property="fileName" jdbcType="VARCHAR" />
-    <result column="file_path" property="filePath" jdbcType="VARCHAR" />
-    <result column="create_time" property="createTime" jdbcType="TIMESTAMP" />
-    <result column="update_time" property="updateTime" jdbcType="TIMESTAMP" />
-    <result column="remark" property="remark" jdbcType="VARCHAR" />
-    <result column="create_user_id" property="createUserId" jdbcType="INTEGER" />
-    <result column="be_viewd_num" property="beViewdNum" jdbcType="INTEGER" />
-    
-    <!-- 业务字段 -->
-    <result column="nums" property="nums" jdbcType="INTEGER" />
-    <result column="y_m" property="yearMonth" jdbcType="VARCHAR" />
-  </resultMap>
-  <sql id="Base_Column_List" >
-    id, title, category, file_name, file_path, create_time, update_time, remark, be_viewd_num
-  </sql>
-  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
-    select 
-    <include refid="Base_Column_List" />
-    from t_article
-    where id = #{id,jdbcType=INTEGER}
-  </select>
-  <select id="selectAll" resultMap="BaseResultMap">
-    select * from t_article ORDER BY create_time DESC
-  </select>
-  <select id="selectByCategory" resultMap="BaseResultMap" parameterType="java.lang.Integer">
-    select id, create_time, title from t_article 
-    WHERE category = #{category,jdbcType=INTEGER} ORDER BY create_time DESC
-  </select>
-  <select id="selectNumsPerMonth" resultMap="BaseResultMap" parameterType="java.lang.Integer">
-    SELECT t.*,COUNT(y_m) nums FROM 
-    	(SELECT DATE_FORMAT(create_time,'%Y年%m月') y_m from t_article) t 
-    GROUP BY y_m ORDER BY y_m DESC
-  </select>
-  <select id="selectByYearMonth" resultMap="BaseResultMap" parameterType="java.lang.String">
-    SELECT * FROM t_article WHERE DATE_FORMAT(create_time,'%Y年%m月') = #{create_time,jdbcType=VARCHAR}
-    ORDER BY create_time DESC
-  </select>
-  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
-    delete from t_article
-    where id = #{id,jdbcType=INTEGER}
-  </delete>
-  <update id="articleViewdIncrementById" parameterType="java.lang.Integer">
-  	update t_article set be_viewd_num = be_viewd_num + 1
-  	where id = #{id,jdbcType=INTEGER}
-  </update>
-  <insert id="insert" parameterType="site.exception.model.Article" >
-    insert into t_article (title, category, 
-      file_name, file_path, create_time, 
-      update_time, remark, create_user_id)
-    values (#{title,jdbcType=VARCHAR}, #{category,jdbcType=INTEGER}, 
-      #{fileName,jdbcType=VARCHAR}, #{filePath,jdbcType=VARCHAR}, #{createTime,jdbcType=TIMESTAMP}, 
-      #{updateTime,jdbcType=TIMESTAMP}, #{remark,jdbcType=VARCHAR}, #{createUserId,jdbcType=INTEGER})
-  </insert>
-  <insert id="insertSelective" parameterType="site.exception.model.Article" >
-    insert into t_article
-    <trim prefix="(" suffix=")" suffixOverrides="," >
-      <if test="id != null" >
-        id,
-      </if>
-      <if test="title != null" >
-        title,
-      </if>
-      <if test="category != null" >
-        category,
-      </if>
-      <if test="fileName != null" >
-        file_name,
-      </if>
-      <if test="filePath != null" >
-        file_path,
-      </if>
-      <if test="createTime != null" >
-        create_time,
-      </if>
-      <if test="updateTime != null" >
-        update_time,
-      </if>
-      <if test="remark != null" >
-        remark,
-      </if>
-    </trim>
-    <trim prefix="values (" suffix=")" suffixOverrides="," >
-      <if test="id != null" >
-        #{id,jdbcType=INTEGER},
-      </if>
-      <if test="title != null" >
-        #{title,jdbcType=VARCHAR},
-      </if>
-      <if test="category != null" >
-        #{category,jdbcType=INTEGER},
-      </if>
-      <if test="fileName != null" >
-        #{fileName,jdbcType=VARCHAR},
-      </if>
-      <if test="filePath != null" >
-        #{filePath,jdbcType=VARCHAR},
-      </if>
-      <if test="createTime != null" >
-        #{createTime,jdbcType=TIMESTAMP},
-      </if>
-      <if test="updateTime != null" >
-        #{updateTime,jdbcType=TIMESTAMP},
-      </if>
-      <if test="remark != null" >
-        #{remark,jdbcType=VARCHAR},
-      </if>
-    </trim>
-  </insert>
-  <update id="updateByPrimaryKeySelective" parameterType="site.exception.model.Article" >
-    update t_article
-    <set >
-      <if test="title != null" >
-        title = #{title,jdbcType=VARCHAR},
-      </if>
-      <if test="category != null" >
-        category = #{category,jdbcType=INTEGER},
-      </if>
-      <if test="fileName != null" >
-        file_name = #{fileName,jdbcType=VARCHAR},
-      </if>
-      <if test="filePath != null" >
-        file_path = #{filePath,jdbcType=VARCHAR},
-      </if>
-      <if test="createTime != null" >
-        create_time = #{createTime,jdbcType=TIMESTAMP},
-      </if>
-      <if test="updateTime != null" >
-        update_time = #{updateTime,jdbcType=TIMESTAMP},
-      </if>
-      <if test="remark != null" >
-        remark = #{remark,jdbcType=VARCHAR},
-      </if>
-    </set>
-    where id = #{id,jdbcType=INTEGER}
-  </update>
-  <update id="updateByPrimaryKey" parameterType="site.exception.model.Article" >
-    update t_article
-    set title = #{title,jdbcType=VARCHAR},
-      category = #{category,jdbcType=INTEGER},
-      file_name = #{fileName,jdbcType=VARCHAR},
-      file_path = #{filePath,jdbcType=VARCHAR},
-      create_time = #{createTime,jdbcType=TIMESTAMP},
-      update_time = #{updateTime,jdbcType=TIMESTAMP},
-      remark = #{remark,jdbcType=VARCHAR}
-    where id = #{id,jdbcType=INTEGER}
-  </update>
+<mapper namespace="site.exception.dao.IArticleDao">
+	<cache />
+	<resultMap id="BaseResultMap" type="site.exception.model.vo.ArticleVo">
+		<id column="id" property="id" jdbcType="INTEGER" />
+		<result column="title" property="title" jdbcType="VARCHAR" />
+		<result column="category" property="category" jdbcType="INTEGER" />
+		<result column="file_name" property="fileName" jdbcType="VARCHAR" />
+		<result column="file_path" property="filePath" jdbcType="VARCHAR" />
+		<result column="create_time" property="createTime" jdbcType="TIMESTAMP" />
+		<result column="update_time" property="updateTime" jdbcType="TIMESTAMP" />
+		<result column="remark" property="remark" jdbcType="VARCHAR" />
+		<result column="create_user_id" property="createUserId"
+			jdbcType="INTEGER" />
+		<result column="be_viewd_num" property="beViewdNum" jdbcType="INTEGER" />
+		<result column="tag_ids" property="tagIds" jdbcType="VARCHAR" />
+
+		<!-- 业务字段 -->
+		<result column="nums" property="nums" jdbcType="INTEGER" />
+		<result column="y_m" property="yearMonth" jdbcType="VARCHAR" />
+	</resultMap>
+	<sql id="Base_Column_List">
+		id, title, category, file_name, file_path, create_time,
+		update_time,
+		remark, be_viewd_num, tag_ids
+	</sql>
+	<select id="selectByPrimaryKey" resultMap="BaseResultMap"
+		parameterType="java.lang.Integer">
+		select
+		<include refid="Base_Column_List" />
+		from t_article
+		where id = #{id,jdbcType=INTEGER}
+	</select>
+	<select id="selectAll" resultMap="BaseResultMap">
+		select * from t_article ORDER
+		BY create_time DESC
+	</select>
+	<select id="selectByCategory" resultMap="BaseResultMap"
+		parameterType="java.lang.Integer">
+		select id, create_time, title from t_article
+		WHERE
+		category = #{category,jdbcType=INTEGER} ORDER BY create_time DESC
+	</select>
+	<select id="getByTag" resultMap="BaseResultMap"
+		parameterType="java.lang.Integer">
+		select id, create_time, title from t_article
+		WHERE
+		tag_ids LIKE concat('%', #{tagId,jdbcType=INTEGER} , '%') ORDER BY create_time DESC
+	</select>
+	<select id="selectNumsPerMonth" resultMap="BaseResultMap"
+		parameterType="java.lang.Integer">
+		SELECT t.*,COUNT(y_m) nums FROM
+		(SELECT
+		DATE_FORMAT(create_time,'%Y年%m月') y_m from t_article) t
+		GROUP BY y_m
+		ORDER BY y_m DESC
+	</select>
+	<select id="selectByYearMonth" resultMap="BaseResultMap"
+		parameterType="java.lang.String">
+		SELECT * FROM t_article WHERE
+		DATE_FORMAT(create_time,'%Y年%m月') =
+		#{create_time,jdbcType=VARCHAR}
+		ORDER BY create_time DESC
+	</select>
+	<delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+		delete from
+		t_article
+		where id = #{id,jdbcType=INTEGER}
+	</delete>
+	<update id="articleViewdIncrementById" parameterType="java.lang.Integer">
+		update
+		t_article set be_viewd_num = be_viewd_num + 1
+		where id =
+		#{id,jdbcType=INTEGER}
+	</update>
+	<insert id="insert" parameterType="site.exception.model.Article">
+		insert into t_article (title,
+		category,
+		file_name, file_path, create_time,
+		update_time, remark,
+		create_user_id)
+		values (#{title,jdbcType=VARCHAR},
+		#{category,jdbcType=INTEGER},
+		#{fileName,jdbcType=VARCHAR},
+		#{filePath,jdbcType=VARCHAR},
+		#{createTime,jdbcType=TIMESTAMP},
+		#{updateTime,jdbcType=TIMESTAMP}, #{remark,jdbcType=VARCHAR},
+		#{createUserId,jdbcType=INTEGER})
+	</insert>
+	<insert id="insertSelective" parameterType="site.exception.model.Article">
+		insert into t_article
+		<trim prefix="(" suffix=")" suffixOverrides=",">
+			<if test="id != null">
+				id,
+			</if>
+			<if test="title != null">
+				title,
+			</if>
+			<if test="category != null">
+				category,
+			</if>
+			<if test="fileName != null">
+				file_name,
+			</if>
+			<if test="filePath != null">
+				file_path,
+			</if>
+			<if test="createTime != null">
+				create_time,
+			</if>
+			<if test="updateTime != null">
+				update_time,
+			</if>
+			<if test="remark != null">
+				remark,
+			</if>
+		</trim>
+		<trim prefix="values (" suffix=")" suffixOverrides=",">
+			<if test="id != null">
+				#{id,jdbcType=INTEGER},
+			</if>
+			<if test="title != null">
+				#{title,jdbcType=VARCHAR},
+			</if>
+			<if test="category != null">
+				#{category,jdbcType=INTEGER},
+			</if>
+			<if test="fileName != null">
+				#{fileName,jdbcType=VARCHAR},
+			</if>
+			<if test="filePath != null">
+				#{filePath,jdbcType=VARCHAR},
+			</if>
+			<if test="createTime != null">
+				#{createTime,jdbcType=TIMESTAMP},
+			</if>
+			<if test="updateTime != null">
+				#{updateTime,jdbcType=TIMESTAMP},
+			</if>
+			<if test="remark != null">
+				#{remark,jdbcType=VARCHAR},
+			</if>
+		</trim>
+	</insert>
+	<update id="updateByPrimaryKeySelective" parameterType="site.exception.model.Article">
+		update t_article
+		<set>
+			<if test="title != null">
+				title = #{title,jdbcType=VARCHAR},
+			</if>
+			<if test="category != null">
+				category = #{category,jdbcType=INTEGER},
+			</if>
+			<if test="fileName != null">
+				file_name = #{fileName,jdbcType=VARCHAR},
+			</if>
+			<if test="filePath != null">
+				file_path = #{filePath,jdbcType=VARCHAR},
+			</if>
+			<if test="createTime != null">
+				create_time = #{createTime,jdbcType=TIMESTAMP},
+			</if>
+			<if test="updateTime != null">
+				update_time = #{updateTime,jdbcType=TIMESTAMP},
+			</if>
+			<if test="remark != null">
+				remark = #{remark,jdbcType=VARCHAR},
+			</if>
+		</set>
+		where id = #{id,jdbcType=INTEGER}
+	</update>
+	<update id="updateByPrimaryKey" parameterType="site.exception.model.Article">
+		update t_article
+		set title = #{title,jdbcType=VARCHAR},
+		category =
+		#{category,jdbcType=INTEGER},
+		file_name = #{fileName,jdbcType=VARCHAR},
+		file_path = #{filePath,jdbcType=VARCHAR},
+		create_time =
+		#{createTime,jdbcType=TIMESTAMP},
+		update_time =
+		#{updateTime,jdbcType=TIMESTAMP},
+		remark = #{remark,jdbcType=VARCHAR}
+		where id = #{id,jdbcType=INTEGER}
+	</update>
 </mapper>

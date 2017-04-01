@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="site.exception.dao.ITagDao">
+	<cache />
 	<resultMap id="BaseResultMap" type="site.exception.model.Tag">
 		<id column="id" property="id" jdbcType="INTEGER" />
 		<result column="name" property="name" jdbcType="VARCHAR" />
@@ -18,8 +19,7 @@
 		from t_tag
 		where id = #{id,jdbcType=INTEGER}
 	</select>
-	<select id="getAll" resultMap="BaseResultMap"
-		parameterType="java.lang.Integer">
+	<select id="getAll" resultMap="BaseResultMap" parameterType="java.lang.Integer">
 		select id, name
 		from t_tag
 	</select>
@@ -28,9 +28,11 @@
 		where id = #{id,jdbcType=INTEGER}
 	</delete>
 	<insert id="insert" parameterType="site.exception.model.Tag">
-		insert into t_tag (id, name, create_time,
+		insert into t_tag (id, name,
+		create_time,
 		update_time, remark)
-		values (#{id,jdbcType=INTEGER}, #{name,jdbcType=VARCHAR},
+		values (#{id,jdbcType=INTEGER},
+		#{name,jdbcType=VARCHAR},
 		#{createTime,jdbcType=TIMESTAMP},
 		#{updateTime,jdbcType=TIMESTAMP}, #{remark,jdbcType=VARCHAR})
 	</insert>
@@ -91,9 +93,12 @@
 	</update>
 	<update id="updateByPrimaryKey" parameterType="site.exception.model.Tag">
 		update t_tag
-		set name = #{name,jdbcType=VARCHAR},
-		create_time = #{createTime,jdbcType=TIMESTAMP},
-		update_time = #{updateTime,jdbcType=TIMESTAMP},
+		set
+		name = #{name,jdbcType=VARCHAR},
+		create_time =
+		#{createTime,jdbcType=TIMESTAMP},
+		update_time =
+		#{updateTime,jdbcType=TIMESTAMP},
 		remark = #{remark,jdbcType=VARCHAR}
 		where id = #{id,jdbcType=INTEGER}
 	</update>

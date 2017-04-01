@@ -3,6 +3,7 @@ package site.exception.service.impl;
 import java.io.File;
 import java.io.IOException;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -11,12 +12,15 @@ import javax.annotation.Resource;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.springframework.stereotype.Service;
+import org.springframework.util.StringUtils;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.github.rjeschke.txtmark.Processor;
 
 import site.exception.dao.IArticleDao;
+import site.exception.dao.ITagDao;
 import site.exception.model.Article;
+import site.exception.model.Tag;
 import site.exception.model.vo.ArticleVo;
 import site.exception.service.IArticleService;
 import site.exception.utils.FileUtil;
@@ -29,6 +33,8 @@ public class ArticleServiceImpl implements IArticleService {
 	
 	@Resource
 	private IArticleDao articleDao;
+	@Resource
+	private ITagDao tagDao;
 
 	/**
 	 * 上传文章保存
@@ -134,6 +140,21 @@ public class ArticleServiceImpl implements IArticleService {
 			vo.setCreateTime(article.getCreateTime());
 			vo.setHtmlStr(htmlStr);
 			vo.setBeViewdNum(article.getBeViewdNum());
+			// 组合标签信息
+			String tagIds = article.getTagIds();
+			if (!StringUtils.isEmpty(tagIds)) {
+				List<Tag> htmlTagList = new ArrayList<Tag>();
+				String[] tagIdArr = article.getTagIds().split(",");
+				List<Tag> tagList = tagDao.getAll();
+				for (String tagId : tagIdArr) {
+					for (Tag tag : tagList) {
+						if (String.valueOf(tag.getId()).equals(tagId)) {
+							htmlTagList.add(tag);
+						}
+					}
+				}
+				vo.setTags(htmlTagList);
+			}
 			
 			return vo;
 		} catch (IOException e) {
@@ -159,10 +180,17 @@ public class ArticleServiceImpl implements IArticleService {
 	}
 
 	/**
-	 * 相应所属文章列表
+	 * 相应所属文章列表(根据分类)
 	 */
 	public List<Article> findByCategory(Integer category) {
 		return articleDao.selectByCategory(category);
+	}
+
+	/**
+	 * 相应所属文章列表(根据标签)
+	 */
+	public List<Article> getByTag(Integer tagId) {
+		return articleDao.getByTag(tagId);
 	}
 
 	/**

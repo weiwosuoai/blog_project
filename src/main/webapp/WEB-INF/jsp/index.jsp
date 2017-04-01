@@ -208,7 +208,7 @@
 				datatype : "json",
 				success : function(data) {
 					$.each(data, function(i, item) {
-						$('#tags').append("<a class='label label-info m-label-info' style='margin-right: 4px'>" + item.name + "</a>");
+						$('#tags').append("<a href='<%=contextPath%>/archive/tag/" + item.id + "' class='label label-info m-label-info' style='margin-right: 4px'>" + item.name + "</a>");
 					});
 				}
 			});

@@ -21,9 +21,10 @@
 		&nbsp;&nbsp;&nbsp;
 		<span><i class="glyphicon glyphicon-tags"></i>
 		&nbsp;
-		&nbsp;<a class="label label-info m-label-info">javascript</a>
-		&nbsp;<a class="label label-info m-label-info">android studio</a>
-		&nbsp;<a class="label label-info m-label-info">bug</a>
+		<c:forEach var="tag" items="${article.tags}" varStatus="statusTag">
+			&nbsp;<a href='<%=contextPath%>/archive/tag/${tag.id}' class="label label-info m-label-info">${tag.name}</a>
+		</c:forEach>
+<!-- 		&nbsp;<a class="label label-info m-label-info">android studio</a> -->
 		</span>
 	</span>
 	<%-- 用户登录后，才会显示编辑超链接 --%>

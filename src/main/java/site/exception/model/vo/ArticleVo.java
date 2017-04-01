@@ -1,5 +1,6 @@
 package site.exception.model.vo;
 
+import java.io.Serializable;
 import java.util.List;
 
 import org.springframework.web.multipart.MultipartFile;
@@ -7,8 +8,10 @@ import org.springframework.web.multipart.MultipartFile;
 import site.exception.model.Article;
 import site.exception.model.Tag;
 
-public class ArticleVo extends Article {
+public class ArticleVo extends Article implements Serializable {
 	
+	private static final long serialVersionUID = -8232083665413751738L;
+
 	private List<MultipartFile> files;
 	
 	/**

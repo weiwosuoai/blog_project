@@ -28,4 +28,6 @@ public interface IArticleDao {
     List<ArticleVo> selectByYearMonth(String yearMonth);
     
     int articleViewdIncrementById(Integer id);
+
+	List<Article> getByTag(Integer tagId);
 }

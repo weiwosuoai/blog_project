@@ -17,20 +17,23 @@ import site.exception.service.IArticleService;
 
 /**
  * 文章目录控制器
+ * 
  * @author Allen
- *
+ * 
  */
 @Controller
 @RequestMapping("/archive")
 public class ArchiveController {
-	
-	private static final Log logger = LogFactory.getLog(ArchiveController.class);
-	
+
+	private static final Log logger = LogFactory
+			.getLog(ArchiveController.class);
+
 	@Resource
 	private IArticleService articleService;
-	
+
 	/**
 	 * 获取所有文章的目录信息
+	 * 
 	 * @param model
 	 * @return
 	 */
@@ -41,9 +44,10 @@ public class ArchiveController {
 		model.addAttribute("topNavType", 1);
 		return "archive";
 	}
-	
+
 	/**
 	 * 获取 java web 文章的目录信息
+	 * 
 	 * @param model
 	 * @return
 	 */
@@ -54,9 +58,10 @@ public class ArchiveController {
 		model.addAttribute("topNavType", 2);
 		return "archive";
 	}
-	
+
 	/**
 	 * 获取 android 文章的目录信息
+	 * 
 	 * @param model
 	 * @return
 	 */
@@ -67,9 +72,10 @@ public class ArchiveController {
 		model.addAttribute("topNavType", 3);
 		return "archive";
 	}
-	
+
 	/**
 	 * 根据月份显示文章目录
+	 * 
 	 * @param model
 	 * @return 文章 Json 数据
 	 */
@@ -80,9 +86,10 @@ public class ArchiveController {
 		List<ArticleVo> articles = articleService.findArticleNumPerMonth();
 		return articles;
 	}
-	
+
 	/**
 	 * 根据年月份显示具体的文章目录
+	 * 
 	 * @param yearMonth
 	 * @param model
 	 * @return
@@ -90,13 +97,15 @@ public class ArchiveController {
 	@RequestMapping(value = "/{yearMonth}")
 	public String viewMonthArchive(@PathVariable String yearMonth, Model model) {
 		logger.info("viewMonthArchive - " + yearMonth);
-		model.addAttribute("articles", articleService.findArticleByYearMonth(yearMonth));
+		model.addAttribute("articles",
+				articleService.findArticleByYearMonth(yearMonth));
 		model.addAttribute("topNavType", 1);
 		return "archive";
 	}
-	
+
 	/**
 	 * 根据所属分类获取文章的目录信息
+	 * 
 	 * @param model
 	 * @return
 	 */
@@ -104,6 +113,20 @@ public class ArchiveController {
 	public String viewArchiveByCategory(@PathVariable Integer id, Model model) {
 		logger.info("viewAndroidArchive");
 		model.addAttribute("articles", articleService.findByCategory(id));
+		model.addAttribute("topNavType", 1);
+		return "archive";
+	}
+
+	/**
+	 * 根据标签获取文章的目录信息
+	 * 
+	 * @param model
+	 * @return
+	 */
+	@RequestMapping("/tag/{id}")
+	public String viewArchiveByTag(@PathVariable Integer id, Model model) {
+		logger.info("viewArchiveByTag");
+		model.addAttribute("articles", articleService.getByTag(id));
 		model.addAttribute("topNavType", 1);
 		return "archive";
 	}

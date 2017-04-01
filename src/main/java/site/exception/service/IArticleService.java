@@ -18,6 +18,8 @@ public interface IArticleService {
 	
 	List<Article> findByCategory(Integer category);
 	
+	List<Article> getByTag(Integer tagId);
+	
 	ArticleVo parseMarkdown(Integer id);
 	
 	List<ArticleVo> findArticleNumPerMonth();

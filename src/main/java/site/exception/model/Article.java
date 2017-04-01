@@ -1,5 +1,6 @@
 package site.exception.model;
 
+import java.io.Serializable;
 import java.util.Date;
 
 /**
@@ -8,7 +9,9 @@ import java.util.Date;
  * @author Allen
  * 
  */
-public class Article {
+public class Article implements Serializable {
+
+	private static final long serialVersionUID = -8019752279471482643L;
 
 	private Integer id;
 

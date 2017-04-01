@@ -10,11 +10,14 @@ import javax.annotation.Resource;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.springframework.stereotype.Service;
+import org.springframework.util.StringUtils;
 
 import com.github.rjeschke.txtmark.Processor;
 
 import site.exception.dao.IArticleDao;
+import site.exception.dao.ITagDao;
 import site.exception.model.Article;
+import site.exception.model.Tag;
 import site.exception.model.vo.ArticleVo;
 import site.exception.service.IIndexService;
 
@@ -25,6 +28,8 @@ public class IndexServiceImpl implements IIndexService {
 	
 	@Resource
 	private IArticleDao articleDao;
+	@Resource
+	private ITagDao tagDao;
 
 	public List<ArticleVo> findIndexInfo() {
 		List<Article> articles = articleDao.selectAll();
@@ -46,6 +51,21 @@ public class IndexServiceImpl implements IIndexService {
 				vo.setCategory(article.getCategory());
 				vo.setCreateTime(article.getCreateTime());
 				vo.setBeViewdNum(article.getBeViewdNum());
+				// 组合标签信息
+				String tagIds = article.getTagIds();
+				if (!StringUtils.isEmpty(tagIds)) {
+					List<Tag> htmlTagList = new ArrayList<Tag>();
+					String[] tagIdArr = article.getTagIds().split(",");
+					List<Tag> tagList = tagDao.getAll();
+					for (String tagId : tagIdArr) {
+						for (Tag tag : tagList) {
+							if (String.valueOf(tag.getId()).equals(tagId)) {
+								htmlTagList.add(tag);
+							}
+						}
+					}
+					vo.setTags(htmlTagList);
+				}
 				
 				// 缩略内容
 				vo.setShortHtmlStr(htmlStr.split("<!-- more -->")[0]);
