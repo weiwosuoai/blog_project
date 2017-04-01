@@ -25,10 +25,25 @@
 							<div class="form-group">
 								<label for="password">所属分类</label> <select class="form-control"
 									name="category" id="category">
-									<option value="1">Java</option>
-									<option value="2">Android</option>
-									<option value="3">DB</option>
+<!-- 									<option value="1">Java</option> -->
 								</select>
+							</div>
+							<div class="form-group">
+								<label for="password">添加标签</label>
+								<div class="panel panel-default">
+  <div class="panel-body">
+    <a class="label label-info m-label-info">工具</a> <a
+									class="label label-info m-label-info">并发</a> <a
+									class="label label-info m-label-info">css</a> <a
+									class="label label-info m-label-info">java</a> <a
+									class="label label-info m-label-info">html</a> <a
+									class="label label-info m-label-info">css</a> <a
+									class="label label-info m-label-info">java</a> <a
+									class="label label-info m-label-info">html</a> <a
+									class="label label-info m-label-info">css</a> <a
+									class="label label-info m-label-info">android</a>
+  </div>
+</div> 
 							</div>
 							<div class="form-group post-time">
 								<label for="post_time">发表时间</label>

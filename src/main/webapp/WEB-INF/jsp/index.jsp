@@ -126,7 +126,7 @@
 
 						<div class="panel panel-default m-panel">
 							<div class="panel-heading m-panel-heading">文章分类</div>
-							<div class="panel-body m-panel-body" id="category">
+							<div class="panel-body m-panel-body" id="category-num">
 								<ul>
 									<%-- 									<li><a href="<%=contextPath%>/archive/javaweb">Jave Web</a></li> --%>
 								</ul>
@@ -135,23 +135,15 @@
 
 						<div class="panel panel-default m-panel">
 							<div class="panel-heading m-panel-heading">标签</div>
-							<div class="panel-body m-panel-body">
-								<a class="label label-info m-label-info">工具</a> <a
-									class="label label-info m-label-info">并发</a> <a
-									class="label label-info m-label-info">css</a> <a
-									class="label label-info m-label-info">java</a> <a
-									class="label label-info m-label-info">html</a> <a
-									class="label label-info m-label-info">css</a> <a
-									class="label label-info m-label-info">java</a> <a
-									class="label label-info m-label-info">html</a> <a
-									class="label label-info m-label-info">css</a> <a
-									class="label label-info m-label-info">android</a>
+							<div class="panel-body m-panel-body" id="tags">
+<!-- 								<a class="label label-info m-label-info">工具</a> -->
 							</div>
 						</div>
 					</div>
 				</div>
 
 				<%@ include file="/includes/modal-article-edit.jsp"%>
+				<%@ include file="/includes/modal-article-post.jsp"%>
 			</div>
 
 		</div>
@@ -177,8 +169,6 @@
 				url: "<%=contextPath%>/archive/monthInfo",
 				datatype: "json",
 				success: function(data) {
-					$('#archive-month').html('');
-					
 					var html = '<ul>';
 					$.each(data, function(i, item){
 						html += "<li><a href='<%=contextPath%>/archive/"
@@ -200,15 +190,26 @@
 				url: "<%=contextPath%>/category_article_num",
 				datatype : "json",
 				success : function(data) {
-					$('#category').html('');
-
 					var html = '<ul>';
 					$.each(data, function(i, item) {
 						html += "<li><a href='<%=contextPath%>/archive/category/" + item.id + "'>" + item.name
 								+ "&nbsp;<span style='color:#6a737c'>(" + item.nums + ")</span></a></li>";
 					});
 					html += "</ul>"
-					$('#category').html(html);
+					$('#category-num').html(html);
+				}
+			});
+			
+			// ajax 异步获取标签信息
+			$.ajax({
+				type: "GET",
+				async: true,
+				url: "<%=contextPath%>/tags",
+				datatype : "json",
+				success : function(data) {
+					$.each(data, function(i, item) {
+						$('#tags').append("<a class='label label-info m-label-info' style='margin-right: 4px'>" + item.name + "</a>");
+					});
 				}
 			});
 

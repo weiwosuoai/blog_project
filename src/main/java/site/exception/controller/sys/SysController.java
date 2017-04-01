@@ -85,7 +85,7 @@ public class SysController {
 	 * @return
 	 */
 	@RequestMapping(value = "/post", method = RequestMethod.POST)
-	public String post(HttpServletRequest request,
+	public String articlePost(HttpServletRequest request,
 			@ModelAttribute ArticleVo vo, HttpSession session) {
 
 		if (vo.getFiles() == null)

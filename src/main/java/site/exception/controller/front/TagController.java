@@ -16,52 +16,39 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import site.exception.model.Category;
+import site.exception.model.Tag;
 import site.exception.model.vo.CategoryVo;
 import site.exception.service.IArticleService;
 import site.exception.service.ICategoryService;
+import site.exception.service.ITagService;
 
 /**
- * 分类
+ * 标签
  * 
- * @CreatTime 2017年3月30日 下午5:29:05
+ * @CreatTime 2017年4月1日 下午2:32:26
  * @author Allen
  * 
  */
 @Controller
-public class CategoryController {
+public class TagController {
 
-	private static final Log logger = LogFactory
-			.getLog(CategoryController.class);
+	private static final Log logger = LogFactory.getLog(TagController.class);
 
 	@Resource
-	private ICategoryService categoryService;
+	private ITagService tagService;
 
 	/**
-	 * 获取分类信息(包括分类中包含的文章信息)
+	 * 获取分类信息 TODO 未来添加缓存
 	 * 
 	 * @param model
 	 * @param session
 	 * @return
 	 */
 	@ResponseBody
-	@RequestMapping(value = "/category_article_num", produces = "application/json", method = RequestMethod.GET)
-	public List<CategoryVo> articleNumInfo(Model model) {
-		logger.info("articleNumInfo");
-		return categoryService.getArticleNumByCreateUserId(1);
-	}
-	
-	/**
-	 * 获取分类信息  TODO 未来添加缓存
-	 * 
-	 * @param model
-	 * @param session
-	 * @return
-	 */
-	@ResponseBody
-	@RequestMapping(value = "/category", produces = "application/json", method = RequestMethod.GET)
-	public List<Category> info(Model model) {
-		logger.info("info");
-		return categoryService.getByCreateUserId(1);
+	@RequestMapping(value = "/tags", produces = "application/json", method = RequestMethod.GET)
+	public List<Tag> list(Model model) {
+		logger.info("list");
+		return tagService.getAll();
 	}
 
 }

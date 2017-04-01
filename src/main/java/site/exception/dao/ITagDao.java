@@ -1,5 +1,8 @@
 package site.exception.dao;
 
+import java.util.List;
+
+import site.exception.model.Category;
 import site.exception.model.Tag;
 
 public interface ITagDao {
@@ -14,4 +17,6 @@ public interface ITagDao {
     int updateByPrimaryKeySelective(Tag record);
 
     int updateByPrimaryKey(Tag record);
+    
+    List<Tag> getAll();
 }

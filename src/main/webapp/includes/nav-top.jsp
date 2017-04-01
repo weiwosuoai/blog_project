@@ -88,4 +88,3 @@
 	<!-- /.container-fluid -->
 </nav>
 <%@ include file="/includes/modal-login.jsp"%>
-<%@ include file="/includes/modal-article-post.jsp"%>
