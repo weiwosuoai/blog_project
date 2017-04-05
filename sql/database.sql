@@ -50,7 +50,7 @@ CREATE TABLE t_category (
 	id INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
 	name VARCHAR(500) NOT NULL COMMENT '分类名称',
 	create_time TIMESTAMP NOT NULL DEFAULT NOW(),
-	update_time TIMESTAMP NOT NULL,
+	update_time TIMESTAMP NOT NULL DEFAULT NOW(),
 	create_user_id INT NOT NULL COMMENT '创建者id',
 	remark VARCHAR(500)
 ) ENGINE=InnoDB DEFAULT CHARSET=UTF8;
@@ -61,7 +61,7 @@ CREATE TABLE t_tag (
 	id INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
 	name VARCHAR(200) NOT NULL COMMENT '分类名称',
 	create_time TIMESTAMP NOT NULL DEFAULT NOW(),
-	update_time TIMESTAMP NOT NULL,
+	update_time TIMESTAMP NOT NULL DEFAULT NOW(),
 	remark VARCHAR(500)
 ) ENGINE=InnoDB DEFAULT CHARSET=UTF8;
 
@@ -76,6 +76,14 @@ INSERT INTO t_tag(name) VALUES('mysql');
 INSERT INTO t_tag(name) VALUES('tomcat');
 INSERT INTO t_tag(name) VALUES('eclipse');
 INSERT INTO t_tag(name) VALUES('android');
+INSERT INTO t_tag(name) VALUES('性能优化');
+INSERT INTO t_tag(name) VALUES('url');
+INSERT INTO t_tag(name) VALUES('中文乱码');
+INSERT INTO t_tag(name) VALUES('maven');
+INSERT INTO t_tag(name) VALUES('android studio');
+INSERT INTO t_tag(name) VALUES('框架');
+INSERT INTO t_tag(name) VALUES('issue');
+
 
 -- 文章表中添加标签字段 Create on 2017-03-31 by Allen.
 ALTER TABLE t_article ADD tag_ids VARCHAR(200);

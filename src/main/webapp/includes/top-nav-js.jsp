@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@ include file="/includes/modal-article-post.jsp"%>
+<%@ include file="/includes/modal-article-post-js.jsp"%>
 <script type="text/javascript">
 	$(document).ready(function() {
 		var type = $('#topNavType').val();

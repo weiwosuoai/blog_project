@@ -143,7 +143,7 @@
 				</div>
 
 				<%@ include file="/includes/modal-article-edit.jsp"%>
-				<%@ include file="/includes/modal-article-post.jsp"%>
+				
 			</div>
 
 		</div>
@@ -225,6 +225,5 @@
 		});
 	</script>
 	<%@ include file="/includes/modal-article-edit-js.jsp"%>
-	<%@ include file="/includes/modal-article-post-js.jsp"%>
 </body>
 </html>

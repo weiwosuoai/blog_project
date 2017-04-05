@@ -46,16 +46,16 @@
 				<!--           </ul> -->
 				<!--         </li> -->
 			</ul>
-			<form class="navbar-form navbar-left visible-lg-inline-block">
-				<div class="input-group">
-					<input type="text" class="form-control" placeholder="全站搜索">
-					<span class="input-group-btn">
-						<button type="submit" class="btn btn-default">
-							<span class="glyphicon glyphicon-search"></span>
-						</button>
-					</span>
-				</div>
-			</form>
+<!-- 			<form class="navbar-form navbar-left visible-lg-inline-block"> -->
+<!-- 				<div class="input-group"> -->
+<!-- 					<input type="text" class="form-control" placeholder="全站搜索"> -->
+<!-- 					<span class="input-group-btn"> -->
+<!-- 						<button type="submit" class="btn btn-default"> -->
+<!-- 							<span class="glyphicon glyphicon-search"></span> -->
+<!-- 						</button> -->
+<!-- 					</span> -->
+<!-- 				</div> -->
+<!-- 			</form> -->
 
 			<!-- 超链接只能是 GET 方式请求 -->
 			<%-- 				<li><a href="<%=contextPath%>/sys/login">登录</a></li> --%>
@@ -64,6 +64,7 @@
 					<ul class="nav navbar-nav navbar-right">
 						<li><a href="#" data-toggle="modal"
 							data-target="#modal-login">登录</a></li>
+							
 					</ul>
 				</c:when>
 				<c:otherwise>
