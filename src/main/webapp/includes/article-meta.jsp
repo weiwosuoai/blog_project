@@ -7,7 +7,7 @@
 	</span> &nbsp;&nbsp;&nbsp; <span>分类于&nbsp;</span> <span
 		class="sub-article-category-item"> <c:choose>
 			<c:when test="${article.category == 1}">
-				<a href="<%=contextPath%>/archive/java">Java</a>
+				<a href="<%=contextPath%>/archive/javaweb">Java</a>
 			</c:when>
 			<c:when test="${article.category == 2}">
 				<a href="<%=contextPath%>/archive/android">Android</a>

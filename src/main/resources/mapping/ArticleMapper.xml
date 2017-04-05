@@ -79,14 +79,15 @@
 		category,
 		file_name, file_path, create_time,
 		update_time, remark,
-		create_user_id)
+		create_user_id, tag_ids)
 		values (#{title,jdbcType=VARCHAR},
 		#{category,jdbcType=INTEGER},
 		#{fileName,jdbcType=VARCHAR},
 		#{filePath,jdbcType=VARCHAR},
 		#{createTime,jdbcType=TIMESTAMP},
 		#{updateTime,jdbcType=TIMESTAMP}, #{remark,jdbcType=VARCHAR},
-		#{createUserId,jdbcType=INTEGER})
+		#{createUserId,jdbcType=INTEGER},
+		#{tagIds,jdbcType=VARCHAR})
 	</insert>
 	<insert id="insertSelective" parameterType="site.exception.model.Article">
 		insert into t_article

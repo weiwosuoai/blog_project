@@ -44,6 +44,11 @@ public class ArticleVo extends Article implements Serializable {
 	 */
 	private List<Tag> tags;
 	
+	/**
+	 * 文章标签(提交博客表单中的选中的 checkbox 值)
+	 */
+	private List<String> postTags;
+	
 	public List<MultipartFile> getFiles() {
 		return files;
 	}
@@ -98,6 +103,14 @@ public class ArticleVo extends Article implements Serializable {
 
 	public void setTags(List<Tag> tags) {
 		this.tags = tags;
+	}
+
+	public List<String> getPostTags() {
+		return postTags;
+	}
+
+	public void setPostTags(List<String> postTags) {
+		this.postTags = postTags;
 	}
 
 }

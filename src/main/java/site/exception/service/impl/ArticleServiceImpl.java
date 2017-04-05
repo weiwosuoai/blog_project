@@ -71,6 +71,13 @@ public class ArticleServiceImpl implements IArticleService {
 		article.setFilePath(fileDir + File.separator + fileName);
 		article.setCreateUserId(userId);
 		
+		// 标签相关
+		StringBuilder sb = new StringBuilder();
+		for (String tagId : vo.getPostTags()) {
+			sb.append("," + tagId);
+		}
+		article.setTagIds(sb.toString().substring(1));
+		
 		return articleDao.insert(article);
 	}
 

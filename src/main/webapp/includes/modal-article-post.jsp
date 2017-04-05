@@ -10,63 +10,55 @@
 					aria-label="Close">
 					<span aria-hidden="true">&times;</span>
 				</button>
-				<h4 class="modal-title" id="myModalLabel">
-					发表博客
-				</h4>
+				<h4 class="modal-title" id="myModalLabel">发表博客</h4>
 			</div>
 			<%-- 提交博客表单 --%>
-			<div class="modal-body" >
+			<div class="modal-body">
 				<form action="<%=contextPath%>/sys/post"
-							enctype="multipart/form-data" method="post">
-							<div class="form-group">
-								<label for="username">文章标题</label> <input class="form-control"
-									placeholder="文章标题" name="title">
-							</div>
-							<div class="form-group">
-								<label for="password">所属分类</label> <select class="form-control"
-									name="category" id="category">
-<!-- 									<option value="1">Java</option> -->
-								</select>
-							</div>
-							<div class="form-group">
-								<label for="password">添加标签</label>
-								<div class="panel panel-default">
-  <div class="panel-body">
-    <a class="label label-info m-label-info">工具</a> <a
-									class="label label-info m-label-info">并发</a> <a
-									class="label label-info m-label-info">css</a> <a
-									class="label label-info m-label-info">java</a> <a
-									class="label label-info m-label-info">html</a> <a
-									class="label label-info m-label-info">css</a> <a
-									class="label label-info m-label-info">java</a> <a
-									class="label label-info m-label-info">html</a> <a
-									class="label label-info m-label-info">css</a> <a
-									class="label label-info m-label-info">android</a>
-  </div>
-</div> 
-							</div>
-							<div class="form-group post-time">
-								<label for="post_time">发表时间</label>
-								<div class="input-group date form_datetime"
-									data-date-format="yyyy-mm-dd hh:ii:ss"
-									data-link-field="dtp_input1">
-									<input class="form-control" size="16" type="text" value=""
-										readonly> <span class="input-group-addon"><span
-										class="glyphicon glyphicon-remove"></span></span> <span
-										class="input-group-addon"><span
-										class="glyphicon glyphicon-th"></span></span>
+					enctype="multipart/form-data" method="post">
+					<div class="form-group">
+						<label for="username">文章标题</label> <input class="form-control"
+							placeholder="文章标题" name="title">
+					</div>
+					<div class="form-group">
+						<label for="password">所属分类</label> <select class="form-control"
+							name="category" id="category">
+							<!-- 									<option value="1">Java</option> -->
+						</select>
+					</div>
+					<div class="form-group">
+						<label for="password">添加标签</label>
+						<div class="panel panel-default">
+							<div class="panel-body" >
+								<div class="checkbox" id="modal-tags" style="margin-top: 0; margin-bottom: 0">
 								</div>
-								<input type="hidden" id="dtp_input1" value="" name="createTime" /><br />
+<!-- 								<input type="checkbox"> 工具 -->
+<!-- 								<a class="label label-info m-label-info">工具</a> -->
 							</div>
+						</div>
+					</div>
+					<div class="form-group post-time">
+						<label for="post_time">发表时间</label>
+						<div class="input-group date form_datetime"
+							data-date-format="yyyy-mm-dd hh:ii:ss"
+							data-link-field="dtp_input1">
+							<input class="form-control" size="16" type="text" value=""
+								readonly> <span class="input-group-addon"><span
+								class="glyphicon glyphicon-remove"></span></span> <span
+								class="input-group-addon"><span
+								class="glyphicon glyphicon-th"></span></span>
+						</div>
+						<input type="hidden" id="dtp_input1" value="" name="createTime" /><br />
+					</div>
 
-							<div class="form-group">
-								<label for="postFile">上传 Markdown 文件</label> <input type="file"
-									id="postFile" name="files">
-								<p class="help-block">这里提交 Markdown 文件.</p>
-							</div>
-							<button type="submit"
-								class="btn btn-success btn-block sys-login-btn">确认发表</button>
-						</form>
+					<div class="form-group">
+						<label for="postFile">上传 Markdown 文件</label> <input type="file"
+							id="postFile" name="files">
+						<p class="help-block">这里提交 Markdown 文件.</p>
+					</div>
+					<button type="submit"
+						class="btn btn-success btn-block sys-login-btn">确认发表</button>
+				</form>
 			</div>
 		</div>
 	</div>
