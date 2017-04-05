@@ -21,9 +21,9 @@
 							placeholder="文章标题" name="title">
 					</div>
 					<div class="form-group">
-						<label for="password">所属分类</label> <select class="form-control"
+						<label for="category">所属分类</label> <select class="form-control"
 							name="category" id="category">
-							<!-- 									<option value="1">Java</option> -->
+<!-- 																<option value="5">Java</option> -->
 						</select>
 					</div>
 					<div class="form-group">
