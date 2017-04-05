@@ -11,8 +11,6 @@
 <link href="<%=contextPath%>/css/summernote.css" rel="stylesheet">
 <link href="<%=contextPath%>/google-code-prettify/prettify.css"
 	rel="stylesheet">
-<link href="<%=contextPath%>/css/bootstrap-datetimepicker.min.css"
-	rel="stylesheet">
 
 </head>
 <body>
