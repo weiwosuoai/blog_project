@@ -91,7 +91,35 @@ a {
 
 /* 登录模态框 */
 .m-modal-login {
-	width: 393px;
+	width: 520px;
+}
+
+.m-modal-header-login {
+	border-bottom: 0px;
+	background-color: #fff;
+	border-radius: 3px;
+}
+
+.m-modal-body-login {
+	margin: 20px 110px;
+	margin-top: 0;
+	margin-bottom: 40px;
+}
+
+.login-title {
+	text-align: center;
+}
+
+.login-title h2 {
+	margin-top: 0;
+}
+
+.login-btn {
+	margin-top: 20px;
+}
+
+.login-footer {
+	margin: 10px 0;
 }
 
 /* 登录后显示的上传文章按钮 */
@@ -111,20 +139,16 @@ a {
 	background-color: #E1ECF4;
 	border-color: transparent;
 	border-style: solid;
-    border-radius: 0;
-    text-align: center;
-    border-width: 1px;
-    font-weight: normal;
-    margin-top: 2px;
-    margin-bottom: 4px;
-    display: inline-block;
-    padding: .4em .5em;
+	border-radius: 0;
+	text-align: center;
+	border-width: 1px;
+	font-weight: normal;
+	margin-top: 2px;
+	margin-bottom: 4px;
+	display: inline-block;
+	padding: .4em .5em;
 }
 
 .main .container .m-label-info:hover {
 	background-color: #c4ddee;
 }
-	
-
-
-
