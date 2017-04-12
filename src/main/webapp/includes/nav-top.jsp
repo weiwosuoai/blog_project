@@ -62,7 +62,7 @@
 			<c:choose>
 				<c:when test="${sessionScope.userid == null}">
 					<ul class="nav navbar-nav navbar-right">
-						<li><a href="#" data-toggle="modal"
+						<li><a href="<%=contextPath%>/modal/content/login" data-toggle="modal"
 							data-target="#modal-login">登录</a></li>
 							
 					</ul>
