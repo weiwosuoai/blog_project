@@ -1575,7 +1575,7 @@ pre code {
   padding: 0;
   font-size: inherit;
   color: inherit;
-  white-space: pre-wrap;
+/*   white-space: pre-wrap; pre code 不出现滚动条*/
   background-color: transparent;
   border-radius: 0;
 }
