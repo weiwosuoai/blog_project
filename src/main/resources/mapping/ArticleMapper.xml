@@ -48,6 +48,12 @@
 		WHERE
 		tag_ids LIKE concat('%', #{tagId,jdbcType=INTEGER} , '%') ORDER BY create_time DESC
 	</select>
+	<select id="getByKey" resultMap="BaseResultMap"
+		parameterType="java.lang.String">
+		select id, create_time, title from t_article
+		WHERE
+		title LIKE concat('%', #{key,jdbcType=VARCHAR} , '%') ORDER BY create_time DESC
+	</select>
 	<select id="selectNumsPerMonth" resultMap="BaseResultMap"
 		parameterType="java.lang.Integer">
 		SELECT t.*,COUNT(y_m) nums FROM

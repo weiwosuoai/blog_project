@@ -19,6 +19,8 @@ public interface IArticleDao {
     
     List<Article> selectByCategory(Integer category);
     
+    List<Article> getByKey(String key);
+    
     int updateByPrimaryKeySelective(Article record);
 
     int updateByPrimaryKey(Article record);

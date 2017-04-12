@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import site.exception.model.vo.ArticleVo;
+import site.exception.model.vo.SearchVo;
 import site.exception.service.IArticleService;
 
 /**
@@ -22,7 +23,6 @@ import site.exception.service.IArticleService;
  * 
  */
 @Controller
-@RequestMapping("/archive")
 public class ArchiveController {
 
 	private static final Log logger = LogFactory
@@ -37,7 +37,7 @@ public class ArchiveController {
 	 * @param model
 	 * @return
 	 */
-	@RequestMapping("/all")
+	@RequestMapping("/archive/all")
 	public String viewArchive(Model model) {
 		logger.info("viewArchive");
 		model.addAttribute("articles", articleService.findAll());
@@ -51,7 +51,7 @@ public class ArchiveController {
 	 * @param model
 	 * @return
 	 */
-	@RequestMapping("/javaweb")
+	@RequestMapping("/archive/javaweb")
 	public String viewJavaWebArchive(Model model) {
 		logger.info("viewJavaArchive");
 		model.addAttribute("articles", articleService.findByCategory(1));
@@ -65,7 +65,7 @@ public class ArchiveController {
 	 * @param model
 	 * @return
 	 */
-	@RequestMapping("/android")
+	@RequestMapping("/archive/android")
 	public String viewAndroidArchive(Model model) {
 		logger.info("viewAndroidArchive");
 		model.addAttribute("articles", articleService.findByCategory(2));
@@ -80,7 +80,7 @@ public class ArchiveController {
 	 * @return 文章 Json 数据
 	 */
 	@ResponseBody
-	@RequestMapping(value = "/monthInfo", produces = "application/json")
+	@RequestMapping(value = "/archive/monthInfo", produces = "application/json")
 	public List<ArticleVo> articleMonthInfo() {
 		logger.info("articleMonthInfo");
 		List<ArticleVo> articles = articleService.findArticleNumPerMonth();
@@ -94,7 +94,7 @@ public class ArchiveController {
 	 * @param model
 	 * @return
 	 */
-	@RequestMapping(value = "/{yearMonth}")
+	@RequestMapping(value = "/archive/{yearMonth}")
 	public String viewMonthArchive(@PathVariable String yearMonth, Model model) {
 		logger.info("viewMonthArchive - " + yearMonth);
 		model.addAttribute("articles",
@@ -109,7 +109,7 @@ public class ArchiveController {
 	 * @param model
 	 * @return
 	 */
-	@RequestMapping("/category/{id}")
+	@RequestMapping("/archive/category/{id}")
 	public String viewArchiveByCategory(@PathVariable Integer id, Model model) {
 		logger.info("viewAndroidArchive");
 		model.addAttribute("articles", articleService.findByCategory(id));
@@ -123,10 +123,24 @@ public class ArchiveController {
 	 * @param model
 	 * @return
 	 */
-	@RequestMapping("/tag/{id}")
+	@RequestMapping("/archive/tag/{id}")
 	public String viewArchiveByTag(@PathVariable Integer id, Model model) {
 		logger.info("viewArchiveByTag");
 		model.addAttribute("articles", articleService.getByTag(id));
+		model.addAttribute("topNavType", 1);
+		return "archive";
+	}
+	
+	/**
+	 * 根据搜索的关键字获取文章的目录信息
+	 * 
+	 * @param model
+	 * @return
+	 */
+	@RequestMapping("/archive")
+	public String viewArchiveByKey(SearchVo search, Model model) {
+		logger.info("viewArchiveByKey");
+		model.addAttribute("articles", articleService.findByKey(search.getQ()));
 		model.addAttribute("topNavType", 1);
 		return "archive";
 	}

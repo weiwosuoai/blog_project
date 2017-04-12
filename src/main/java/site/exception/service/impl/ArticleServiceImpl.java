@@ -194,6 +194,13 @@ public class ArticleServiceImpl implements IArticleService {
 	}
 
 	/**
+	 * 根据检索的关键字模糊查询
+	 */
+	public List<Article> findByKey(String key) {
+		return articleDao.getByKey(key);
+	}
+
+	/**
 	 * 相应所属文章列表(根据标签)
 	 */
 	public List<Article> getByTag(Integer tagId) {
