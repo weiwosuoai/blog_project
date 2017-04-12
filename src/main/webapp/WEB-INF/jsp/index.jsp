@@ -24,7 +24,7 @@
 				<!-- 				左边栏 -->
 				<!-- 				<div class="col-md-2"></div> -->
 				<!-- 中间栏 -->
-				<div class="col-md-8" role="main">
+				<div class="col-md-9" role="main">
 
 					<c:forEach var="article" items="${articles}" varStatus="status">
 						<c:choose>
@@ -92,7 +92,7 @@
 					</nav>
 				</div>
 				<!-- 右边栏 -->
-				<div class="col-md-4 right-col-md">
+				<div class="col-md-3 right-col-md">
 					<div class="col-md-container">
 
 						<!-- profile -->
@@ -111,7 +111,7 @@
 						</div>
 
 						<iframe frameborder="no" border="0" marginwidth="0"
-							marginheight="0" width=240 height=86
+							marginheight="0" width=233 height=86
 							src="//music.163.com/outchain/player?type=2&id=34923114&auto=2&height=66"
 							style="margin-left: -10px; margin-top: -15px;"></iframe>
 

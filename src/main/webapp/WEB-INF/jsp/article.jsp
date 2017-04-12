@@ -35,7 +35,7 @@
 				<!-- 左边栏 -->
 				<!-- <div class="col-md-2"></div> -->
 				<!-- 中间栏 -->
-				<div class="col-md-8" role="main">
+				<div class="col-md-9" role="main">
 					<!-- 文章缩略图 -->
 					<div id="article-priview">
 
@@ -52,7 +52,7 @@
 				</div>
 
 				<!-- 右边栏 -->
-				<div class="col-md-4" role="complementary">
+				<div class="col-md-3" role="complementary">
 					<!-- 文章目录 -->
 					<div class="span3">
 						<div id="toc"></div>
