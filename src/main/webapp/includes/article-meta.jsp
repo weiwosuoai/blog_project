@@ -2,8 +2,7 @@
 	pageEncoding="UTF-8"%>
 <%-- 文章发表时间，分类 --%>
 <div class="sub-article-meta">
-	<span>发表于&nbsp;</span> <span class="sub-article-post-time"> <fmt:formatDate
-			value="${article.createTime}" pattern="yyyy-MM-dd HH:mm:ss" />
+	<span>发表于&nbsp;</span> <span class="sub-article-post-time"> ${article.createTimeStr}
 	</span> &nbsp;&nbsp;&nbsp; <span>分类于&nbsp;</span> <span
 		class="sub-article-category-item"> <c:choose>
 			<c:when test="${article.category == 1}">

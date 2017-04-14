@@ -48,7 +48,7 @@
 			</ul>
 			<form class="navbar-form navbar-left visible-lg-inline-block" action="<%=contextPath%>/archive">
 				<div class="input-group">
-					<input type="text" class="form-control" placeholder="全站搜索" name="q">
+					<input type="text" class="form-control" placeholder="文章搜索" name="q">
 					<span class="input-group-btn">
 						<button type="submit" class="btn btn-default">
 							<span class="glyphicon glyphicon-search"></span>

@@ -36,6 +36,14 @@
 		select * from t_article ORDER
 		BY create_time DESC
 	</select>
+	<select id="findByPagination" resultMap="BaseResultMap" parameterType="site.exception.common.model.Pagination"> 
+		select 
+		<include refid="Base_Column_List" />
+		from t_article
+		ORDER BY create_time DESC
+		LIMIT #{offset},#{pageSize}
+	</select>
+	
 	<select id="selectByCategory" resultMap="BaseResultMap"
 		parameterType="java.lang.Integer">
 		select id, create_time, title from t_article

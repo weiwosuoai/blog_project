@@ -2,10 +2,12 @@ package site.exception.service.impl;
 
 import java.io.File;
 import java.io.IOException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.List;
 
 import javax.annotation.Resource;
+import javax.servlet.http.HttpSession;
 
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
@@ -14,6 +16,7 @@ import org.springframework.util.StringUtils;
 
 import com.github.rjeschke.txtmark.Processor;
 
+import site.exception.common.model.Pagination;
 import site.exception.dao.IArticleDao;
 import site.exception.dao.ITagDao;
 import site.exception.model.Article;
@@ -31,10 +34,10 @@ public class IndexServiceImpl implements IIndexService {
 	@Resource
 	private ITagDao tagDao;
 
-	public List<ArticleVo> findIndexInfo() {
-		List<Article> articles = articleDao.selectAll();
+	public List<ArticleVo> findByPagination(Pagination<ArticleVo> pagination) {
+		List<Article> articles = articleDao.findByPagination(pagination);
 		
-		List<ArticleVo> articlesVo = new ArrayList<ArticleVo>();
+		List<ArticleVo> articlesVo = new ArrayList<>();
 		for (Article article : articles) {
 			
 			File mdFile = new File(article.getFilePath());
@@ -50,6 +53,8 @@ public class IndexServiceImpl implements IIndexService {
 				vo.setTitle(article.getTitle());
 				vo.setCategory(article.getCategory());
 				vo.setCreateTime(article.getCreateTime());
+				SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+				vo.setCreateTimeStr(sdf.format(article.getCreateTime()));
 				vo.setBeViewdNum(article.getBeViewdNum());
 				// 组合标签信息
 				String tagIds = article.getTagIds();

@@ -90,6 +90,19 @@
     margin-top: 10px;
 }
 
+.main .load-more {
+	color: #2A90D7;
+    background-color: #E1ECF4;
+    border: 1px solid rgba(41,144,215,.5);	
+    box-shadow: none;
+    margin-top: 25px;
+    padding: 10px;
+}
+
+.main .load-more:hover {
+	background-color: #c4ddee;
+}
+
 .main .m-btn-success:hover {
 	color: #07c;
     background-color: #cae8fe;

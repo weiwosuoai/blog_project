@@ -2,6 +2,7 @@ package site.exception.dao;
 
 import java.util.List;
 
+import site.exception.common.model.Pagination;
 import site.exception.model.Article;
 import site.exception.model.vo.ArticleVo;
 
@@ -32,4 +33,6 @@ public interface IArticleDao {
     int articleViewdIncrementById(Integer id);
 
 	List<Article> getByTag(Integer tagId);
+
+	List<Article> findByPagination(Pagination<ArticleVo> pagination);
 }

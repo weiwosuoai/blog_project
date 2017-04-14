@@ -53,7 +53,7 @@ public class ArchiveController {
 	 */
 	@RequestMapping("/archive/javaweb")
 	public String viewJavaWebArchive(Model model) {
-		logger.info("viewJavaArchive");
+		logger.info("viewJavaWebArchive");
 		model.addAttribute("articles", articleService.findByCategory(1));
 		model.addAttribute("topNavType", 2);
 		return "archive";
@@ -130,7 +130,7 @@ public class ArchiveController {
 		model.addAttribute("topNavType", 1);
 		return "archive";
 	}
-	
+
 	/**
 	 * 根据搜索的关键字获取文章的目录信息
 	 * 

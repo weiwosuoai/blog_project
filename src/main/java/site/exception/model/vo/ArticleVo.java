@@ -25,6 +25,11 @@ public class ArticleVo extends Article implements Serializable {
 	private String shortHtmlStr;
 	
 	/**
+	 * 文章创建时间格式化
+	 */
+	private String createTimeStr;
+	
+	/**
 	 * 文章所属年月
 	 */
 	private String yearMonth;
@@ -48,6 +53,11 @@ public class ArticleVo extends Article implements Serializable {
 	 * 文章标签(提交博客表单中的选中的 checkbox 值)
 	 */
 	private List<String> postTags;
+	
+	/**
+	 * 用户是否登录
+	 */
+	private boolean isUserLogined;
 	
 	public List<MultipartFile> getFiles() {
 		return files;
@@ -111,6 +121,22 @@ public class ArticleVo extends Article implements Serializable {
 
 	public void setPostTags(List<String> postTags) {
 		this.postTags = postTags;
+	}
+
+	public String getCreateTimeStr() {
+		return createTimeStr;
+	}
+
+	public void setCreateTimeStr(String createTimeStr) {
+		this.createTimeStr = createTimeStr;
+	}
+
+	public boolean isUserLogined() {
+		return isUserLogined;
+	}
+
+	public void setUserLogined(boolean isUserLogined) {
+		this.isUserLogined = isUserLogined;
 	}
 
 }
