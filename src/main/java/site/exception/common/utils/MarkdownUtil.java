@@ -1,4 +1,4 @@
-package site.exception.utils;
+package site.exception.common.utils;
 
 public class MarkdownUtil {
 	

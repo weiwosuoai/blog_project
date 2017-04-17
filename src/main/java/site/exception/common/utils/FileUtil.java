@@ -1,4 +1,4 @@
-package site.exception.utils;
+package site.exception.common.utils;
 
 import java.io.BufferedReader;
 import java.io.File;
