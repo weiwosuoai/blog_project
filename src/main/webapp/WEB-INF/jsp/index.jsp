@@ -166,8 +166,7 @@
 		$(document).ready(function(){
 			
 			// 代码高亮
-			$("pre").addClass("prettyprint");
-			prettyPrint();
+			codeHighlighting();
 			
 			// ajax 异步获取文章存档信息
 			$.ajax({
@@ -255,11 +254,11 @@
 									appendHtml += "<a href='<%=contextPath%>/archive/db'>DB</a>";
 								}
 								appendHtml += "&nbsp;&nbsp;&nbsp;<span><i class='glyphicon glyphicon-eye-open'></i>&nbsp;&nbsp;" + item.beViewdNum + "</span>";
-								appendHtml += "&nbsp;&nbsp;&nbsp;<span><i class='glyphicon glyphicon-tags'></i>&nbsp;&nbsp;&nbsp;";
+								appendHtml += "&nbsp;&nbsp;&nbsp;<span><i class='glyphicon glyphicon-tags'></i>&nbsp;&nbsp;";
 								
 								var tags = item.tags;
 								for (var j = 0; j < tags.length; j++) {
-									appendHtml += "&nbsp;<a href='<%=contextPath%>/archive/tag/" + tags[j].id + "' class='label label-info m-label-info'>" + tags[j].name + "</a>";	
+									appendHtml += "&nbsp;&nbsp;<a href='<%=contextPath%>/archive/tag/" + tags[j].id + "' class='label label-info m-label-info'>" + tags[j].name + "</a>";	
 								}
 								
 								var isUserLogined = $('#isUserLogined').val();
@@ -279,9 +278,7 @@
 								$('#article-container').append(appendHtml);
 							});
 							
-							// 代码高亮
-							$("pre").addClass("prettyprint");
-							prettyPrint();
+							codeHighlighting();
 							// 更新隐藏域当前页码
 							$('#currentPage').val(currentPage)
 						}
@@ -303,6 +300,12 @@
 			
 		});
 		
+		/** 代码高亮 **/
+		function codeHighlighting() {
+			// 代码高亮
+			$("pre").addClass("prettyprint");
+			prettyPrint();
+		}
 		
 	</script>
 	<%@ include file="/includes/modal-article-edit-js.jsp"%>
