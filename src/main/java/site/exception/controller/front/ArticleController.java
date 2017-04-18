@@ -28,7 +28,7 @@ import site.exception.service.IArticleService;
  * 
  */
 @Controller
-@RequestMapping("/article")
+@RequestMapping("/articles")
 public class ArticleController {
 
 	private static final Log logger = LogFactory

@@ -30,7 +30,7 @@
 				<c:forEach var="article" items="${articles}">
 					<button type="button" class="list-group-item">
 						<a id="articel-title"
-							href="<%=contextPath%>/article/${article.id}">${article.title}</a>
+							href="<%=contextPath%>/articles/${article.id}">${article.title}</a>
 						<span class="article-date"><fmt:formatDate value="${article.createTime}"
 								pattern="yyyy-MM-dd HH:mm:ss" />&nbsp;&nbsp;</span>
 					</button>

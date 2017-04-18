@@ -145,6 +145,8 @@ public class ArticleServiceImpl implements IArticleService {
 			vo.setTitle(article.getTitle());
 			vo.setCategory(article.getCategory());
 			vo.setCreateTime(article.getCreateTime());
+			SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+			vo.setCreateTimeStr(sdf.format(article.getCreateTime()));
 			vo.setHtmlStr(htmlStr);
 			vo.setBeViewdNum(article.getBeViewdNum());
 			// 组合标签信息

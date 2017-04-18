@@ -34,7 +34,7 @@
 									<div class="sub-article-header">
 										<!-- 文章标题 -->
 										<h1 class="article-title">
-											<a href="<%=contextPath%>/article/${article.id}">${article.title}</a>
+											<a href="<%=contextPath%>/articles/${article.id}">${article.title}</a>
 										</h1>
 										<!-- 文章发表时间，分类 -->
 										<%@ include file="/includes/article-meta.jsp"%>
@@ -43,7 +43,7 @@
 
 										<div>
 											<a class="btn btn-success m-btn-success"
-												href="<%=contextPath%>/article/${article.id}" role="button">阅读全文&nbsp;»</a>
+												href="<%=contextPath%>/articles/${article.id}" role="button">阅读全文&nbsp;»</a>
 										</div>
 									</div>
 								</div>
@@ -54,7 +54,7 @@
 
 										<!-- 文章标题 -->
 										<h1 class="article-title">
-											<a href="<%=contextPath%>/article/${article.id}">${article.title}</a>
+											<a href="<%=contextPath%>/articles/${article.id}">${article.title}</a>
 										</h1>
 										<!-- 文章发表时间，分类 -->
 										<%@ include file="/includes/article-meta.jsp"%>
@@ -63,7 +63,7 @@
 
 										<div>
 											<a class="btn btn-success m-btn-success"
-												href="<%=contextPath%>/article/${article.id}" role="button">阅读全文&nbsp;»</a>
+												href="<%=contextPath%>/articles/${article.id}" role="button">阅读全文&nbsp;»</a>
 										</div>
 									</div>
 								</div>
@@ -279,6 +279,9 @@
 								$('#article-container').append(appendHtml);
 							});
 							
+							// 代码高亮
+							$("pre").addClass("prettyprint");
+							prettyPrint();
 							// 更新隐藏域当前页码
 							$('#currentPage').val(currentPage)
 						}
