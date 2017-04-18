@@ -221,6 +221,7 @@
 			
 			// 滚动监听,加载更多
 			$(window).scroll(function(){
+				
 				if ($(document).scrollTop() >= $(document).height() - $(window).height()) {
 					// 加载更多 div 隐藏
 					// TODO
@@ -238,7 +239,7 @@
 								var appendHtml = "<div class='article-priview-next'>";
 								appendHtml += "<div class='sub-article-header'>";
 								appendHtml += "<h1 class='article-title'>";
-								appendHtml += "<a href='<%=contextPath%>/article/" + item.id + "'>" + item.title + "</a>";
+								appendHtml += "<a href='<%=contextPath%>/articles/" + item.id + "'>" + item.title + "</a>";
 								appendHtml += "</h1>";
 								
 								// ========================= meta =========================

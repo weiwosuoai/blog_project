@@ -89,7 +89,7 @@
 			$.ajax({
 				type: "POST",
 				async: true,
-				url: "<%=contextPath%>/article/${article.id}/viewd_increment",
+				url: "<%=contextPath%>/articles/${article.id}/viewd_increment",
 				success: function(data) {
 						}
 					});
