@@ -9,9 +9,10 @@
     					http://www.springframework.org/schema/context
     					http://www.springframework.org/schema/context/spring-context.xsd">
 
-	<context:component-scan base-package="site.exception.controller" />
+	<context:component-scan base-package="site.exception.front.controller" />
+	<context:component-scan base-package="site.exception.sys.controller" />
 	<!-- <context:component-scan base-package="site.exception.service" /> -->
-	<context:component-scan base-package="site.exception.formatter" />
+	<context:component-scan base-package="site.exception.common.formatter" />
 
 	<!-- 注册用于支持基于注解的控制器的请求处理方法的 bean 对象 -->
 	<mvc:annotation-driven conversion-service="conversionService">
@@ -44,7 +45,7 @@
 		<mvc:interceptor>
 			<!-- 只拦截后台页面 -->
 			<mvc:mapping path="/sys/**" />
-			<bean class="site.exception.interceptor.LoginInterceptor"></bean>
+			<bean class="site.exception.common.interceptor.LoginInterceptor"></bean>
 		</mvc:interceptor>
 	</mvc:interceptors>
 
@@ -60,7 +61,7 @@
 		class="org.springframework.format.support.FormattingConversionServiceFactoryBean">
 		<property name="formatters">
 			<set>
-				<bean class="site.exception.formatter.DateFormatter">
+				<bean class="site.exception.common.formatter.DateFormatter">
 					<constructor-arg type="java.lang.String" value="yyyy-MM-dd HH:mm:ss" />
 				</bean>
 			</set>
