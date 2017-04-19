@@ -47,10 +47,19 @@ blockquote,p {
 .footer {
 	margin-top: 20px;
 	padding-bottom: 10px;
-	background-color: #f8f8f8;
-	border-color: #e7e7e7;
+	background-color: #242729;
+	color: #5e666e;
+/* 	border-color: #e7e7e7; */
 	/* 	margin: 0 auto; */
 	/* 	text-align: center; */
+}
+
+.footer a {
+	color: #99d4ff;
+}
+
+.footer a:hover {
+	color: #07C;
 }
 
 .footer p {
