@@ -254,7 +254,7 @@
 								} else if (item.category == 3) {
 									appendHtml += "<a href='<%=contextPath%>/archive/db'>DB</a>";
 								}
-								appendHtml += "&nbsp;&nbsp;&nbsp;<span><i class='glyphicon glyphicon-eye-open'></i>&nbsp;&nbsp;" + item.beViewdNum + "</span>";
+								appendHtml += "&nbsp;&nbsp;&nbsp;<span><i class='glyphicon glyphicon-eye-open'></i>&nbsp;&nbsp;" + item.beViewdNum + "人浏览</span>";
 								appendHtml += "&nbsp;&nbsp;&nbsp;<span><i class='glyphicon glyphicon-tags'></i>&nbsp;&nbsp;";
 								
 								var tags = item.tags;
