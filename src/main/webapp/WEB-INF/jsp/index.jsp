@@ -147,11 +147,14 @@
 <!-- 								<a class="label label-info m-label-info">工具</a> -->
 							</div>
 						</div>
-						<!-- 回到顶部 -->
-						<a class="to-top"><i class="glyphicon glyphicon-menu-up"></i></a>
+						
 					</div>
 				</div>
 
+				<!-- 回到顶部 -->
+				<a class="to-top" data-toggle="tooltip" data-placement="left" title="回到顶部">
+					<i class="glyphicon glyphicon-menu-up"></i>
+				</a>
 				<%@ include file="/includes/modal-article-edit.jsp"%>
 				
 			</div>
@@ -233,6 +236,7 @@
 	               right: 30,       //右侧距离
 	               bottom: 120       //底部距离
 	           });
+	           $('[data-toggle="tooltip"]').tooltip()
 			
 			// 滚动监听,加载更多
 			$(window).scroll(function(){

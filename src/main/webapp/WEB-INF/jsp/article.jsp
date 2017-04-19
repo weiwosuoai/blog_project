@@ -57,11 +57,15 @@
 					<div class="span3">
 						<div id="toc"></div>
 					</div>
-					<!-- 回到顶部 -->
-					<a class="to-top"><i class="glyphicon glyphicon-menu-up"></i></a>
 				</div>
+				
+				<!-- 回到顶部 -->
+				<a class="to-top" data-toggle="tooltip" data-placement="left" title="">
+					<i class="glyphicon glyphicon-menu-up"></i>
+				</a>
 			</div>
 		</div>
+
 
 		<%@ include file="/includes/modal-article-edit.jsp"%>
 		<%@ include file="/includes/footer.jsp"%>
@@ -99,6 +103,8 @@
 	               right: 30,       //右侧距离
 	               bottom: 120       //底部距离
 	           });
+	           $('[data-toggle="tooltip"]').tooltip()
+	           
 			
 			// ajax 为查看的文章，被浏览数增1
 			$.ajax({
