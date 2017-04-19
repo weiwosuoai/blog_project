@@ -66,7 +66,6 @@
 			</div>
 		</div>
 
-
 		<%@ include file="/includes/modal-article-edit.jsp"%>
 		<%@ include file="/includes/footer.jsp"%>
 	</div>

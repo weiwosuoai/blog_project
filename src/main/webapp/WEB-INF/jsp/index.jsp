@@ -73,24 +73,6 @@
 					</c:forEach>
 					</div>
 					
-
-					<!-- 分页 -->
-<!-- 					<nav aria-label="Page navigation" class="nav-pagination"> -->
-<!-- 						<ul class="pagination"> -->
-<!-- 							<li class="disabled"><a href="#" aria-label="Previous"> -->
-<!-- 									<span aria-hidden="true">&laquo;</span> -->
-<!-- 							</a></li> -->
-<!-- 							<li><a href="#">1</a></li> -->
-<!-- 							<li><a href="#">2</a></li> -->
-<!-- 							<li><a href="#">3</a></li> -->
-<!-- 							<li><a href="#">4</a></li> -->
-<!-- 							<li><a href="#">5</a></li> -->
-<!-- 							<li><a href="#" aria-label="Next"> <span -->
-<!-- 									aria-hidden="true">&raquo;</span> -->
-<!-- 							</a></li> -->
-<!-- 						</ul> -->
-<!-- 					</nav> -->
-					
 					<input id="pageSize" type="hidden" name="pageSize" value="5">
 					<input id="currentPage" type="hidden" name="currentPage" value="1">
 					<input id="isUserLogined" type="hidden" value="${sessionScope.userid}">
@@ -122,7 +104,7 @@
 
 						<iframe frameborder="no" border="0" marginwidth="0"
 							marginheight="0" width=233 height=86
-							src="//music.163.com/outchain/player?type=2&id=34923114&auto=2&height=66"
+							src="//music.163.com/outchain/player?type=2&id=351288&auto=2&height=66"
 							style="margin-left: -10px; margin-top: -15px;"></iframe>
 
 						<div class="panel panel-default m-panel">
