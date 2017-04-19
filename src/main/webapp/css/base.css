@@ -131,6 +131,28 @@ a {
 	margin: 10px 0;
 }
 
+.to-top {
+	width: 50px;
+	height: 50px;
+	text-decoration: none;
+	border: 1px solid #dcdcdc;
+	background-color: #fff;
+	text-align: center;
+    display: block;
+    color: #2f2f2f;
+}
+
+.to-top:hover {
+	text-decoration: none;
+	color: #2f2f2f;
+}
+
+.to-top i {
+	padding-top: 14px;
+    font-size: 20px;
+    display: block;
+}
+
 /* 登录后显示的上传文章按钮 */
 .navbar .btn-article-post {
 	margin-top: 8px;

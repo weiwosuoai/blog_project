@@ -57,6 +57,8 @@
 					<div class="span3">
 						<div id="toc"></div>
 					</div>
+					<!-- 回到顶部 -->
+					<a class="to-top"><i class="glyphicon glyphicon-menu-up"></i></a>
 				</div>
 			</div>
 		</div>
@@ -71,6 +73,7 @@
 	<script src="<%=contextPath%>/js/jquery-ui-1.9.1.custom.min.js"></script>
 	<script src="<%=contextPath%>/js/jquery.tocify.js"></script>
 	<script src="<%=contextPath%>/google-code-prettify/prettify.js"></script>
+	<script src="<%=contextPath%>/js/jquery.toTop.min.js"></script>
 
 	<script type="text/javascript">
 		$(document).ready(function(){
@@ -84,6 +87,18 @@
 			// 代码高亮
 			$("pre").addClass("prettyprint");
 			prettyPrint();
+			
+			// 回到顶部
+			// 可定制选项
+	           $('.to-top').toTop({
+	               //以下是选项默认参数，您可以根据自己的需求修改
+	               autohide: true,  //是否自动隐藏
+	               offset: 420,     //距离顶部多少距离时自动隐藏按钮
+	               speed: 500,      //滚动持续时间
+	               position:true,   //如果设置为 false，则需要手动在 css 中设置“按钮”的位置
+	               right: 30,       //右侧距离
+	               bottom: 120       //底部距离
+	           });
 			
 			// ajax 为查看的文章，被浏览数增1
 			$.ajax({
