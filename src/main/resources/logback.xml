@@ -2,7 +2,10 @@
 
 <configuration>
  
+ 	<!-- 日志生成路径 -->
 	<property name="LOG_HOME" value="../logs/" />
+	<!-- 项目名 -->
+	<property name="PROJECT_NAME" value="exception" />
 
 	<!-- 控制台输出-->
 	<appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">
@@ -15,7 +18,7 @@
 	<appender name="DATELOG" class="ch.qos.logback.core.rolling.RollingFileAppender">  
 		<Prudent>true</Prudent>  
 		<rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">  
-			<FileNamePattern>${LOG_HOME}/exc.%d{yyyy-MM-dd}.log</FileNamePattern>  
+			<FileNamePattern>${LOG_HOME}/${PROJECT_NAME}.%d{yyyy-MM-dd}.log</FileNamePattern>  
 			<MaxHistory>90</MaxHistory>    
 		</rollingPolicy>  
 		<layout class="ch.qos.logback.classic.PatternLayout">  
@@ -32,7 +35,7 @@
 			<onMismatch>DENY</onMismatch> 
 		</filter>   
 		<rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">  
-			<FileNamePattern>${LOG_HOME}/exc.%d{yyyy-MM-dd}.error.log</FileNamePattern>  
+			<FileNamePattern>${LOG_HOME}/${PROJECT_NAME}.%d{yyyy-MM-dd}.error.log</FileNamePattern>  
 			<MaxHistory>90</MaxHistory>    
 		</rollingPolicy>  
 		<layout class="ch.qos.logback.classic.PatternLayout">  
