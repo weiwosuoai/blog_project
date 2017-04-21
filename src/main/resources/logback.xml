@@ -1,5 +1,4 @@
 <?xml version="1.0" encoding="UTF-8"?>
-
 <configuration>
  
  	<!-- 日志生成路径 -->
@@ -48,6 +47,5 @@
 		<appender-ref ref="DATELOG"/>
 		<appender-ref ref="DATELOG_ERROR"/>
 	</logger>
-	
 	
 </configuration>

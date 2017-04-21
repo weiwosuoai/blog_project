@@ -52,7 +52,7 @@
 	<!-- spring mvc 视图解析器,这样在 controller 中返回 ModelAndView 时，仅仅返回要返回的 jsp 的名即可，解析器会自动添加前缀和后缀 -->
 	<bean
 		class="org.springframework.web.servlet.view.InternalResourceViewResolver">
-		<property name="prefix" value="/WEB-INF/jsp/" />
+		<property name="prefix" value="/WEB-INF/jsps/" />
 		<property name="suffix" value=".jsp" />
 	</bean>
 

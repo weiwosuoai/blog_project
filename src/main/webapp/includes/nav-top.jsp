@@ -64,6 +64,7 @@
 					<ul class="nav navbar-nav navbar-right">
 						<li><a href="<%=contextPath%>/modal/content/login" data-toggle="modal"
 							data-target="#modal-login">登录</a></li>
+<!-- 							<li><a href="#">注册</a></li> -->
 							
 					</ul>
 				</c:when>
@@ -72,7 +73,7 @@
 						data-toggle="modal" data-target="#modal-article-post">发表博客</a>
 				</c:otherwise>
 			</c:choose>
-			<!-- 				<li><a href="#">注册</a></li> -->
+							
 			<!--         <li class="dropdown"> -->
 			<!--           <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Dropdown <span class="caret"></span></a> -->
 			<!--           <ul class="dropdown-menu"> -->
