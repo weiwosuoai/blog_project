@@ -9,8 +9,8 @@
 <%@ include file="/includes/header.jsp"%>
 <link href="<%=contextPath%>/css/index.css" rel="stylesheet">
 <link href="<%=contextPath%>/css/summernote.css" rel="stylesheet">
-<link href="<%=contextPath%>/google-code-prettify/prettify.css"
-	rel="stylesheet">
+<link href="<%=contextPath%>/google-code-prettify/prettify.css" rel="stylesheet">
+<link href="<%=contextPath%>/css/zoomify.css" rel="stylesheet">
 
 </head>
 <body>
@@ -149,6 +149,7 @@
 	<%@ include file="/includes/datetimepicker-js.jsp"%>
 	<script src="<%=contextPath%>/google-code-prettify/prettify.js"></script>
 	<script src="<%=contextPath%>/js/jquery.toTop.min.js"></script>
+	<script src="<%=contextPath%>/js/zoomify.js"></script>
 
 	<script type="text/javascript">
 		$(document).ready(function(){
@@ -206,6 +207,9 @@
 					});
 				}
 			});
+			
+			// 图片放大
+			$('p img').zoomify();
 			
 			// 回到顶部
 			// 可定制选项

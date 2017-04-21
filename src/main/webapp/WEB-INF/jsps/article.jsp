@@ -11,6 +11,7 @@
 <link href="<%=contextPath%>/google-code-prettify/prettify.css"
 	rel="stylesheet">
 <link href="<%=contextPath%>/css/summernote.css" rel="stylesheet">
+<link href="<%=contextPath%>/css/zoomify.css" rel="stylesheet">
 
 <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
 <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -77,6 +78,7 @@
 	<script src="<%=contextPath%>/js/jquery.tocify.js"></script>
 	<script src="<%=contextPath%>/google-code-prettify/prettify.js"></script>
 	<script src="<%=contextPath%>/js/jquery.toTop.min.js"></script>
+	<script src="<%=contextPath%>/js/zoomify.js"></script>
 
 	<script type="text/javascript">
 		$(document).ready(function(){
@@ -90,6 +92,9 @@
 			// 代码高亮
 			$("pre").addClass("prettyprint");
 			prettyPrint();
+			
+			// 图片放大
+			$('p img').zoomify();
 			
 			// 回到顶部
 			// 可定制选项
