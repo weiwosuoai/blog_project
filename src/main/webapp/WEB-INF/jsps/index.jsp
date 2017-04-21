@@ -285,6 +285,8 @@
 							});
 							
 							codeHighlighting();
+							// 图片放大
+							$('p img').zoomify();
 							// 更新隐藏域当前页码
 							$('#currentPage').val(currentPage)
 						}
