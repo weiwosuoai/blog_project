@@ -5,122 +5,121 @@ import java.util.Date;
 
 /**
  * 文章
- * 
+ *
  * @author Allen
- * 
  */
 public class Article implements Serializable {
 
-	private static final long serialVersionUID = -8019752279471482643L;
+    private static final long serialVersionUID = -8019752279471482643L;
 
-	private Integer id;
+    private Integer id;
 
-	private String title;
+    private String title;
 
-	private Integer category;
+    private Integer category;
 
-	private String fileName;
+    private String fileName;
 
-	private String filePath;
+    private String filePath;
 
-	private Date createTime;
+    private Date createTime;
 
-	private Date updateTime;
+    private Date updateTime;
 
-	private String remark;
+    private String remark;
 
-	private Integer createUserId;
+    private Integer createUserId;
 
-	private Integer beViewdNum;
-	
-	private String tagIds;
+    private Integer beViewdNum;
 
-	public Integer getId() {
-		return id;
-	}
+    private String tagIds;
 
-	public void setId(Integer id) {
-		this.id = id;
-	}
+    public Integer getId() {
+        return id;
+    }
 
-	public String getTitle() {
-		return title;
-	}
+    public void setId(Integer id) {
+        this.id = id;
+    }
 
-	public void setTitle(String title) {
-		this.title = title == null ? null : title.trim();
-	}
+    public String getTitle() {
+        return title;
+    }
 
-	public Integer getCategory() {
-		return category;
-	}
+    public void setTitle(String title) {
+        this.title = title == null ? null : title.trim();
+    }
 
-	public void setCategory(Integer category) {
-		this.category = category;
-	}
+    public Integer getCategory() {
+        return category;
+    }
 
-	public String getFileName() {
-		return fileName;
-	}
+    public void setCategory(Integer category) {
+        this.category = category;
+    }
 
-	public void setFileName(String fileName) {
-		this.fileName = fileName == null ? null : fileName.trim();
-	}
+    public String getFileName() {
+        return fileName;
+    }
 
-	public String getFilePath() {
-		return filePath;
-	}
+    public void setFileName(String fileName) {
+        this.fileName = fileName == null ? null : fileName.trim();
+    }
 
-	public void setFilePath(String filePath) {
-		this.filePath = filePath == null ? null : filePath.trim();
-	}
+    public String getFilePath() {
+        return filePath;
+    }
 
-	public Date getCreateTime() {
-		return createTime;
-	}
+    public void setFilePath(String filePath) {
+        this.filePath = filePath == null ? null : filePath.trim();
+    }
 
-	public void setCreateTime(Date createTime) {
-		this.createTime = createTime;
-	}
+    public Date getCreateTime() {
+        return createTime;
+    }
 
-	public Date getUpdateTime() {
-		return updateTime;
-	}
+    public void setCreateTime(Date createTime) {
+        this.createTime = createTime;
+    }
 
-	public void setUpdateTime(Date updateTime) {
-		this.updateTime = updateTime;
-	}
+    public Date getUpdateTime() {
+        return updateTime;
+    }
 
-	public String getRemark() {
-		return remark;
-	}
+    public void setUpdateTime(Date updateTime) {
+        this.updateTime = updateTime;
+    }
 
-	public void setRemark(String remark) {
-		this.remark = remark == null ? null : remark.trim();
-	}
+    public String getRemark() {
+        return remark;
+    }
 
-	public Integer getCreateUserId() {
-		return createUserId;
-	}
+    public void setRemark(String remark) {
+        this.remark = remark == null ? null : remark.trim();
+    }
 
-	public void setCreateUserId(Integer createUserId) {
-		this.createUserId = createUserId;
-	}
+    public Integer getCreateUserId() {
+        return createUserId;
+    }
 
-	public Integer getBeViewdNum() {
-		return beViewdNum;
-	}
+    public void setCreateUserId(Integer createUserId) {
+        this.createUserId = createUserId;
+    }
 
-	public void setBeViewdNum(Integer beViewdNum) {
-		this.beViewdNum = beViewdNum;
-	}
+    public Integer getBeViewdNum() {
+        return beViewdNum;
+    }
 
-	public String getTagIds() {
-		return tagIds;
-	}
+    public void setBeViewdNum(Integer beViewdNum) {
+        this.beViewdNum = beViewdNum;
+    }
 
-	public void setTagIds(String tagIds) {
-		this.tagIds = tagIds;
-	}
+    public String getTagIds() {
+        return tagIds;
+    }
+
+    public void setTagIds(String tagIds) {
+        this.tagIds = tagIds;
+    }
 
 }

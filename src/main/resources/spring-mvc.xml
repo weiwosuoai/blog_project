@@ -1,82 +1,82 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <beans xmlns="http://www.springframework.org/schema/beans"
-	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:p="http://www.springframework.org/schema/p"
-	xmlns:mvc="http://www.springframework.org/schema/mvc" xmlns:context="http://www.springframework.org/schema/context"
-	xsi:schemaLocation="http://www.springframework.org/schema/beans
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:mvc="http://www.springframework.org/schema/mvc"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
     					http://www.springframework.org/schema/beans/spring-beans.xsd
     					http://www.springframework.org/schema/mvc
     					http://www.springframework.org/schema/mvc/spring-mvc.xsd
     					http://www.springframework.org/schema/context
     					http://www.springframework.org/schema/context/spring-context.xsd">
 
-	<context:component-scan base-package="site.exception.front.controller" />
-	<context:component-scan base-package="site.exception.sys.controller" />
-	<!-- <context:component-scan base-package="site.exception.service" /> -->
-	<context:component-scan base-package="site.exception.common.formatter" />
+    <context:component-scan base-package="site.exception.front.controller"/>
+    <context:component-scan base-package="site.exception.sys.controller"/>
+    <!-- <context:component-scan base-package="site.exception.service" /> -->
+    <context:component-scan base-package="site.exception.common.formatter"/>
 
-	<!-- 注册用于支持基于注解的控制器的请求处理方法的 bean 对象 -->
-	<mvc:annotation-driven conversion-service="conversionService">
-		<mvc:message-converters>
-			<bean class="org.springframework.http.converter.StringHttpMessageConverter">
-				<constructor-arg value="UTF-8"/>
-			</bean>
-			<bean
-				class="org.springframework.http.converter.json.MappingJackson2HttpMessageConverter" />
-		</mvc:message-converters>
-	</mvc:annotation-driven>
+    <!-- 注册用于支持基于注解的控制器的请求处理方法的 bean 对象 -->
+    <mvc:annotation-driven conversion-service="conversionService">
+        <mvc:message-converters>
+            <bean class="org.springframework.http.converter.StringHttpMessageConverter">
+                <constructor-arg value="UTF-8"/>
+            </bean>
+            <bean
+                    class="org.springframework.http.converter.json.MappingJackson2HttpMessageConverter"/>
+        </mvc:message-converters>
+    </mvc:annotation-driven>
 
-	<!-- 指示 spring mvc 哪些资源需要单独处理，不通过 DispatcherServlet -->
-	<mvc:resources mapping="/css/**" location="/css/" />
-	<mvc:resources mapping="/fonts/**" location="/fonts/" />
-	<mvc:resources mapping="/js/**" location="/js/" />
-	<mvc:resources mapping="/images/**" location="/images/" />
-	<!-- google 代码高亮插件 -->
-	<mvc:resources mapping="/google-code-prettify/**"
-		location="/google-code-prettify/" />
-	<mvc:resources mapping="/includes/**" location="/includes/" />
-	<mvc:resources mapping="/*.html" location="/" />
+    <!-- 指示 spring mvc 哪些资源需要单独处理，不通过 DispatcherServlet -->
+    <mvc:resources mapping="/css/**" location="/css/"/>
+    <mvc:resources mapping="/fonts/**" location="/fonts/"/>
+    <mvc:resources mapping="/js/**" location="/js/"/>
+    <mvc:resources mapping="/images/**" location="/images/"/>
+    <!-- google 代码高亮插件 -->
+    <mvc:resources mapping="/google-code-prettify/**"
+                   location="/google-code-prettify/"/>
+    <mvc:resources mapping="/includes/**" location="/includes/"/>
+    <!--<mvc:resources mapping="/*.html" location="/" />-->
 
 
-	<mvc:view-controller path="/" view-name="forward:/index" />
+    <mvc:view-controller path="/" view-name="forward:/index"/>
 
-	<!-- 拦截器 -->
-	<mvc:interceptors>
-		<!-- 可配置多个拦截器 -->
-		<mvc:interceptor>
-			<!-- 只拦截后台页面 -->
-			<mvc:mapping path="/sys/**" />
-			<bean class="site.exception.common.interceptor.LoginInterceptor"></bean>
-		</mvc:interceptor>
-	</mvc:interceptors>
+    <!-- 拦截器 -->
+    <mvc:interceptors>
+        <!-- 可配置多个拦截器 -->
+        <mvc:interceptor>
+            <!-- 只拦截后台页面 -->
+            <mvc:mapping path="/sys/**"/>
+            <bean class="site.exception.common.interceptor.LoginInterceptor"/>
+        </mvc:interceptor>
+    </mvc:interceptors>
 
-	<!-- spring mvc 视图解析器,这样在 controller 中返回 ModelAndView 时，仅仅返回要返回的 jsp 的名即可，解析器会自动添加前缀和后缀 -->
-	<bean
-		class="org.springframework.web.servlet.view.InternalResourceViewResolver">
-		<property name="prefix" value="/WEB-INF/jsps/" />
-		<property name="suffix" value=".jsp" />
-	</bean>
+    <!-- spring mvc 视图解析器,这样在 controller 中返回 ModelAndView 时，仅仅返回要返回的 jsp 的名即可，解析器会自动添加前缀和后缀 -->
+    <bean
+            class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+        <property name="prefix" value="/WEB-INF/jsps/"/>
+        <property name="suffix" value=".jsp"/>
+    </bean>
 
-	<!-- 日期转换（String to Date） -->
-	<bean id="conversionService"
-		class="org.springframework.format.support.FormattingConversionServiceFactoryBean">
-		<property name="formatters">
-			<set>
-				<bean class="site.exception.common.formatter.DateFormatter">
-					<constructor-arg type="java.lang.String" value="yyyy-MM-dd HH:mm:ss" />
-				</bean>
-			</set>
-		</property>
-	</bean>
+    <!-- 日期转换（String to Date） -->
+    <bean id="conversionService"
+          class="org.springframework.format.support.FormattingConversionServiceFactoryBean">
+        <property name="formatters">
+            <set>
+                <bean class="site.exception.common.formatter.DateFormatter">
+                    <constructor-arg type="java.lang.String" value="yyyy-MM-dd HH:mm:ss"/>
+                </bean>
+            </set>
+        </property>
+    </bean>
 
-	<!-- 多文件上传解析 -->
-	<bean id="multipartResolver"
-		class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
-		<property name="defaultEncoding" value="UTF-8" />
-		<!-- 上传文件限制为 30M -->
-		<property name="maxUploadSize" value="31457280" />
-		<property name="maxInMemorySize" value="4096" />
-	</bean>
-
+    <!-- 多文件上传解析 -->
+    <bean id="multipartResolver"
+          class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
+        <property name="defaultEncoding" value="UTF-8"/>
+        <!-- 上传文件限制为 30M -->
+        <property name="maxUploadSize" value="31457280"/>
+        <property name="maxInMemorySize" value="4096"/>
+    </bean>
 
 
 </beans>
