@@ -131,6 +131,14 @@ a {
 	margin: 10px 0;
 }
 
+.btn-delete {
+	color: #fff;
+	background-color: #cb2431;
+	background-image: -webkit-linear-gradient(270deg, #de4450 0%, #cb2431 90%);
+	background-image: linear-gradient(-180deg, #de4450 0%, #cb2431 90%);
+	border-color: rgba(27,31,35,0.5);
+}
+
 .to-top {
 	width: 50px;
 	height: 50px;
@@ -183,3 +191,16 @@ a {
 .main .container .m-label-info:hover {
 	background-color: #c4ddee;
 }
+
+.btn-search {
+	color: #FFF;
+	background-color: #0095ff;
+	border-color: #07c;
+	box-shadow: inset 0 1px 0 #66bfff;
+}
+
+.btn-search:hover {
+    color: #fff;
+    background-color: #0578cb;
+}
+

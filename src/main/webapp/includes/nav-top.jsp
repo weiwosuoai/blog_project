@@ -50,7 +50,7 @@
 				<div class="input-group">
 					<input type="text" class="form-control" placeholder="文章搜索" name="q">
 					<span class="input-group-btn">
-						<button type="submit" class="btn btn-default">
+						<button type="submit" class="btn btn-default btn-search">
 							<span class="glyphicon glyphicon-search"></span>
 						</button>
 					</span>
