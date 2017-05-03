@@ -278,7 +278,7 @@
 
                             var isUserLogined = $('#isUserLogined').val();
                             if (isUserLogined.length > 0) {
-                                appendHtml += "<span class='pull-right'><a href='<%=contextPath%>/articles/" + item.id + "/delete'>删除</a></span>";
+                                appendHtml += "<span class='pull-right'><a href='#' data-toggle='modal' data-target='#modal-delete' data-id='" + item.id + "'>删除</a></span>";
                                 appendHtml += "<span class='pull-right m-pull-right'><a href='#' data-toggle='modal' data-target='#modal-edit' data-id='" + item.id + "'>编辑</a></span>";
                             }
 
