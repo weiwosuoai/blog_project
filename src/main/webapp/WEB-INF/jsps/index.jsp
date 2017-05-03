@@ -112,7 +112,7 @@
                     <div class="panel panel-default m-panel">
                         <div class="panel-heading m-panel-heading">文章存档</div>
                         <div class="panel-body m-panel-body" id="archive-month">
-                            <!-- 																<p><a href="#">2017年3月</a></p> -->
+                            <!--<p><a href="#">2017年3月</a></p> -->
                         </div>
                     </div>
 
@@ -120,7 +120,7 @@
                         <div class="panel-heading m-panel-heading">文章分类</div>
                         <div class="panel-body m-panel-body" id="category-num">
                             <ul>
-                                <%-- 									<li><a href="<%=contextPath%>/archive/javaweb">Jave Web</a></li> --%>
+                                <%--<li><a href="<%=contextPath%>/archive/javaweb">Jave Web</a></li> --%>
                             </ul>
                         </div>
                     </div>
@@ -128,7 +128,7 @@
                     <div class="panel panel-default m-panel">
                         <div class="panel-heading m-panel-heading">标签</div>
                         <div class="panel-body m-panel-body" id="tags">
-                            <!-- 								<a class="label label-info m-label-info">工具</a> -->
+                            <!--<a class="label label-info m-label-info">工具</a> -->
                         </div>
                     </div>
 
@@ -141,7 +141,10 @@
             <a class="to-top" data-toggle="tooltip" data-placement="left" title="回到顶部">
                 <i class="glyphicon glyphicon-menu-up"></i>
             </a>
+
+            <%-- 引入的 modal（包括文字编辑、删除的 modal） --%>
             <%@ include file="/includes/modal-article-edit.jsp" %>
+            <%@ include file="/includes/modal-article-delete.jsp"%>
 
         </div>
     </div>
@@ -154,6 +157,8 @@
 <script src="<%=contextPath%>/google-code-prettify/prettify.js"></script>
 <script src="<%=contextPath%>/js/jquery.toTop.min.js"></script>
 <script src="<%=contextPath%>/js/zoomify.js"></script>
+<%@ include file="/includes/modal-article-edit-js.jsp" %>
+<%@ include file="/includes/modal-article-delete-js.jsp"%>
 
 <script type="text/javascript">
     $(document).ready(function () {
@@ -273,7 +278,7 @@
 
                             var isUserLogined = $('#isUserLogined').val();
                             if (isUserLogined.length > 0) {
-                                appendHtml += "<span class='pull-right'><a href='<%=contextPath%>/article/" + item.id + "/delete'>删除</a></span>";
+                                appendHtml += "<span class='pull-right'><a href='<%=contextPath%>/articles/" + item.id + "/delete'>删除</a></span>";
                                 appendHtml += "<span class='pull-right m-pull-right'><a href='#' data-toggle='modal' data-target='#modal-edit' data-id='" + item.id + "'>编辑</a></span>";
                             }
 
@@ -282,7 +287,7 @@
                             // ========================================================
                             appendHtml += "<div class='sub-article-body'>" + item.shortHtmlStr + "</div>";
                             appendHtml += "<div>";
-                            appendHtml += "<a class='btn btn-success m-btn-success' href='<%=contextPath%>/article/" + item.id + "' role='button'>阅读全文&nbsp;»</a>";
+                            appendHtml += "<a class='btn btn-success m-btn-success' href='<%=contextPath%>/articles/" + item.id + "' role='button'>阅读全文&nbsp;»</a>";
                             appendHtml += "</div>";
                             appendHtml += "</div></div>";
                             $('#article-container').append(appendHtml);
@@ -320,6 +325,5 @@
     }
 
 </script>
-<%@ include file="/includes/modal-article-edit-js.jsp" %>
 </body>
 </html>

@@ -10,7 +10,7 @@
     					http://www.springframework.org/schema/context
     					http://www.springframework.org/schema/context/spring-context.xsd">
 
-    <context:component-scan base-package="site.exception.front.controller"/>
+    <context:component-scan base-package="site.exception.portal.controller"/>
     <context:component-scan base-package="site.exception.sys.controller"/>
     <!-- <context:component-scan base-package="site.exception.service" /> -->
     <context:component-scan base-package="site.exception.common.formatter"/>
@@ -35,8 +35,6 @@
     <mvc:resources mapping="/google-code-prettify/**"
                    location="/google-code-prettify/"/>
     <mvc:resources mapping="/includes/**" location="/includes/"/>
-    <!--<mvc:resources mapping="/*.html" location="/" />-->
-
 
     <mvc:view-controller path="/" view-name="forward:/index"/>
 
@@ -51,8 +49,7 @@
     </mvc:interceptors>
 
     <!-- spring mvc 视图解析器,这样在 controller 中返回 ModelAndView 时，仅仅返回要返回的 jsp 的名即可，解析器会自动添加前缀和后缀 -->
-    <bean
-            class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+    <bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
         <property name="prefix" value="/WEB-INF/jsps/"/>
         <property name="suffix" value=".jsp"/>
     </bean>

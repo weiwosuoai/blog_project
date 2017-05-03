@@ -6821,7 +6821,7 @@
         'statusbar': Statusbar,
         'fullscreen': Fullscreen,
         'handle': Handle,
-        // FIXME: HintPopover must be front of autolink
+        // FIXME: HintPopover must be portal of autolink
         //  - Script error about range when Enter key is pressed on hint popover
         'hintPopover': HintPopover,
         'autoLink': AutoLink,

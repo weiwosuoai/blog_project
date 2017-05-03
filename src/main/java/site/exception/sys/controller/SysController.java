@@ -7,16 +7,15 @@ import javax.servlet.http.HttpSession;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
-import site.exception.front.model.User;
-import site.exception.front.model.vo.ArticleVo;
-import site.exception.front.service.IArticleService;
-import site.exception.front.service.ICategoryService;
-import site.exception.front.service.IUserService;
+import site.exception.portal.model.User;
+import site.exception.portal.model.vo.ArticleVo;
+import site.exception.portal.service.IArticleService;
+import site.exception.portal.service.ICategoryService;
+import site.exception.portal.service.IUserService;
 
 /**
  * 后台控制器

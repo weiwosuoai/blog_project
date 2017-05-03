@@ -43,7 +43,7 @@
 
     <!-- dao 接口所在包名，spring 会自动查找其下的类 -->
     <bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
-        <property name="basePackage" value="site.exception.front.dao"/>
+        <property name="basePackage" value="site.exception.portal.dao"/>
         <property name="sqlSessionFactoryBeanName" value="sqlSessionFactory"/>
     </bean>
 

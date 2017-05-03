@@ -67,7 +67,10 @@
 			</div>
 		</div>
 
+		<%-- 引入的 modal --%>
 		<%@ include file="/includes/modal-article-edit.jsp"%>
+		<%@ include file="/includes/modal-article-delete.jsp"%>
+
 		<%@ include file="/includes/footer.jsp"%>
 	</div>
 
@@ -79,6 +82,8 @@
 	<script src="<%=contextPath%>/google-code-prettify/prettify.js"></script>
 	<script src="<%=contextPath%>/js/jquery.toTop.min.js"></script>
 	<script src="<%=contextPath%>/js/zoomify.js"></script>
+	<%@ include file="/includes/modal-article-edit-js.jsp"%>
+	<%@ include file="/includes/modal-article-delete-js.jsp"%>
 
 	<script type="text/javascript">
 		$(document).ready(function(){
@@ -110,7 +115,7 @@
 	           $('[data-toggle="tooltip"]').tooltip()
 	           
 			
-			// ajax 为查看的文章，被浏览数增1
+			// ajax 为查看的文章，被浏览数+1
 			$.ajax({
 				type: "POST",
 				async: true,
@@ -131,6 +136,6 @@
 		});
 
 	</script>
-	<%@ include file="/includes/modal-article-edit-js.jsp"%>
+
 </body>
 </html>

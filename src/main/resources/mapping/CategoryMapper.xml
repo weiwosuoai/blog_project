@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
-<mapper namespace="site.exception.front.dao.ICategoryDao">
+<mapper namespace="site.exception.portal.dao.ICategoryDao">
 	<cache />
-	<resultMap id="BaseResultMap" type="site.exception.front.model.vo.CategoryVo">
+	<resultMap id="BaseResultMap" type="site.exception.portal.model.vo.CategoryVo">
 		<id column="id" property="id" jdbcType="INTEGER" />
 		<result column="name" property="name" jdbcType="VARCHAR" />
 		<result column="create_time" property="createTime" jdbcType="TIMESTAMP" />
@@ -41,7 +41,7 @@
 		delete from t_category
 		where id = #{id,jdbcType=INTEGER}
 	</delete>
-	<insert id="insert" parameterType="site.exception.front.model.Category">
+	<insert id="insert" parameterType="site.exception.portal.model.Category">
 		insert into t_category (id, name, create_time,
 		update_time, create_user_id, remark
 		)
@@ -50,7 +50,7 @@
 		#{updateTime,jdbcType=TIMESTAMP}, #{createUserId,jdbcType=INTEGER}, #{remark,jdbcType=VARCHAR}
 		)
 	</insert>
-	<insert id="insertSelective" parameterType="site.exception.front.model.Category">
+	<insert id="insertSelective" parameterType="site.exception.portal.model.Category">
 		insert into t_category
 		<trim prefix="(" suffix=")" suffixOverrides=",">
 			<if test="id != null">
@@ -93,7 +93,7 @@
 			</if>
 		</trim>
 	</insert>
-	<update id="updateByPrimaryKeySelective" parameterType="site.exception.front.model.Category">
+	<update id="updateByPrimaryKeySelective" parameterType="site.exception.portal.model.Category">
 		update t_category
 		<set>
 			<if test="name != null">
@@ -114,7 +114,7 @@
 		</set>
 		where id = #{id,jdbcType=INTEGER}
 	</update>
-	<update id="updateByPrimaryKey" parameterType="site.exception.front.model.Category">
+	<update id="updateByPrimaryKey" parameterType="site.exception.portal.model.Category">
 		update t_category
 		set name = #{name,jdbcType=VARCHAR},
 		create_time = #{createTime,jdbcType=TIMESTAMP},
