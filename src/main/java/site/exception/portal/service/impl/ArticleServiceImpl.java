@@ -74,7 +74,7 @@ public class ArticleServiceImpl implements IArticleService {
 		// 标签相关
 		StringBuilder sb = new StringBuilder();
 		for (String tagId : vo.getPostTags()) {
-			sb.append("," + tagId);
+			sb.append(",").append(tagId);
 		}
 		article.setTagIds(sb.toString().substring(1));
 		
@@ -131,7 +131,10 @@ public class ArticleServiceImpl implements IArticleService {
 	 */
 	public ArticleVo parseMarkdown(Integer id) {
 		Article article = articleDao.selectByPrimaryKey(id);
-		
+
+		if (article == null)
+			return null;
+
 		File mdFile = new File(article.getFilePath());
 		
 		String htmlStr;
@@ -152,7 +155,7 @@ public class ArticleServiceImpl implements IArticleService {
 			// 组合标签信息
 			String tagIds = article.getTagIds();
 			if (!StringUtils.isEmpty(tagIds)) {
-				List<Tag> htmlTagList = new ArrayList<Tag>();
+				List<Tag> htmlTagList = new ArrayList<>();
 				String[] tagIdArr = article.getTagIds().split(",");
 				List<Tag> tagList = tagDao.getAll();
 				for (String tagId : tagIdArr) {
