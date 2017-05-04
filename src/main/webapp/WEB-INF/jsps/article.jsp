@@ -82,11 +82,18 @@
 	<script src="<%=contextPath%>/google-code-prettify/prettify.js"></script>
 	<script src="<%=contextPath%>/js/jquery.toTop.min.js"></script>
 	<script src="<%=contextPath%>/js/zoomify.js"></script>
+    <script src="<%=contextPath%>/js/nprogress.js"></script>
 	<%@ include file="/includes/modal-article-edit-js.jsp"%>
 	<%@ include file="/includes/modal-article-delete-js.jsp"%>
 
 	<script type="text/javascript">
 		$(document).ready(function(){
+
+            // 顶部加载进度条
+            NProgress.configure({
+                showSpinner: false
+            });
+            NProgress.start();
 			
 			$("#toc").tocify({
 				selectors : "h2, h3, h4",
@@ -134,6 +141,9 @@
 				 keyMap: {}
 			});
 		});
+
+        // 页面内容全部加载完成后，设置进度条消失
+        $(window).load(function(){NProgress.done()});
 
 	</script>
 

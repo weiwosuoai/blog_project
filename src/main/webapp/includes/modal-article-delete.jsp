@@ -11,7 +11,7 @@
 					<span aria-hidden="true">&times;</span>
 				</button>
 			</div>
-			<p class="content-danger">您确定要删除这篇文章吗?</p>
+			<p class="content-danger">您确定要删除这篇博文吗?</p>
 			<div class="modal-body">
                 <input type="hidden" id="article_id">
 				<button class="btn btn-block m-btn-danger" id="btn-delete">确认删除</button>

@@ -19,10 +19,9 @@
                     // step1 : dismiss the modal.
                     $('#modal-delete').modal('hide');
                     // step2 : redirect to the index page.
-                    window.location.href = "http://139.129.165.116/index";
+                    window.location.href = "/index";
                 }
             });
-
         });
     });
 </script>

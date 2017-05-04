@@ -14,7 +14,6 @@
 
 </head>
 <body>
-
 <%-- 头部导航栏 --%>
 <%@ include file="/includes/nav-top.jsp" %>
 <div class="main">
@@ -104,6 +103,7 @@
                         </div>
                     </div>
 
+                    <%-- my favorite music --%>
                     <iframe frameborder="no" border="0" marginwidth="0"
                             marginheight="0" width=231 height=86
                             src="//music.163.com/outchain/player?type=2&id=351288&auto=2&height=66"
@@ -137,7 +137,7 @@
                 </div>
             </div>
 
-            <!-- 回到顶部 -->
+            <%-- back to top --%>
             <a class="to-top" data-toggle="tooltip" data-placement="left" title="回到顶部">
                 <i class="glyphicon glyphicon-menu-up"></i>
             </a>
@@ -157,12 +157,17 @@
 <script src="<%=contextPath%>/google-code-prettify/prettify.js"></script>
 <script src="<%=contextPath%>/js/jquery.toTop.min.js"></script>
 <script src="<%=contextPath%>/js/zoomify.js"></script>
+<script src="<%=contextPath%>/js/nprogress.js"></script>
 <%@ include file="/includes/modal-article-edit-js.jsp" %>
 <%@ include file="/includes/modal-article-delete-js.jsp"%>
 
 <script type="text/javascript">
     $(document).ready(function () {
-
+        // 顶部加载进度条
+        NProgress.configure({
+            showSpinner: false
+        });
+        NProgress.start();
         // 代码高亮
         codeHighlighting();
 
@@ -323,6 +328,9 @@
         $("pre").addClass("prettyprint");
         prettyPrint();
     }
+
+    // 页面内容全部加载完成后，设置进度条消失
+    $(window).load(function(){NProgress.done()});
 
 </script>
 </body>
