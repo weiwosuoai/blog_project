@@ -130,19 +130,20 @@ public class ArticleServiceImpl implements IArticleService {
 	 * markdown 文件解析
 	 */
 	public ArticleVo parseMarkdown(Integer id) {
-		Article article = articleDao.selectByPrimaryKey(id);
+		List<Article> articleList = articleDao.selectAdjacencyByPrimaryKey(id);
 
+		Article article = articleList.get(0);
 		if (article == null)
 			return null;
 
 		File mdFile = new File(article.getFilePath());
-		
+
 		String htmlStr;
 		ArticleVo vo;
 		try {
 			// 解析 md 文件
 			htmlStr = Processor.process(mdFile);
-			
+
 			vo = new ArticleVo();
 			vo.setId(article.getId());
 			vo.setTitle(article.getTitle());
@@ -167,7 +168,21 @@ public class ArticleServiceImpl implements IArticleService {
 				}
 				vo.setTags(htmlTagList);
 			}
-			
+
+			// 上一篇，下一篇文章信息
+			if (articleList.size() > 1) { // 存在有上下篇文章的情况
+				if (articleList.size() == 2) {
+					if (articleList.get(1).getId() < article.getId()) { // 存在上一篇
+						vo.setPreviousArticle(articleList.get(1));
+					} else { // 存在下一篇
+						vo.setNextArticle(articleList.get(1));
+					}
+				} else if (articleList.size() == 3) { // 同时存在上下篇文章
+					vo.setPreviousArticle(articleList.get(1));
+					vo.setNextArticle(articleList.get(2));
+				}
+			}
+
 			return vo;
 		} catch (IOException e) {
 			logger.info(e.getMessage());

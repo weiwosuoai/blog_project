@@ -58,6 +58,16 @@ public class ArticleVo extends Article implements Serializable {
 	 * 用户是否登录
 	 */
 	private boolean isUserLogined;
+
+	/**
+	 * 上一篇文章
+	 */
+	private Article previousArticle;
+
+	/**
+	 * 下一篇文章
+	 */
+	private Article nextArticle;
 	
 	public List<MultipartFile> getFiles() {
 		return files;
@@ -139,4 +149,19 @@ public class ArticleVo extends Article implements Serializable {
 		this.isUserLogined = isUserLogined;
 	}
 
+	public Article getPreviousArticle() {
+		return previousArticle;
+	}
+
+	public void setPreviousArticle(Article previousArticle) {
+		this.previousArticle = previousArticle;
+	}
+
+	public Article getNextArticle() {
+		return nextArticle;
+	}
+
+	public void setNextArticle(Article nextArticle) {
+		this.nextArticle = nextArticle;
+	}
 }

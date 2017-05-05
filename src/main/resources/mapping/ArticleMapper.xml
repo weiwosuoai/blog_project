@@ -32,6 +32,12 @@
 		from t_article
 		where id = #{id,jdbcType=INTEGER}
 	</select>
+	<select id="selectAdjacencyByPrimaryKey" resultMap="BaseResultMap"
+			parameterType="java.lang.Integer">
+        <![CDATA[(SELECT * FROM t_article WHERE id = #{id,jdbcType=INTEGER})
+		UNION (SELECT * FROM t_article WHERE id < #{id,jdbcType=INTEGER} ORDER BY id DESC LIMIT 1)
+		UNION (SELECT * FROM t_article WHERE id > #{id,jdbcType=INTEGER} ORDER BY id LIMIT 1)]]>
+	</select>
 	<select id="selectAll" resultMap="BaseResultMap">
 		select * from t_article ORDER
 		BY create_time DESC

@@ -53,7 +53,30 @@
 
                 </div>
 
+                <%-- bshare --%>
+                <div class="bshare-custom article-share">
+                    <div class="bsPromo bsPromo2"></div>
+                    分享到:<a title="分享到微信" class="bshare-weixin"></a><a title="分享到QQ空间" class="bshare-qzone"></a><a
+                        title="分享到微分享" class="bshare-mweibo"></a><a title="分享到豆瓣" class="bshare-douban"></a><a
+                        title="分享到Facebook" class="bshare-facebook"></a><a title="分享到Twitter"
+                                                                           class="bshare-twitter"></a><a title="更多平台"
+                                                                                                         class="bshare-more bshare-more-icon more-style-addthis"></a>
+                </div>
 
+                <%-- 上下页 --%>
+                <nav aria-label="...">
+                    <ul class="pager">
+                        <c:if test="${not empty article.previousArticle}">
+                            <li class="next">
+                                <a href="<%=contextPath%>/articles/${article.previousArticle.id}" style="border-radius: 0">${article.previousArticle.title}<span aria-hidden="true">&nbsp;&rarr;</span></a>
+                            </li>
+                        </c:if>
+                        <c:if test="${not empty article.nextArticle}">
+                            <li class="previous"><a href="<%=contextPath%>/articles/${article.nextArticle.id}" style="border-radius: 0">
+                                    <span aria-hidden="true">&larr;&nbsp;</span>${article.nextArticle.title}</a></li>
+                        </c:if>
+                    </ul>
+                </nav>
             </div>
 
             <!-- 右边栏 -->
@@ -68,22 +91,6 @@
             <a class="to-top" data-toggle="tooltip" data-placement="left" title="">
                 <i class="glyphicon glyphicon-menu-up"></i>
             </a>
-        </div>
-
-        <div>
-            <p class="pull-left">分享到：
-            <div class="jiathis_style_24x24 pull-left">
-                <a class="jiathis_button_weixin"></a>
-                <a class="jiathis_button_qzone"></a>
-                <a class="jiathis_button_tsina"></a>
-                <a class="jiathis_button_douban"></a>
-                <a class="jiathis_button_fb"></a>
-                <a class="jiathis_button_twitter"></a>
-                <a class="jiathis_button_googleplus"></a>
-                <a href="http://www.jiathis.com/share" class="jiathis jiathis_txt jtico jtico_jiathis"
-                   target="_blank"></a>
-            </div>
-            </p>
         </div>
 
 
@@ -105,7 +112,9 @@
 <script src="<%=contextPath%>/js/jquery.toTop.min.js"></script>
 <script src="<%=contextPath%>/js/zoomify.js"></script>
 <script src="<%=contextPath%>/js/nprogress.js"></script>
-<script type="text/javascript" src="http://v3.jiathis.com/code_mini/jia.js" charset="utf-8"></script>
+<script type="text/javascript" charset="utf-8"
+        src="http://static.bshare.cn/b/buttonLite.js#style=-1&amp;uuid=&amp;pophcol=2&amp;lang=zh"></script>
+<script type="text/javascript" charset="utf-8" src="http://static.bshare.cn/b/bshareC0.js"></script>
 <%@ include file="/includes/modal-article-edit-js.jsp" %>
 <%@ include file="/includes/modal-article-delete-js.jsp" %>
 

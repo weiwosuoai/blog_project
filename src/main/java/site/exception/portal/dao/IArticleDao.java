@@ -15,7 +15,14 @@ public interface IArticleDao {
     int insertSelective(Article record);
 
     Article selectByPrimaryKey(Integer id);
-    
+
+	/**
+	 * 根据给定 id, 查询相邻记录
+     * @param id
+     * @return
+     */
+    List<Article> selectAdjacencyByPrimaryKey(Integer id);
+
     List<Article> selectAll();
     
     List<Article> selectByCategory(Integer category);

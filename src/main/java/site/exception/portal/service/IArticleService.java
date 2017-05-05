@@ -9,11 +9,6 @@ import site.exception.portal.model.Article;
 import site.exception.portal.model.vo.ArticleVo;
 
 public interface IArticleService {
-	/**
-	 * 保存文章
-	 * @param article
-	 * @return
-	 */
 	int save(ArticleVo vo, Integer userId);
 	
 	List<Article> findAll();
