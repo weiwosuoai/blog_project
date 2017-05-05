@@ -56,7 +56,7 @@
                 <%-- bshare --%>
                 <div class="bshare-custom article-share">
                     <div class="bsPromo bsPromo2"></div>
-                    分享到:<a title="分享到微信" class="bshare-weixin"></a><a title="分享到QQ空间" class="bshare-qzone"></a><a
+                    分享到&nbsp;:&nbsp;<a title="分享到微信" class="bshare-weixin"></a><a title="分享到QQ空间" class="bshare-qzone"></a><a
                         title="分享到微分享" class="bshare-mweibo"></a><a title="分享到豆瓣" class="bshare-douban"></a><a
                         title="分享到Facebook" class="bshare-facebook"></a><a title="分享到Twitter"
                                                                            class="bshare-twitter"></a><a title="更多平台"
@@ -65,15 +65,15 @@
 
                 <%-- 上下页 --%>
                 <nav aria-label="...">
-                    <ul class="pager">
+                    <ul class="pager m-pager">
                         <c:if test="${not empty article.previousArticle}">
                             <li class="next">
-                                <a href="<%=contextPath%>/articles/${article.previousArticle.id}" style="border-radius: 0">${article.previousArticle.title}<span aria-hidden="true">&nbsp;&rarr;</span></a>
+                                <a href="<%=contextPath%>/articles/${article.previousArticle.id}" style="border-radius: 0">上一篇&nbsp;:&nbsp;${article.previousArticle.title}</a>
                             </li>
                         </c:if>
                         <c:if test="${not empty article.nextArticle}">
                             <li class="previous"><a href="<%=contextPath%>/articles/${article.nextArticle.id}" style="border-radius: 0">
-                                    <span aria-hidden="true">&larr;&nbsp;</span>${article.nextArticle.title}</a></li>
+                                    下一篇&nbsp;:&nbsp;${article.nextArticle.title}</a></li>
                         </c:if>
                     </ul>
                 </nav>

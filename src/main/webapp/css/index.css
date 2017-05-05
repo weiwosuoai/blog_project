@@ -63,6 +63,7 @@
 .right-col-md ul {
     list-style: none;
     padding-left: 0;
+    margin-bottom: 0;
 }
 
 .main .user {
@@ -109,4 +110,5 @@
     box-shadow: none;
     text-decoration: none;
 }
+
 

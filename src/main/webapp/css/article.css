@@ -23,5 +23,25 @@
 	border-top: 1px solid #eee;
 }
 
+.m-pager {
+	text-align: left;
+}
+
+.pager .previous > a, .pager .previous > span {
+	float: none;
+}
+
+.pager .next > a, .pager .next > span {
+	float: none;
+}
+
+.pager li {
+	display: list-item;
+}
+
+.previous a{
+	margin-top: 10px;
+}
+
 
 

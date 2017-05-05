@@ -34,9 +34,11 @@
 	</select>
 	<select id="selectAdjacencyByPrimaryKey" resultMap="BaseResultMap"
 			parameterType="java.lang.Integer">
-        <![CDATA[(SELECT * FROM t_article WHERE id = #{id,jdbcType=INTEGER})
-		UNION (SELECT * FROM t_article WHERE id < #{id,jdbcType=INTEGER} ORDER BY id DESC LIMIT 1)
-		UNION (SELECT * FROM t_article WHERE id > #{id,jdbcType=INTEGER} ORDER BY id LIMIT 1)]]>
+        <![CDATA[
+            (SELECT * FROM t_article WHERE id = #{id,jdbcType=INTEGER})
+            UNION (SELECT * FROM t_article WHERE id < #{id,jdbcType=INTEGER} ORDER BY id DESC LIMIT 1)
+            UNION (SELECT * FROM t_article WHERE id > #{id,jdbcType=INTEGER} ORDER BY id LIMIT 1)
+		]]>
 	</select>
 	<select id="selectAll" resultMap="BaseResultMap">
 		select * from t_article ORDER
@@ -104,7 +106,7 @@
 		#{category,jdbcType=INTEGER},
 		#{fileName,jdbcType=VARCHAR},
 		#{filePath,jdbcType=VARCHAR},
-		#{createTime,jdbcType=TIMESTAMP},
+		NOW(),
 		#{updateTime,jdbcType=TIMESTAMP}, #{remark,jdbcType=VARCHAR},
 		#{createUserId,jdbcType=INTEGER},
 		#{tagIds,jdbcType=VARCHAR})

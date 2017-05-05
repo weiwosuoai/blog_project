@@ -65,8 +65,8 @@ public class ArticleServiceImpl implements IArticleService {
 		Article article = new Article();
 		article.setTitle(vo.getTitle());
 		article.setCategory(vo.getCategory());
-		article.setCreateTime(vo.getCreateTime());
-		article.setUpdateTime(vo.getCreateTime());
+//		article.setCreateTime(new Date());
+		article.setUpdateTime(new Date());
 		article.setFileName(fileName);
 		article.setFilePath(fileDir + File.separator + fileName);
 		article.setCreateUserId(userId);
