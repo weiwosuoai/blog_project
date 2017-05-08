@@ -91,10 +91,10 @@
                     <!-- profile -->
                     <div class="panel panel-default m-panel m-panel-margin">
                         <!-- 						<div class="panel-heading">Panel heading without title</div> -->
-                        <div class="panel-body">
+                        <div class="panel-body avatar-container">
                             <div class="user">
                                 <img alt="profile" class="no-border profile-img"
-                                     src="/images/profile.jpg">
+                                     src="/images/avatar.jpg">
 
                                 <h2>Allen Jiang</h2>
 

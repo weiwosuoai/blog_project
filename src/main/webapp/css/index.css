@@ -75,7 +75,15 @@
 }
 
 .main .profile-img {
-    /* 	height: 100px; */
+    width: 164px;
+    height: 164px;
+    border-radius: 2px;
+}
+
+.main .avatar-container {
+    box-shadow: inset 0 130px 0 #e7e8ea;
+    padding: 27px;
+    padding-bottom: 15px;
 }
 
 .main .article-title a {
