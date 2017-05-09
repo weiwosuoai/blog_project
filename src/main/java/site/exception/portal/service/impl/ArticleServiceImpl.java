@@ -122,7 +122,7 @@ public class ArticleServiceImpl implements IArticleService {
 			String mdStr = MarkdownUtil.htmlStr2MarkdownStr(htmlStr);
 			FileUtil.writeString2File(article.getFilePath(), mdStr);
 		} catch (Exception e) {
-			logger.info(e);
+			logger.error(e);
 		}
 	}
 
@@ -185,7 +185,7 @@ public class ArticleServiceImpl implements IArticleService {
 
 			return vo;
 		} catch (IOException e) {
-			logger.info(e.getMessage());
+			logger.error(e);
 		}
 		return null;
 	}
