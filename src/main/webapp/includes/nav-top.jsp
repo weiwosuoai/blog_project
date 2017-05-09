@@ -33,18 +33,6 @@
 				<li id="android"><a href="<%=contextPath%>/archive/android">Android</a></li>
 				<!-- 				<li><a href="http://blog.csdn.net/weiwosuoai?viewmode=contents">CSDN</a></li> -->
 				<li id="about"><a href="<%=contextPath%>/about">关于</a></li>
-				<!--         <li class="dropdown"> -->
-				<!--           <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Dropdown <span class="caret"></span></a> -->
-				<!--           <ul class="dropdown-menu"> -->
-				<!--             <li><a href="#">Action</a></li> -->
-				<!--             <li><a href="#">Another action</a></li> -->
-				<!--             <li><a href="#">Something else here</a></li> -->
-				<!--             <li role="separator" class="divider"></li> -->
-				<!--             <li><a href="#">Separated link</a></li> -->
-				<!--             <li role="separator" class="divider"></li> -->
-				<!--             <li><a href="#">One more separated link</a></li> -->
-				<!--           </ul> -->
-				<!--         </li> -->
 			</ul>
 			<form class="navbar-form navbar-left visible-lg-inline-block" action="<%=contextPath%>/archive">
 				<div class="input-group">
@@ -69,21 +57,13 @@
 					</ul>
 				</c:when>
 				<c:otherwise>
-					<a href="#" class="btn btn-success pull-right btn-article-post"
-						data-toggle="modal" data-target="#modal-article-post">发表博客</a>
+					<%--<a href="#" class="btn btn-success pull-right btn-article-post"--%>
+						<%--data-toggle="modal" data-target="#modal-article-post">写博客</a>--%>
+					<a href="<%=contextPath%>/writer" class="btn btn-success pull-right btn-article-post">写博客</a>
+
 				</c:otherwise>
 			</c:choose>
 							
-			<!--         <li class="dropdown"> -->
-			<!--           <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Dropdown <span class="caret"></span></a> -->
-			<!--           <ul class="dropdown-menu"> -->
-			<!--             <li><a href="#">Action</a></li> -->
-			<!--             <li><a href="#">Another action</a></li> -->
-			<!--             <li><a href="#">Something else here</a></li> -->
-			<!--             <li role="separator" class="divider"></li> -->
-			<!--             <li><a href="#">Separated link</a></li> -->
-			<!--           </ul> -->
-			<!--         </li> -->
 		</div>
 		<!-- /.navbar-collapse -->
 	</div>
