@@ -1408,26 +1408,26 @@
         xPosition += 25;
       }
 
-      buttons.bold = makeButton("wmd-bold-button", "Strong <strong> Ctrl+B", "0px", bindCommand("doBold"));
-      buttons.italic = makeButton("wmd-italic-button", "Emphasis <em> Ctrl+I", "-20px", bindCommand("doItalic"));
+      buttons.bold = makeButton("wmd-bold-button", "加粗 <strong> Ctrl+B", "0px", bindCommand("doBold"));
+      buttons.italic = makeButton("wmd-italic-button", "斜体 <em> Ctrl+I", "-20px", bindCommand("doItalic"));
       makeSpacer(1);
-      buttons.link = makeButton("wmd-link-button", "Hyperlink <a> Ctrl+L", "-40px", bindCommand(function (chunk, postProcessing) {
+      buttons.link = makeButton("wmd-link-button", "插入链接 <a> Ctrl+L", "-40px", bindCommand(function (chunk, postProcessing) {
         return this.doLinkOrImage(chunk, postProcessing, false);
       }));
-      buttons.quote = makeButton("wmd-quote-button", "Blockquote <blockquote> Ctrl+Q", "-60px", bindCommand("doBlockquote"));
-      buttons.code = makeButton("wmd-code-button", "Code Sample <pre><code> Ctrl+K", "-80px", bindCommand("doCode"));
-      buttons.image = makeButton("wmd-image-button", "Image <img> Ctrl+G", "-100px", bindCommand(function (chunk, postProcessing) {
+      buttons.quote = makeButton("wmd-quote-button", "添加引用 <blockquote> Ctrl+Q", "-60px", bindCommand("doBlockquote"));
+      buttons.code = makeButton("wmd-code-button", "插入代码 <pre><code> Ctrl+K", "-80px", bindCommand("doCode"));
+      buttons.image = makeButton("wmd-image-button", "添加图片 <img> Ctrl+G", "-100px", bindCommand(function (chunk, postProcessing) {
         return this.doLinkOrImage(chunk, postProcessing, true);
       }));
       makeSpacer(2);
-      buttons.olist = makeButton("wmd-olist-button", "Numbered List <ol> Ctrl+O", "-120px", bindCommand(function (chunk, postProcessing) {
+      buttons.olist = makeButton("wmd-olist-button", "有序列表 <ol> Ctrl+O", "-120px", bindCommand(function (chunk, postProcessing) {
         this.doList(chunk, postProcessing, true);
       }));
-      buttons.ulist = makeButton("wmd-ulist-button", "Bulleted List <ul> Ctrl+U", "-140px", bindCommand(function (chunk, postProcessing) {
+      buttons.ulist = makeButton("wmd-ulist-button", "无序列表 <ul> Ctrl+U", "-140px", bindCommand(function (chunk, postProcessing) {
         this.doList(chunk, postProcessing, false);
       }));
-      buttons.heading = makeButton("wmd-heading-button", "Heading <h1>/<h2> Ctrl+H", "-160px", bindCommand("doHeading"));
-      buttons.hr = makeButton("wmd-hr-button", "Horizontal Rule <hr> Ctrl+R", "-180px", bindCommand("doHorizontalRule"));
+      buttons.heading = makeButton("wmd-heading-button", "添加标题 <h1>/<h2> Ctrl+H", "-160px", bindCommand("doHeading"));
+      buttons.hr = makeButton("wmd-hr-button", "分隔线 <hr> Ctrl+R", "-180px", bindCommand("doHorizontalRule"));
       makeSpacer(3);
       buttons.undo = makeButton("wmd-undo-button", "Undo - Ctrl+Z", "-200px", null);
       buttons.undo.execute = function (manager) { if (manager) manager.undo(); };
