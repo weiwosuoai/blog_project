@@ -2,15 +2,13 @@ package site.exception.portal.controller;
 
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.*;
 
 import site.exception.portal.model.vo.ArticleVo;
 import site.exception.portal.service.IArticleService;
@@ -21,7 +19,6 @@ import site.exception.portal.service.IArticleService;
  * @author Allen
  */
 @Controller
-@RequestMapping("/articles")
 public class ArticleController {
 
     private static final Log logger = LogFactory
@@ -37,12 +34,22 @@ public class ArticleController {
      * @param model
      * @return
      */
-    @RequestMapping(value = "/{id}", method = RequestMethod.GET)
+    @RequestMapping(value = "/articles/{id}", method = RequestMethod.GET)
     public String viewArticle(@PathVariable Integer id, Model model) {
         logger.info("viewArchive - " + id);
         ArticleVo articleVo = articleService.parseMarkdown(id);
         model.addAttribute("article", articleVo);
         return "article";
+    }
+
+    /**
+     * 添加一篇博文
+     * @param vo
+	 */
+    @RequestMapping(value = "/articles", method = RequestMethod.POST)
+    public String saveArticle(@ModelAttribute ArticleVo vo, HttpSession session) {
+        articleService.save(vo, (Integer) session.getAttribute("userid"));
+        return "redirect:index";
     }
 
     /**
@@ -52,7 +59,7 @@ public class ArticleController {
      * @return 文章 text 数据
      */
     @ResponseBody
-    @RequestMapping(value = "/{id}/md_content")
+    @RequestMapping(value = "/articles/{id}/md_content")
     public String getArticleMarkdownContent(@PathVariable Integer id) {
         logger.info("getArticleMarkdownContent");
         ArticleVo article = articleService.findArticleContentById(id);
@@ -66,7 +73,7 @@ public class ArticleController {
      * @return 文章 text 数据
      */
     @ResponseBody
-    @RequestMapping("/{id}/update_md_content")
+    @RequestMapping("/articles/{id}/update_md_content")
     public String updateArticleMarkdownContent(@PathVariable Integer id,
                                                HttpServletRequest request) {
         logger.info("updateArticleMarkdownContent");
@@ -81,7 +88,7 @@ public class ArticleController {
      * @param id
      * @return
      */
-    @RequestMapping(value = "/{id}", method = RequestMethod.DELETE)
+    @RequestMapping(value = "/articles/{id}", method = RequestMethod.DELETE)
     public String deleteArticle(@PathVariable Integer id) {
         logger.info("deleteArticle");
         articleService.delete(id);
@@ -94,7 +101,7 @@ public class ArticleController {
      * @param id
      * @return
      */
-    @RequestMapping(value = "/{id}/viewd_increment")
+    @RequestMapping(value = "/articles/{id}/viewd_increment")
     public void articleViewdIncrement(@PathVariable Integer id) {
         logger.info("articleViewdIncrement");
         articleService.articleViewdIncrementById(id);

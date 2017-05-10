@@ -30,7 +30,7 @@
 				});
 			}
 		});
-		
+
 		// ajax 异步获取标签选项
 		$.ajax({
 			type: "GET",
@@ -46,5 +46,7 @@
 			}
 		});
 
+        // 将 markdown 编辑器中的内容置入提交表单的隐藏域内
+        $('#content').val($('#wmd-input').val());
 	});
 </script>

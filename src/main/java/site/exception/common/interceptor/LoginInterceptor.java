@@ -39,8 +39,8 @@ public class LoginInterceptor implements HandlerInterceptor {
 			return true;
 		}
 		
-		// 用户还未登录,转发到登录页面
-		request.getRequestDispatcher("/sys/login_view").forward(request, response);
+		// 用户还未登录,转发到首页
+		request.getRequestDispatcher("/index").forward(request, response);
 		return false;
 	}
 	

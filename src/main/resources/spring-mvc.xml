@@ -42,6 +42,8 @@
     <mvc:interceptors>
         <!-- 可配置多个拦截器 -->
         <mvc:interceptor>
+            <!-- 拦截博文提交页面 -->
+            <mvc:mapping path="/writer"/>
             <!-- 只拦截后台页面 -->
             <mvc:mapping path="/sys/**"/>
             <bean class="site.exception.common.interceptor.LoginInterceptor"/>

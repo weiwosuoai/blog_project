@@ -48,10 +48,26 @@ body {
     overflow: auto;
 }
 
+.back-to-home {
+    color: #07C;
+    background-color: rgba(0,119,204,0);
+    box-shadow: none;
+    padding: 7px 1em;
+    border-radius: 2px;
+    border: 1px solid transparent;
+    margin-top: 10px;
+}
+
+.back-to-home:hover {
+    text-decoration: none;
+    background-color: #E1ECF4;
+}
+
 .preview-header {
     height: 44px;
     border-top: 1px solid #c8ccd0;
     border-right: 1px solid #c8ccd0;
+    margin-top: 42px;
 }
 
 .preview-header h4 {
@@ -59,7 +75,7 @@ body {
     line-height: 44px;
     margin: 0;
     padding-left: 10px;
-    font-weight: 400;
+    font-weight: 600;
 }
 
 .m-wmd-preview {
@@ -165,7 +181,4 @@ body {
     margin: 4px;
 }
 
-.m-btn-upload i {
-    cursor:pointer;
-}
 

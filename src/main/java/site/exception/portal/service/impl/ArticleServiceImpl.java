@@ -28,9 +28,9 @@ import site.exception.common.utils.MarkdownUtil;
 
 @Service("articleService")
 public class ArticleServiceImpl implements IArticleService {
-	
+
 	private static final Log logger = LogFactory.getLog(ArticleServiceImpl.class);
-	
+
 	@Resource
 	private IArticleDao articleDao;
 	@Resource
@@ -40,45 +40,59 @@ public class ArticleServiceImpl implements IArticleService {
 	 * 上传文章保存
 	 */
 	public int save(ArticleVo vo, Integer userId) {
-		MultipartFile multipartFile = vo.getFiles().get(0);
-		
-		String fileName = multipartFile.getOriginalFilename();
-		
-		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
-		
-		String fileDir = File.separator + "opt" + File.separator 
-				+ "mds" + File.separator + userId + File.separator + sdf.format(new Date());
-		
-		File dir = new File(fileDir);
-		if (!dir.exists()) {
-			dir.mkdirs();
-		}
-		
-		File mdFile = new File(fileDir, fileName);
+//		MultipartFile multipartFile = vo.getFiles().get(0);
+
+//		String fileName = multipartFile.getOriginalFilename();
+
+		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HHmmss");
+
+		String fileDirPath = File.separator + "opt" + File.separator
+				+ "mds" + File.separator + userId + File.separator
+				+ sdf.format(new Date());
 
 		try {
-			multipartFile.transferTo(mdFile);
+			File fileDir = new File(fileDirPath);
+			if (!fileDir.exists()) {
+				fileDir.mkdirs();
+			}
+
+			String filePath = fileDirPath + File.separator + vo.getTitle() + ".md";
+			File file = new File(filePath);
+
+			if (!file.exists()) {
+				file.createNewFile();
+			}
+
+			FileUtil.writeString2File(filePath, vo.getContent());
+
+			Article article = new Article();
+			article.setTitle(vo.getTitle());
+			article.setCategory(vo.getCategory());
+			article.setUpdateTime(new Date());
+			article.setFileName(vo.getTitle());
+			article.setFilePath(filePath);
+			article.setCreateUserId(userId);
+
+			// 标签相关
+			StringBuilder sb = new StringBuilder();
+			for (String tagId : vo.getPostTags()) {
+				sb.append(",").append(tagId);
+			}
+			article.setTagIds(sb.toString().substring(1));
+			return articleDao.insert(article);
+
 		} catch (Exception e) {
-			logger.info(e.getMessage());
+			logger.error(e);
 		}
-		
-		Article article = new Article();
-		article.setTitle(vo.getTitle());
-		article.setCategory(vo.getCategory());
-//		article.setCreateTime(new Date());
-		article.setUpdateTime(new Date());
-		article.setFileName(fileName);
-		article.setFilePath(fileDir + File.separator + fileName);
-		article.setCreateUserId(userId);
-		
-		// 标签相关
-		StringBuilder sb = new StringBuilder();
-		for (String tagId : vo.getPostTags()) {
-			sb.append(",").append(tagId);
-		}
-		article.setTagIds(sb.toString().substring(1));
-		
-		return articleDao.insert(article);
+
+//		File mdFile = new File(fileDir, vo.getTitle() + ".md");
+//		try {
+//			multipartFile.transferTo(mdFile);
+//		} catch (Exception e) {
+//			logger.info(e.getMessage());
+//		}
+
+		return 0;
 	}
 
 	/**
@@ -93,22 +107,22 @@ public class ArticleServiceImpl implements IArticleService {
 	 */
 	public ArticleVo findArticleContentById(Integer id) {
 		Article article = articleDao.selectByPrimaryKey(id);
-		
+
 		File file = new File(article.getFilePath());
-		
+
 		// 先判断文件是否存在
 		if (file.exists()) {
 			try {
 				String mdContent = FileUtil.readFile(article.getFilePath());
-				
+
 				ArticleVo vo = new ArticleVo();
 				vo.setContent(mdContent);
-				
+
 				return vo;
 			} catch (Exception e) {
 				logger.info(e);
 			}
-			
+
 		}
 		return null;
 	}
@@ -196,7 +210,7 @@ public class ArticleServiceImpl implements IArticleService {
 	public int delete(Integer id) {
 		// 1.先删除文件
 		Article article = articleDao.selectByPrimaryKey(id);
-		
+
 		File file = new File(article.getFilePath());
 		// TODO 目前只是删除 md 文件，若该父文件夹中只存在此 md 文件，则父文件夹一并删除
 		if (file.exists()) {
@@ -233,7 +247,7 @@ public class ArticleServiceImpl implements IArticleService {
 	public List<ArticleVo> findArticleNumPerMonth() {
 		return articleDao.selectNumsPerMonth();
 	}
-	
+
 	/**
 	 * 根据年月查询具体的文章信息
 	 */
@@ -247,5 +261,5 @@ public class ArticleServiceImpl implements IArticleService {
 	public int articleViewdIncrementById(Integer id) {
 		return articleDao.articleViewdIncrementById(id);
 	}
-	
+
 }
