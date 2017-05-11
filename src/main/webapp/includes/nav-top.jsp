@@ -59,7 +59,8 @@
 				<c:otherwise>
 					<%--<a href="#" class="btn btn-success pull-right btn-article-post"--%>
 						<%--data-toggle="modal" data-target="#modal-article-post">写博客</a>--%>
-					<a href="<%=contextPath%>/writer" class="btn btn-success pull-right btn-article-post">写博客</a>
+					<a href="<%=contextPath%>/writer" class="btn btn-success pull-right btn-article-post">
+						<i class="glyphicon glyphicon-pencil" style="margin-right: 3px;"></i>写博客</a>
 
 				</c:otherwise>
 			</c:choose>

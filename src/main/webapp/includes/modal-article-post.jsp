@@ -15,7 +15,9 @@
 			<%-- 提交博客表单 --%>
 			<div class="modal-body">
 				<form id="article_form" action="<%=contextPath%>/articles" method="post">
-                    <textarea id="content" name="content"></textarea>
+                    <div style="display: none;">
+                        <textarea id="content" name="content"></textarea>
+                    </div>
 					<div class="form-group">
 						<label>文章标题</label> <input class="form-control"
 							placeholder="文章标题" name="title">
