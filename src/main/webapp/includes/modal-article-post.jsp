@@ -79,7 +79,23 @@
                 // step1 : dismiss the modal.
                 $('#modal-article-post').modal('hide');
                 // step2 : prompt the user that was successed.
-                alert('发布成功');
+				// then pop-up a prompt box that prompts the user to login
+				$.notify({
+					// options
+					icon: 'glyphicon glyphicon-ok',
+					message: '发布成功啦!',
+				},{
+					// settings
+					type: "success",
+					allow_dismiss: false,
+					offset: 150,
+					delay: 2000,
+					placement: {
+						from: "top",
+						align: "center"
+					},
+					z_index: 9999
+				});
                 $('#wmd-input').val('');
                 $('#wmd-preview').empty();
             }

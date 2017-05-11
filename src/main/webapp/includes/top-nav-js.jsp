@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-<%@ include file="/includes/modal-article-post.jsp"%>
-<%@ include file="/includes/modal-article-post-js.jsp"%>
+<%--<%@ include file="/includes/modal-article-post.jsp"%>--%>
+<%--<%@ include file="/includes/modal-article-post-js.jsp"%>--%>
 <script type="text/javascript">
 	$(document).ready(function() {
 		var type = $('#topNavType').val();
@@ -19,4 +19,31 @@
 			$("#about").addClass("active");
 		}
 	});
+
+	<%--写博客按钮响应事件--%>
+	function writeArticle() {
+		var user_id = $('#user_id').val();
+		if (user_id.length > 0) { // if the user_id not null
+            window.location.href = '<%=contextPath%>/writer'; // jump to writer page
+        } else { // otherwise shows the login modal
+            $('#modal_login').click();
+            // then pop-up a prompt box that prompts the user to login
+            $.notify({
+                // options
+                icon: 'glyphicon glyphicon-warning-sign',
+                message: '还未登录哦!',
+            },{
+                // settings
+                type: "warning",
+                allow_dismiss: false,
+                offset: 150,
+                delay: 2000,
+                placement: {
+                    from: "top",
+                    align: "center"
+                },
+                z_index: 9999
+            });
+        }
+	}
 </script>

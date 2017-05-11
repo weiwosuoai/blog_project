@@ -55,6 +55,7 @@
 
 <%@ include file="/includes/jquery-bootstrap-js.jsp" %>
 <%@ include file="/includes/top-nav-js.jsp" %>
+<script src="<%=contextPath%>/js/bootstrap-notify.js"></script>
 <%@ include file="/includes/modal-article-post.jsp" %>
 <%@ include file="/includes/modal-article-post-js.jsp" %>
 <script src="<%=contextPath%>/js/nprogress.js"></script>

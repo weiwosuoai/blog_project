@@ -152,6 +152,7 @@
 
 </div>
 <%@ include file="/includes/jquery-bootstrap-js.jsp" %>
+<script src="<%=contextPath%>/js/bootstrap-notify.js"></script>
 <%@ include file="/includes/top-nav-js.jsp" %>
 <%@ include file="/includes/datetimepicker-js.jsp" %>
 <script src="<%=contextPath%>/google-code-prettify/prettify.js"></script>
