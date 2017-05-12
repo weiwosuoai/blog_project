@@ -45,13 +45,11 @@
                 </div>
             </form>
 
-            <!-- 超链接只能是 GET 方式请求 -->
-            <%-- 				<li><a href="<%=contextPath%>/sys/login">登录</a></li> --%>
-
             <ul class="nav navbar-nav navbar-right">
                 <c:choose>
                     <c:when test="${sessionScope.userid == null}">
-                        <li><a id="modal_login" href="<%=contextPath%>/modal/content/login" data-toggle="modal"
+                        <!-- 超链接只能是 GET 方式请求 -->
+                        <li><a id="modal_login" href="<%=contextPath%>/users/login" data-toggle="modal"
                                data-target="#modal-login" style="color: #07C; margin-right: 5px;">登录</a></li>
                         <!-- <li><a href="#">注册</a></li> -->
                     </c:when>
@@ -64,6 +62,10 @@
                 <%-- 始终显示写博客按钮 --%>
                 <a href="#" class="btn btn-success pull-right btn-article-post" onclick="writeArticle()">
                     <i class="glyphicon glyphicon-pencil" style="margin-right: 3px;"></i>写博客</a>
+
+                <%--<a id="modal_login" href="<%=contextPath%>/users/write" data-toggle="modal"--%>
+                   <%--data-target="#modal-login" class="btn btn-success pull-right btn-article-post">--%>
+                    <%--<i class="glyphicon glyphicon-pencil" style="margin-right: 3px;"></i>写博客</a>--%>
 
             </ul>
 

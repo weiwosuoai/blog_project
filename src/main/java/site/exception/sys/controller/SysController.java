@@ -31,8 +31,7 @@ public class SysController {
 
 	@Resource
 	private IArticleService articleService;
-	@Resource
-	private IUserService userService;
+
 	@Resource
 	private ICategoryService categoryService;
 
@@ -47,25 +46,6 @@ public class SysController {
 		String ip = request.getRemoteAddr();
 		logger.info("request ip ： " + ip);
 		return "/sys/login-view";
-	}
-
-	/**
-	 * 登录
-	 * 
-	 * @return
-	 */
-	@RequestMapping(value = "/login", method = RequestMethod.POST)
-	public String login(User user, HttpSession session) {
-		user = userService.findByNameAndPassword(user);
-		if (user != null) {
-			// 查询数据库，id 存入 session 中
-			session.setAttribute("userid", user.getId());
-			// 重定向到提交文章页面
-			// return "redirect:/sys/post";
-		}
-
-		// 重定向到首页
-		return "redirect:/index";
 	}
 
 	/**

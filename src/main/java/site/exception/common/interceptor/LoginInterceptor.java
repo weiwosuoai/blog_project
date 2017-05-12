@@ -6,6 +6,7 @@ import javax.servlet.http.HttpSession;
 
 import org.springframework.web.servlet.HandlerInterceptor;
 import org.springframework.web.servlet.ModelAndView;
+import site.exception.common.model.MyHttpSession;
 
 /**
  * 登录拦截器(验证用户是否登录)
@@ -34,12 +35,14 @@ public class LoginInterceptor implements HandlerInterceptor {
 		}
 		
 		HttpSession session = request.getSession();
-		Integer userId = (Integer) session.getAttribute("userid");
+		Integer userId = (Integer) session.getAttribute(MyHttpSession.USER_ID);
+
+
 		if (userId != null) {
 			return true;
 		}
-		
-		// 用户还未登录,转发到首页
+
+		// 用户还未登录,转发到首页 TODO 这里登录页需要改版
 		request.getRequestDispatcher("/index").forward(request, response);
 		return false;
 	}

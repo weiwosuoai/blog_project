@@ -17,7 +17,7 @@
     <div class="login-title">
         <h2>Exception</h2>
     </div>
-    <form action="<%=contextPath%>/sys/login" method="post">
+    <form action="<%=contextPath%>/users/login" method="post">
         <div class="form-group">
             <!-- 						<label for="username">用户名</label> -->
             <input class="form-control" placeholder="用户名" name="name">
