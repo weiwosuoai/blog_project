@@ -31,18 +31,10 @@
             $.notify({
                 // options
                 icon: 'glyphicon glyphicon-warning-sign',
-                message: '还未登录哦!',
+                message: '您还没有登录哦!',
             },{
                 // settings
-                type: "warning",
-                allow_dismiss: false,
-                offset: 150,
-                delay: 2000,
-                placement: {
-                    from: "top",
-                    align: "center"
-                },
-                z_index: 9999
+                type: "warning"
             });
         }
 	}

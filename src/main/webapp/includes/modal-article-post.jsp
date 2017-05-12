@@ -83,18 +83,10 @@
 				$.notify({
 					// options
 					icon: 'glyphicon glyphicon-ok',
-					message: '发布成功啦!',
+					message: '博文发布成功!',
 				},{
 					// settings
-					type: "success",
-					allow_dismiss: false,
-					offset: 150,
-					delay: 2000,
-					placement: {
-						from: "top",
-						align: "center"
-					},
-					z_index: 9999
+					type: "success"
 				});
                 $('#wmd-input').val('');
                 $('#wmd-preview').empty();
