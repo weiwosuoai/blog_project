@@ -30,7 +30,6 @@ DROP TABLE IF EXISTS t_article;
 CREATE TABLE t_article (
   id          INT          NOT NULL AUTO_INCREMENT,
   title       VARCHAR(500) NOT NULL COMMENT '文章标题',
-  category    INT          NOT NULL COMMENT '所属分类',
   file_name   VARCHAR(500) NOT NULL COMMENT '文章原始文件名称',
   file_path   VARCHAR(500) NOT NULL COMMENT '文章存储路径',
   create_time TIMESTAMP    NOT NULL DEFAULT NOW(),
@@ -40,13 +39,13 @@ CREATE TABLE t_article (
 ) ENGINE = InnoDB DEFAULT CHARSET = UTF8;
 
 -- 文章表中添加文章创建者字段 Create on 2017-03-18 by Allen.
-ALTER TABLE t_article ADD create_user_id INT NOT NULL;
+ALTER TABLE t_article ADD create_user_id INT NOT NULL COMMENT '创建者id';
 
 -- 文章表中添加文章被浏览数字段 Create on 2017-03-28 by Allen.
-ALTER TABLE t_article ADD be_viewd_num INT NOT NULL DEFAULT 1;
+ALTER TABLE t_article ADD be_viewd_num INT NOT NULL DEFAULT 1 COMMENT '被浏览次数';
 
--- 文章表中添加标签字段 Create on 2017-03-31 by Allen.
-ALTER TABLE t_article ADD tag_ids VARCHAR(200);
+-- 文章表中添加标签字段 Create on 2017-05-15 by Allen.
+ALTER TABLE t_article ADD content TEXT NOT NULL COMMENT '文章内容';
 
 -- 分类表 Create on 2017-03-30 by Allen.
 DROP TABLE IF EXISTS t_category;
@@ -111,10 +110,6 @@ INSERT INTO t_tag (name) VALUES ('spring');
 INSERT INTO t_tag (name) VALUES ('mybatis');
 INSERT INTO t_tag (name) VALUES ('spring-mvc');
 
-
-
---
-
 -- tmp TODO 待删除
 INSERT INTO t_user(name, password) VALUES ('1030413319', '110011');
 INSERT INTO t_user(name, password) VALUES ('1030413310', '111111');
@@ -133,18 +128,6 @@ CREATE TABLE t_person (
 
 INSERT INTO t_person VALUES (1030413319, '江晖', '男', '1995.1.11', '安徽铜陵', '物联网学院', '计算机1303');
 INSERT INTO t_person VALUES (1030413310, '王二', '男', '1995.1.11', '安徽安庆', '食品学院', '食品1303');
-
-DROP TABLE IF EXISTS t_person;
-CREATE TABLE t_person (
-  id          INT          NOT NULL AUTO_INCREMENT,
-  name        VARCHAR(200) NOT NULL,
-  sex VARCHAR(5),
-  birthday VARCHAR(100),
-  origin VARCHAR(50),
-  academy VARCHAR(500),
-  grade VARCHAR(500),
-  PRIMARY KEY (id)
-) ENGINE = InnoDB DEFAULT CHARSET = UTF8;
 
 DROP TABLE IF EXISTS t_score;
 CREATE TABLE t_score (
