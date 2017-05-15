@@ -24,7 +24,7 @@ public class FileUtil {
 		String line = null;
 		while ((line = br.readLine()) != null) {
 //			result.append(line + System.getProperty("line.separator"));
-			result.append(line + "<br>");
+			result.append(line);
 		}
 		br.close();
 		return result.toString();
@@ -46,7 +46,8 @@ public class FileUtil {
 	
 //	public static void main(String[] args) {
 //		try {
-//			writeString2File("Q:/test.txt", "就是这样就是这样就是这样就是这样就是这样就是这样就是这样就这样就是这样就是这样就是这样就是这样就是这样就是这样就这样就是这样就是这样就是这样就是这样就是这样就是这样就是这样就是这样就是这样就是这样就是这样");
+////			writeString2File("Q:/test.txt", "就是这样就是这样就是这样就是这样就是这样就是这样就是这样就这样就是这样就是这样就是这样就是这样就是这样就是这样就这样就是这样就是这样就是这样就是这样就是这样就是这样就是这样就是这样就是这样就是这样就是这样");
+//			System.out.println("C:/opt/mds/1/2017-05-04/Android 小技巧之将 TextView 的文字竖直排列.md");
 //		} catch (Exception e) {
 //			e.printStackTrace();
 //		}

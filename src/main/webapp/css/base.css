@@ -72,10 +72,10 @@ blockquote, p {
 
 /* 自定义 h2,使其带分界线 */
 h2 {
-    padding-bottom: 9px;
-    margin: 20px 0 20px;
-    margin-top: 15px;
-    border-bottom: 1px solid #eee;
+    /*padding-bottom: 9px;*/
+    /*margin: 20px 0 20px;*/
+    /*margin-top: 15px;*/
+    /*border-bottom: 1px solid #eee;*/
 }
 
 a {
@@ -246,4 +246,25 @@ a {
     margin-top: 13px;
 }
 
+.page-header-title {
+    font-weight: 400;
+    color: #3b4045;
+    font-size: 18px;
+}
+
+.m-page-header {
+    margin: 30px 0 0;
+    padding-bottom: 0;
+    border-bottom: 1px solid #e4e6e8;
+}
+
+.main .container .article-type {
+    border-color: #5fba7d;
+    background: #5fba7d;
+    color: #FFF;
+    padding: 3px 6px;
+    margin-right: 5px;
+    font-size: 12px;
+    line-height: 1.3;
+}
 

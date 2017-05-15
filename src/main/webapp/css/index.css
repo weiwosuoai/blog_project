@@ -14,8 +14,18 @@
 }
 
 .article-priview {
-    padding: 12px 0 10px 0;
+    padding: 14px 0 13px 0;
     border-bottom: 1px solid #e4e6e8;
+}
+
+.article-title a {
+    font-size: 14px;
+    text-decoration: none;
+    color: #07C;
+}
+
+.article-title a:hover {
+    color: #439fe1;
 }
 
 .nav-pagination {
@@ -85,10 +95,6 @@
     box-shadow: inset 0 130px 0 #e7e8ea;
     padding: 27px;
     padding-bottom: 15px;
-}
-
-.main .article-title a {
-    color: #242729;
 }
 
 .main .m-btn-success {

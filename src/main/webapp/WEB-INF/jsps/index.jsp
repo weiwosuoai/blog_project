@@ -78,30 +78,48 @@
             <!-- 右边栏 -->
             <div class="col-md-9">
                 <div id="article-container">
+                    <%--博文列表页头--%>
+                    <div class="page-header m-page-header">
+                        <h2 class="page-header-title">博文列表</h2>
+                        <%-- 用户登录后，才会显示编辑超链接 --%>
+                        <%--TODO 编辑删除--%>
+                        <%--<c:if test="${sessionScope.userid != null}">--%>
+                        <%--<span class="pull-right">--%>
+                        <%--<a href="#" data-toggle="modal" data-target="#modal-delete" data-id="${article.id}">删除</a></span>--%>
+                        <%--<span class="pull-right m-pull-right">--%>
+                        <%--<a href="#" data-toggle="modal" data-target="#modal-edit" data-id="${article.id}">编辑</a></span>--%>
+                        <%--</c:if>--%>
+                    </div>
                     <c:forEach var="article" items="${articles}" varStatus="status">
                         <div class="article-priview">
                             <div class="sub-article-header">
 
                                 <!-- 文章标题 -->
-                                <h1 class="article-title">
-                                    <a href="<%=contextPath%>/articles/${article.id}">${article.title}</a>
-                                </h1>
-                                <!-- 文章缩略内容-->
-                                <div class="sub-article-body">${article.shortHtmlStr}</div>
-                                <!-- 文章发表时间，分类 -->
-                                <%@ include file="/includes/article-meta-index.jsp" %>
+                                        <span class="article-title">
+                                            <span class="article-type">原</span>
+                                            <span><a href="<%=contextPath%>/articles/${article.id}">${article.title}</a></span>
+                                            <span class="pull-right" style="color: #999; font-size: 13px;">
+                                               ${article.createTimeStr}
+                                            </span>
+                                        </span>
+                                <%--<!-- 文章缩略内容-->--%>
+                                <%--<div class="sub-article-body">${article.shortHtmlStr}</div>--%>
+                                <%--<!-- 文章发表时间，分类 -->--%>
+                                <%--<%@ include file="/includes/article-meta-index.jsp" %>--%>
 
-                                <%--<div>--%>
+                                    <%--<div>--%>
                                     <%--<a class="btn btn-success m-btn-success"--%>
-                                       <%--href="<%=contextPath%>/articles/${article.id}"--%>
-                                       <%--role="button">阅读全文&nbsp;»</a>--%>
-                                <%--</div>--%>
+                                    <%--href="<%=contextPath%>/articles/${article.id}"--%>
+                                    <%--role="button">阅读全文&nbsp;»</a>--%>
+                                    <%--</div>--%>
                             </div>
+
+
                         </div>
                     </c:forEach>
                 </div>
 
-                <input id="pageSize" type="hidden" name="pageSize" value="10">
+                <input id="pageSize" type="hidden" name="pageSize" value="20">
                 <input id="currentPage" type="hidden" name="currentPage" value="1">
                 <input id="isUserLogined" type="hidden" value="${sessionScope.userid}">
 
@@ -234,15 +252,18 @@
                         $.each(data, function (i, item) {
                             var appendHtml = "<div class='article-priview'>";
                             appendHtml += "<div class='sub-article-header'>";
-                            appendHtml += "<h1 class='article-title'>";
+                            appendHtml += "<span class='article-title'>";
                             appendHtml += "<a href='<%=contextPath%>/articles/" + item.id + "'>" + item.title + "</a>";
-                            appendHtml += "</h1>";
+                            appendHtml += "</span>";
+
+                            appendHtml += "<div class='sub-article-body'>" + item.shortHtmlStr + "</div>";
+                            appendHtml += "</div>";
 
                             // ========================= meta =========================
-                            appendHtml += "<div class='sub-article-meta'>";
-                            appendHtml += "<span>发表于&nbsp;</span>";
+                            appendHtml += "<div class='sub-article-meta' style='margin-top: 5px;'>";
+                            appendHtml += "<span style='margin-right: 2px;'><i class='glyphicon glyphicon-time'></i></span>";
                             appendHtml += "<span class='sub-article-post-time'>" + item.createTimeStr + "</span>";
-                            appendHtml += "&nbsp;&nbsp;&nbsp; <span>分类于&nbsp;</span> <span class='sub-article-category-item'>";
+                            appendHtml += "&nbsp;&nbsp;&nbsp;&nbsp; <span style='margin-right: 2px;'><i class='glyphicon glyphicon-th-list'></i></span> <span class='sub-article-category-item'>";
                             if (item.category == 1) {
                                 appendHtml += "<a href='<%=contextPath%>/archive/javaweb'>Java</a>";
                             } else if (item.category == 2) {
@@ -250,34 +271,32 @@
                             } else if (item.category == 3) {
                                 appendHtml += "<a href='<%=contextPath%>/archive/db'>DB</a>";
                             }
-                            appendHtml += "&nbsp;&nbsp;&nbsp;<span><i class='glyphicon glyphicon-eye-open'></i>&nbsp;&nbsp;" + item.beViewdNum + "人浏览</span>";
-                            appendHtml += "&nbsp;&nbsp;&nbsp;<span><i class='glyphicon glyphicon-tags'></i>&nbsp;&nbsp;";
+                            appendHtml += "&nbsp;&nbsp;&nbsp;&nbsp;<span><i class='glyphicon glyphicon-eye-open' style='margin-right: 3px;'></i>&nbsp;&nbsp;" + item.beViewdNum + "人浏览</span>";
+                            appendHtml += "&nbsp;&nbsp;&nbsp;&nbsp;<span><i class='glyphicon glyphicon-tags'></i>&nbsp;&nbsp;";
 
                             var tags = item.tags;
                             for (var j = 0; j < tags.length; j++) {
-                                appendHtml += "&nbsp;&nbsp;<a href='<%=contextPath%>/archive/tag/" + tags[j].id + "' class='label label-info m-label-info'>" + tags[j].name + "</a>";
+                                appendHtml += "<a href='<%=contextPath%>/archive/tag/" + tags[j].id + "' class='label label-info m-label-info' style='margin-left: 4px;'>" + tags[j].name + "</a>";
                             }
 
-                            var isUserLogined = $('#isUserLogined').val();
-                            if (isUserLogined.length > 0) {
-                                appendHtml += "<span class='pull-right'><a href='#' data-toggle='modal' data-target='#modal-delete' data-id='" + item.id + "'>删除</a></span>";
-                                appendHtml += "<span class='pull-right m-pull-right'><a href='#' data-toggle='modal' data-target='#modal-edit' data-id='" + item.id + "'>编辑</a></span>";
-                            }
+//                            var isUserLogined = $('#isUserLogined').val();
+//                            if (isUserLogined.length > 0) {
+//                                appendHtml += "<span class='pull-right'><a href='#' data-toggle='modal' data-target='#modal-delete' data-id='" + item.id + "'>删除</a></span>";
+//                                appendHtml += "<span class='pull-right m-pull-right'><a href='#' data-toggle='modal' data-target='#modal-edit' data-id='" + item.id + "'>编辑</a></span>";
+//                            }
 
                             appendHtml += "</span></span>";
                             appendHtml += "</div>";
                             // ========================================================
-                            appendHtml += "<div class='sub-article-body'>" + item.shortHtmlStr + "</div>";
-                            appendHtml += "<div>";
-                            appendHtml += "<a class='btn btn-success m-btn-success' href='<%=contextPath%>/articles/" + item.id + "' role='button'>阅读全文&nbsp;»</a>";
-                            appendHtml += "</div>";
-                            appendHtml += "</div></div>";
+
+                            appendHtml += "</div>"
+
                             $('#article-container').append(appendHtml);
                         });
 
-                        codeHighlighting();
-                        // 图片放大
-                        $('p img').zoomify();
+//                        codeHighlighting();
+//                        // 图片放大
+//                        $('p img').zoomify();
                         // 更新隐藏域当前页码
                         $('#currentPage').val(currentPage)
                     }
