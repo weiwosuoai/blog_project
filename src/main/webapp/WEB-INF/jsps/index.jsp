@@ -22,70 +22,8 @@
         <div class="row">
             <!-- 				左边栏 -->
             <!-- 				<div class="col-md-2"></div> -->
-            <!-- 中间栏 -->
-            <div class="col-md-9" role="main">
-                <div id="article-container">
-                    <c:forEach var="article" items="${articles}" varStatus="status">
-                        <c:choose>
-                            <c:when test="${status.first}">
-                                <!-- 文章缩略图 -->
-                                <div id="article-priview">
-                                    <div class="sub-article-header">
-                                        <!-- 文章标题 -->
-                                        <h1 class="article-title">
-                                            <a href="<%=contextPath%>/articles/${article.id}">${article.title}</a>
-                                        </h1>
-                                        <!-- 文章发表时间，分类 -->
-                                        <%@ include file="/includes/article-meta.jsp" %>
-                                        <!-- 文章缩略内容-->
-                                        <div class="sub-article-body">${article.shortHtmlStr}</div>
-
-                                        <div>
-                                            <a class="btn btn-success m-btn-success"
-                                               href="<%=contextPath%>/articles/${article.id}"
-                                               role="button">阅读全文&nbsp;»</a>
-                                        </div>
-                                    </div>
-                                </div>
-                            </c:when>
-                            <c:otherwise>
-                                <div class="article-priview-next">
-                                    <div class="sub-article-header">
-
-                                        <!-- 文章标题 -->
-                                        <h1 class="article-title">
-                                            <a href="<%=contextPath%>/articles/${article.id}">${article.title}</a>
-                                        </h1>
-                                        <!-- 文章发表时间，分类 -->
-                                        <%@ include file="/includes/article-meta.jsp" %>
-                                        <!-- 文章缩略内容-->
-                                        <div class="sub-article-body">${article.shortHtmlStr}</div>
-
-                                        <div>
-                                            <a class="btn btn-success m-btn-success"
-                                               href="<%=contextPath%>/articles/${article.id}"
-                                               role="button">阅读全文&nbsp;»</a>
-                                        </div>
-                                    </div>
-                                </div>
-                            </c:otherwise>
-
-                        </c:choose>
-                    </c:forEach>
-                </div>
-
-                <input id="pageSize" type="hidden" name="pageSize" value="5">
-                <input id="currentPage" type="hidden" name="currentPage" value="1">
-                <input id="isUserLogined" type="hidden" value="${sessionScope.userid}">
-
-                <!-- loading more -->
-                <!-- 					<div> -->
-                <!-- 						<a class="btn btn-block load-more" -->
-                <!-- 							href="#" role="button">点击加载更多</a> -->
-                <!-- 					</div> -->
-            </div>
-            <!-- 右边栏 -->
-            <div class="col-md-3 right-col-md">
+            <!-- 左边栏 -->
+            <div class="col-md-3 left-col-md">
                 <div class="col-md-container">
 
                     <!-- profile -->
@@ -105,7 +43,7 @@
 
                     <%-- my favorite music --%>
                     <iframe frameborder="no" border="0" marginwidth="0"
-                            marginheight="0" width=231 height=86
+                            marginheight="0" width=243 height=86
                             src="//music.163.com/outchain/player?type=2&id=29567187&auto=2&height=66"
                             style="margin-left: -10px; margin-top: -15px;"></iframe>
 
@@ -133,9 +71,47 @@
                     </div>
 
                     <%-- weibo --%>
-                    <iframe width="100%" height="550" class="share_self"  frameborder="0" scrolling="no" src="http://widget.weibo.com/weiboshow/index.php?language=&width=0&height=550&fansRow=2&ptype=1&speed=0&skin=1&isTitle=1&noborder=1&isWeibo=1&isFans=1&uid=3932230692&verifier=9cd40337&dpc=1"></iframe>
+                    <iframe width="100%" height="550" class="share_self" frameborder="0" scrolling="no"
+                            src="http://widget.weibo.com/weiboshow/index.php?language=&width=0&height=550&fansRow=2&ptype=1&speed=0&skin=1&isTitle=1&noborder=1&isWeibo=1&isFans=1&uid=3932230692&verifier=9cd40337&dpc=1"></iframe>
                 </div>
             </div>
+            <!-- 右边栏 -->
+            <div class="col-md-9">
+                <div id="article-container">
+                    <c:forEach var="article" items="${articles}" varStatus="status">
+                        <div class="article-priview">
+                            <div class="sub-article-header">
+
+                                <!-- 文章标题 -->
+                                <h1 class="article-title">
+                                    <a href="<%=contextPath%>/articles/${article.id}">${article.title}</a>
+                                </h1>
+                                <!-- 文章缩略内容-->
+                                <div class="sub-article-body">${article.shortHtmlStr}</div>
+                                <!-- 文章发表时间，分类 -->
+                                <%@ include file="/includes/article-meta-index.jsp" %>
+
+                                <%--<div>--%>
+                                    <%--<a class="btn btn-success m-btn-success"--%>
+                                       <%--href="<%=contextPath%>/articles/${article.id}"--%>
+                                       <%--role="button">阅读全文&nbsp;»</a>--%>
+                                <%--</div>--%>
+                            </div>
+                        </div>
+                    </c:forEach>
+                </div>
+
+                <input id="pageSize" type="hidden" name="pageSize" value="10">
+                <input id="currentPage" type="hidden" name="currentPage" value="1">
+                <input id="isUserLogined" type="hidden" value="${sessionScope.userid}">
+
+                <!-- loading more -->
+                <!-- 					<div> -->
+                <!-- 						<a class="btn btn-block load-more" -->
+                <!-- 							href="#" role="button">点击加载更多</a> -->
+                <!-- 					</div> -->
+            </div>
+
 
             <%-- back to top --%>
             <a class="to-top" data-toggle="tooltip" data-placement="left" title="回到顶部">
@@ -144,7 +120,7 @@
 
             <%-- 引入的 modal（包括文字编辑、删除的 modal） --%>
             <%@ include file="/includes/modal-article-edit.jsp" %>
-            <%@ include file="/includes/modal-article-delete.jsp"%>
+            <%@ include file="/includes/modal-article-delete.jsp" %>
 
         </div>
     </div>
@@ -160,7 +136,7 @@
 <script src="<%=contextPath%>/js/zoomify.js"></script>
 <script src="<%=contextPath%>/js/nprogress.js"></script>
 <%@ include file="/includes/modal-article-edit-js.jsp" %>
-<%@ include file="/includes/modal-article-delete-js.jsp"%>
+<%@ include file="/includes/modal-article-delete-js.jsp" %>
 
 <script type="text/javascript">
     $(document).ready(function () {
@@ -256,7 +232,7 @@
                     datatype: "json",
                     success: function (data) {
                         $.each(data, function (i, item) {
-                            var appendHtml = "<div class='article-priview-next'>";
+                            var appendHtml = "<div class='article-priview'>";
                             appendHtml += "<div class='sub-article-header'>";
                             appendHtml += "<h1 class='article-title'>";
                             appendHtml += "<a href='<%=contextPath%>/articles/" + item.id + "'>" + item.title + "</a>";
@@ -331,7 +307,9 @@
     }
 
     // 页面内容全部加载完成后，设置进度条消失
-    $(window).load(function(){NProgress.done()});
+    $(window).load(function () {
+        NProgress.done()
+    });
 
 </script>
 </body>

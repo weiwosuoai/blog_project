@@ -13,8 +13,9 @@
     margin-bottom: 10px;
 }
 
-.article-priview-next {
-    margin-top: 80px;
+.article-priview {
+    padding: 12px 0 10px 0;
+    border-bottom: 1px solid #e4e6e8;
 }
 
 .nav-pagination {
@@ -22,8 +23,8 @@
 }
 
 .main .col-md-container {
-    padding-left: 24px;
-    /* 	padding-right: 12px; */
+    /*padding-left: 24px;*/
+     	padding-right: 12px;
 }
 
 .main .col-md-container a {
@@ -60,7 +61,7 @@
     padding: 5px 10px;
 }
 
-.right-col-md ul {
+.left-col-md ul {
     list-style: none;
     padding-left: 0;
     margin-bottom: 0;
