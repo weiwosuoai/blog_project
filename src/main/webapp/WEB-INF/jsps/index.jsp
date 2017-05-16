@@ -34,7 +34,7 @@
                                 <img alt="profile" class="no-border profile-img"
                                      src="/images/avatar.jpg">
 
-                                <h2>Allen Jiang</h2>
+                                <div class="user-name">Allen Jiang</div>
 
                                 <p>面朝大海,春暖花开</p>
                             </div>
@@ -43,7 +43,7 @@
 
                     <%-- my favorite music --%>
                     <iframe frameborder="no" border="0" marginwidth="0"
-                            marginheight="0" width=243 height=86
+                            marginheight="0" width=245 height=86
                             src="//music.163.com/outchain/player?type=2&id=29567187&auto=2&height=66"
                             style="margin-left: -10px; margin-top: -15px;"></iframe>
 
@@ -80,32 +80,45 @@
                 <div id="article-container">
                     <%--博文列表页头--%>
                     <div class="page-header m-page-header">
-                        <h2 class="page-header-title">博文列表</h2>
-                        <%-- 用户登录后，才会显示编辑超链接 --%>
-                        <%--TODO 编辑删除--%>
-                        <%--<c:if test="${sessionScope.userid != null}">--%>
-                        <%--<span class="pull-right">--%>
-                        <%--<a href="#" data-toggle="modal" data-target="#modal-delete" data-id="${article.id}">删除</a></span>--%>
-                        <%--<span class="pull-right m-pull-right">--%>
-                        <%--<a href="#" data-toggle="modal" data-target="#modal-edit" data-id="${article.id}">编辑</a></span>--%>
-                        <%--</c:if>--%>
+                        <h3 class="page-header-title">博文列表</h3>
                     </div>
                     <c:forEach var="article" items="${articles}" varStatus="status">
                         <div class="article-priview">
                             <div class="sub-article-header">
 
                                 <!-- 文章标题 -->
-                                        <span class="article-title">
-                                            <span class="article-type">原</span>
-                                            <span><a href="<%=contextPath%>/articles/${article.id}">${article.title}</a></span>
-                                            <span class="pull-right" style="color: #999; font-size: 13px;">
-                                               ${article.createTimeStr}
-                                            </span>
-                                        </span>
-                                <%--<!-- 文章缩略内容-->--%>
-                                <%--<div class="sub-article-body">${article.shortHtmlStr}</div>--%>
-                                <%--<!-- 文章发表时间，分类 -->--%>
-                                <%--<%@ include file="/includes/article-meta-index.jsp" %>--%>
+                                <div class="article-title">
+                                    <span class="article-type">原</span>
+                                    <span><a href="<%=contextPath%>/articles/${article.id}">${article.title}</a></span>
+                                        <%-- 用户登录后，才会显示编辑超链接 --%>
+                                    <c:if test="${sessionScope.userid != null}">
+                                        <div class="article-operate-container pull-right"
+                                             style=" margin-left: 10px;">
+                                                           <span>
+                                                       <a href="#" data-toggle="modal" data-target="#modal-delete"
+                                                          style="font-size: 13px;"
+                                                          data-id="${article.id}">删除</a></span>
+                                                       <span>
+                                                       <a href="#" data-toggle="modal" data-target="#modal-edit"
+                                                          style="font-size: 13px;"
+                                                          data-id="${article.id}">编辑</a></span>
+                                        </div>
+                                    </c:if>
+                                </div>
+                                <!-- 文章缩略内容-->
+                                <div class="sub-article-body">${article.shortHtmlStr}</div>
+                                    <%--标签和时间--%>
+                                <div style="margin-top: 5px;">
+                                    <c:forEach var="tag" items="${article.tags}" varStatus="statusTag">
+                                        <a href='<%=contextPath%>/archive/tag/${tag.id}' style="margin-right: 3px;"
+                                           class="label label-info m-label-info">${tag.name}</a>
+                                    </c:forEach>
+                                    <div class="pull-right" style="color: #999; font-size: 12px;">
+                                            ${article.createTimeStr}
+                                    </div>
+                                </div>
+                                <!-- 文章发表时间，分类 -->
+                                    <%--<%@ include file="/includes/article-meta-index.jsp" %>--%>
 
                                     <%--<div>--%>
                                     <%--<a class="btn btn-success m-btn-success"--%>
@@ -119,7 +132,7 @@
                     </c:forEach>
                 </div>
 
-                <input id="pageSize" type="hidden" name="pageSize" value="20">
+                <input id="pageSize" type="hidden" name="pageSize" value="10">
                 <input id="currentPage" type="hidden" name="currentPage" value="1">
                 <input id="isUserLogined" type="hidden" value="${sessionScope.userid}">
 
@@ -164,19 +177,19 @@
         });
         NProgress.start();
         // 代码高亮
-        codeHighlighting();
+//        codeHighlighting();
 
         // ajax 异步获取文章存档信息
         $.ajax({
             type: "GET",
             async: true,
-            url: "<%=contextPath%>/archive/monthInfo",
+            url: "<%=contextPath%>/articles/month",
             datatype: "json",
             success: function (data) {
                 var html = '<ul>';
                 $.each(data, function (i, item) {
-                    html += "<li><a href='<%=contextPath%>/archive/"
-                            + item.yearMonth + "'>"
+                    html += "<li><a href='<%=contextPath%>/articles/"
+                            + item.year + "/" + item.month + "'>"
                             + item.yearMonth
                             + "&nbsp;<span style='color:#6a737c'>("
                             + item.nums + ")</span></a></li>";
@@ -191,7 +204,7 @@
         $.ajax({
             type: "GET",
             async: true,
-            url: "<%=contextPath%>/category_article_num",
+            url: "<%=contextPath%>/category/_article_num",
             datatype: "json",
             success: function (data) {
                 var html = '<ul>';
@@ -218,7 +231,7 @@
         });
 
         // 图片放大
-        $('p img').zoomify();
+//        $('p img').zoomify();
 
         // 回到顶部
         // 可定制选项
@@ -234,87 +247,87 @@
         $('[data-toggle="tooltip"]').tooltip()
 
         // 滚动监听,加载更多
-        $(window).scroll(function () {
+        <%--$(window).scroll(function () {--%>
 
-            if ($(document).scrollTop() >= $(document).height() - $(window).height()) {
-                // 加载更多 div 隐藏
-                // TODO
-                var pageSize = $('#pageSize').val();
-                var currentPage = parseInt($('#currentPage').val()) + 1;
+        <%--if ($(document).scrollTop() >= $(document).height() - $(window).height()) {--%>
+        <%--// 加载更多 div 隐藏--%>
+        <%--// TODO--%>
+        <%--var pageSize = $('#pageSize').val();--%>
+        <%--var currentPage = parseInt($('#currentPage').val()) + 1;--%>
 
-                // ajax 异步获取更多的文章信息
-                $.ajax({
-                    type: "GET",
-                    async: true,
-                    url: "<%=contextPath%>/index/more?pageSize=" + pageSize + "&currentPage=" + currentPage,
-                    datatype: "json",
-                    success: function (data) {
-                        $.each(data, function (i, item) {
-                            var appendHtml = "<div class='article-priview'>";
-                            appendHtml += "<div class='sub-article-header'>";
-                            appendHtml += "<span class='article-title'>";
-                            appendHtml += "<a href='<%=contextPath%>/articles/" + item.id + "'>" + item.title + "</a>";
-                            appendHtml += "</span>";
+        <%--// ajax 异步获取更多的文章信息--%>
+        <%--$.ajax({--%>
+        <%--type: "GET",--%>
+        <%--async: true,--%>
+        <%--url: "<%=contextPath%>/index/more?pageSize=" + pageSize + "&currentPage=" + currentPage,--%>
+        <%--datatype: "json",--%>
+        <%--success: function (data) {--%>
+        <%--$.each(data, function (i, item) {--%>
+        <%--var appendHtml = "<div class='article-priview'>";--%>
+        <%--appendHtml += "<div class='sub-article-header'>";--%>
+        <%--appendHtml += "<span class='article-title'>";--%>
+        <%--appendHtml += "<a href='<%=contextPath%>/articles/" + item.id + "'>" + item.title + "</a>";--%>
+        <%--appendHtml += "</span>";--%>
 
-                            appendHtml += "<div class='sub-article-body'>" + item.shortHtmlStr + "</div>";
-                            appendHtml += "</div>";
+        <%--appendHtml += "<div class='sub-article-body'>" + item.shortHtmlStr + "</div>";--%>
+        <%--appendHtml += "</div>";--%>
 
-                            // ========================= meta =========================
-                            appendHtml += "<div class='sub-article-meta' style='margin-top: 5px;'>";
-                            appendHtml += "<span style='margin-right: 2px;'><i class='glyphicon glyphicon-time'></i></span>";
-                            appendHtml += "<span class='sub-article-post-time'>" + item.createTimeStr + "</span>";
-                            appendHtml += "&nbsp;&nbsp;&nbsp;&nbsp; <span style='margin-right: 2px;'><i class='glyphicon glyphicon-th-list'></i></span> <span class='sub-article-category-item'>";
-                            if (item.category == 1) {
-                                appendHtml += "<a href='<%=contextPath%>/archive/javaweb'>Java</a>";
-                            } else if (item.category == 2) {
-                                appendHtml += "<a href='<%=contextPath%>/archive/android'>Android</a>";
-                            } else if (item.category == 3) {
-                                appendHtml += "<a href='<%=contextPath%>/archive/db'>DB</a>";
-                            }
-                            appendHtml += "&nbsp;&nbsp;&nbsp;&nbsp;<span><i class='glyphicon glyphicon-eye-open' style='margin-right: 3px;'></i>&nbsp;&nbsp;" + item.beViewdNum + "人浏览</span>";
-                            appendHtml += "&nbsp;&nbsp;&nbsp;&nbsp;<span><i class='glyphicon glyphicon-tags'></i>&nbsp;&nbsp;";
+        <%--// ========================= meta =========================--%>
+        <%--appendHtml += "<div class='sub-article-meta' style='margin-top: 5px;'>";--%>
+        <%--appendHtml += "<span style='margin-right: 2px;'><i class='glyphicon glyphicon-time'></i></span>";--%>
+        <%--appendHtml += "<span class='sub-article-post-time'>" + item.createTimeStr + "</span>";--%>
+        <%--appendHtml += "&nbsp;&nbsp;&nbsp;&nbsp; <span style='margin-right: 2px;'><i class='glyphicon glyphicon-th-list'></i></span> <span class='sub-article-category-item'>";--%>
+        <%--if (item.category == 1) {--%>
+        <%--appendHtml += "<a href='<%=contextPath%>/archive/javaweb'>Java</a>";--%>
+        <%--} else if (item.category == 2) {--%>
+        <%--appendHtml += "<a href='<%=contextPath%>/archive/android'>Android</a>";--%>
+        <%--} else if (item.category == 3) {--%>
+        <%--appendHtml += "<a href='<%=contextPath%>/archive/db'>DB</a>";--%>
+        <%--}--%>
+        <%--appendHtml += "&nbsp;&nbsp;&nbsp;&nbsp;<span><i class='glyphicon glyphicon-eye-open' style='margin-right: 3px;'></i>&nbsp;&nbsp;" + item.beViewdNum + "人浏览</span>";--%>
+        <%--appendHtml += "&nbsp;&nbsp;&nbsp;&nbsp;<span><i class='glyphicon glyphicon-tags'></i>&nbsp;&nbsp;";--%>
 
-                            var tags = item.tags;
-                            for (var j = 0; j < tags.length; j++) {
-                                appendHtml += "<a href='<%=contextPath%>/archive/tag/" + tags[j].id + "' class='label label-info m-label-info' style='margin-left: 4px;'>" + tags[j].name + "</a>";
-                            }
+        <%--var tags = item.tags;--%>
+        <%--for (var j = 0; j < tags.length; j++) {--%>
+        <%--appendHtml += "<a href='<%=contextPath%>/archive/tag/" + tags[j].id + "' class='label label-info m-label-info' style='margin-left: 4px;'>" + tags[j].name + "</a>";--%>
+        <%--}--%>
 
-//                            var isUserLogined = $('#isUserLogined').val();
-//                            if (isUserLogined.length > 0) {
-//                                appendHtml += "<span class='pull-right'><a href='#' data-toggle='modal' data-target='#modal-delete' data-id='" + item.id + "'>删除</a></span>";
-//                                appendHtml += "<span class='pull-right m-pull-right'><a href='#' data-toggle='modal' data-target='#modal-edit' data-id='" + item.id + "'>编辑</a></span>";
-//                            }
+        <%--//                            var isUserLogined = $('#isUserLogined').val();--%>
+        <%--//                            if (isUserLogined.length > 0) {--%>
+        <%--//                                appendHtml += "<span class='pull-right'><a href='#' data-toggle='modal' data-target='#modal-delete' data-id='" + item.id + "'>删除</a></span>";--%>
+        <%--//                                appendHtml += "<span class='pull-right m-pull-right'><a href='#' data-toggle='modal' data-target='#modal-edit' data-id='" + item.id + "'>编辑</a></span>";--%>
+        <%--//                            }--%>
 
-                            appendHtml += "</span></span>";
-                            appendHtml += "</div>";
-                            // ========================================================
+        <%--appendHtml += "</span></span>";--%>
+        <%--appendHtml += "</div>";--%>
+        <%--// ========================================================--%>
 
-                            appendHtml += "</div>"
+        <%--appendHtml += "</div>"--%>
 
-                            $('#article-container').append(appendHtml);
-                        });
+        <%--$('#article-container').append(appendHtml);--%>
+        <%--});--%>
 
-//                        codeHighlighting();
-//                        // 图片放大
-//                        $('p img').zoomify();
-                        // 更新隐藏域当前页码
-                        $('#currentPage').val(currentPage)
-                    }
-                });
+        <%--//                        codeHighlighting();--%>
+        <%--//                        // 图片放大--%>
+        <%--//                        $('p img').zoomify();--%>
+        <%--// 更新隐藏域当前页码--%>
+        <%--$('#currentPage').val(currentPage)--%>
+        <%--}--%>
+        <%--});--%>
 
 
-            }
-        });
+        <%--}--%>
+        <%--});--%>
 
-        // 富文本编辑器
-        $('#summernote').summernote({
-            height: 600, // set editor height
-            minHeight: null, // set minimum height of editor
-            maxHeight: null, // set maximum height of editor
-            focus: true, // set focus to editable area after initializing summernote
-            toolbar: [], // 去除工具栏
-            keyMap: {}
-        });
+//        // 富文本编辑器
+//        $('#summernote').summernote({
+//            height: 600, // set editor height
+//            minHeight: null, // set minimum height of editor
+//            maxHeight: null, // set maximum height of editor
+//            focus: true, // set focus to editable area after initializing summernote
+//            toolbar: [], // 去除工具栏
+//            keyMap: {}
+//        });
 
     });
 
