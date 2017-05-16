@@ -47,6 +47,12 @@ ALTER TABLE t_article ADD be_viewd_num INT NOT NULL DEFAULT 1 COMMENT '被浏览
 -- 文章表中添加标签字段 Create on 2017-05-15 by Allen.
 ALTER TABLE t_article ADD content TEXT NOT NULL COMMENT '文章内容';
 
+-- 删除 file_path,file_name,tag_ids,category 字段
+ALTER TABLE t_article DROP COLUMN file_path;
+ALTER TABLE t_article DROP COLUMN file_name;
+ALTER TABLE t_article DROP COLUMN tag_ids;
+ALTER TABLE t_article DROP COLUMN category;
+
 -- 分类表 Create on 2017-03-30 by Allen.
 DROP TABLE IF EXISTS t_category;
 CREATE TABLE t_category (

@@ -16,12 +16,6 @@ public class Article implements Serializable {
 
     private String title;
 
-    private Integer category;
-
-    private String fileName;
-
-    private String filePath;
-
     private Date createTime;
 
     private Date updateTime;
@@ -32,7 +26,7 @@ public class Article implements Serializable {
 
     private Integer beViewdNum;
 
-    private String tagIds;
+    private String content;
 
     public Integer getId() {
         return id;
@@ -48,30 +42,6 @@ public class Article implements Serializable {
 
     public void setTitle(String title) {
         this.title = title == null ? null : title.trim();
-    }
-
-    public Integer getCategory() {
-        return category;
-    }
-
-    public void setCategory(Integer category) {
-        this.category = category;
-    }
-
-    public String getFileName() {
-        return fileName;
-    }
-
-    public void setFileName(String fileName) {
-        this.fileName = fileName == null ? null : fileName.trim();
-    }
-
-    public String getFilePath() {
-        return filePath;
-    }
-
-    public void setFilePath(String filePath) {
-        this.filePath = filePath == null ? null : filePath.trim();
     }
 
     public Date getCreateTime() {
@@ -114,12 +84,11 @@ public class Article implements Serializable {
         this.beViewdNum = beViewdNum;
     }
 
-    public String getTagIds() {
-        return tagIds;
+    public String getContent() {
+        return content;
     }
 
-    public void setTagIds(String tagIds) {
-        this.tagIds = tagIds;
+    public void setContent(String content) {
+        this.content = content;
     }
-
 }

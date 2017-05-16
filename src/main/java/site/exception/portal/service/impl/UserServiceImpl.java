@@ -25,4 +25,8 @@ public class UserServiceImpl implements IUserService {
 		return userDao.selectByUser(user);
 	}
 
+	@Override
+	public User findByName(User user) {
+		return userDao.selectByName(user);
+	}
 }

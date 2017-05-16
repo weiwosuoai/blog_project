@@ -17,9 +17,13 @@ import org.springframework.web.multipart.MultipartFile;
 
 import com.github.rjeschke.txtmark.Processor;
 
+import site.exception.portal.dao.IArticleCategoryMapperDao;
 import site.exception.portal.dao.IArticleDao;
+import site.exception.portal.dao.IArticleTagMapperDao;
 import site.exception.portal.dao.ITagDao;
 import site.exception.portal.model.Article;
+import site.exception.portal.model.ArticleCategoryMapper;
+import site.exception.portal.model.ArticleTagMapper;
 import site.exception.portal.model.Tag;
 import site.exception.portal.model.vo.ArticleVo;
 import site.exception.portal.service.IArticleService;
@@ -35,63 +39,43 @@ public class ArticleServiceImpl implements IArticleService {
 	private IArticleDao articleDao;
 	@Resource
 	private ITagDao tagDao;
+	@Resource
+	private IArticleTagMapperDao iArticleTagMapperDao;
+	@Resource
+	private IArticleCategoryMapperDao iArticleCategoryMapperDao;
+
 
 	/**
 	 * 上传文章保存
 	 */
 	public int save(ArticleVo vo, Integer userId) {
-//		MultipartFile multipartFile = vo.getFiles().get(0);
-
-//		String fileName = multipartFile.getOriginalFilename();
-
-		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HHmmss");
-
-		String fileDirPath = File.separator + "opt" + File.separator
-				+ "mds" + File.separator + userId + File.separator
-				+ sdf.format(new Date());
-
 		try {
-			File fileDir = new File(fileDirPath);
-			if (!fileDir.exists()) {
-				fileDir.mkdirs();
-			}
-
-			String filePath = fileDirPath + File.separator + vo.getTitle() + ".md";
-			File file = new File(filePath);
-
-			if (!file.exists()) {
-				file.createNewFile();
-			}
-
-			FileUtil.writeString2File(filePath, vo.getContent());
-
+			// TODO 待添加事务
+			// 1.添加文章记录
 			Article article = new Article();
 			article.setTitle(vo.getTitle());
-			article.setCategory(vo.getCategory());
-			article.setUpdateTime(new Date());
-			article.setFileName(vo.getTitle());
-			article.setFilePath(filePath);
 			article.setCreateUserId(userId);
+			article.setContent(vo.getContent());
 
-			// 标签相关
-			StringBuilder sb = new StringBuilder();
+			articleDao.insert(article);
+
+			// 2.添加文章和分类的映射记录
+			ArticleCategoryMapper mapperAc = new ArticleCategoryMapper();
+			mapperAc.setArticleId(article.getId());
+			mapperAc.setCategoryId(vo.getCategory());
+			iArticleCategoryMapperDao.insert(mapperAc);
+
+			// 3.添加文章和标签的映射记录
+			ArticleTagMapper mapperAt = new ArticleTagMapper();
 			for (String tagId : vo.getPostTags()) {
-				sb.append(",").append(tagId);
+				mapperAt.setArticleId(article.getId());
+				mapperAt.setTagId(Integer.valueOf(tagId));
+				iArticleTagMapperDao.insert(mapperAt);
 			}
-			article.setTagIds(sb.toString().substring(1));
-			return articleDao.insert(article);
-
+			return 1;
 		} catch (Exception e) {
 			logger.error(e);
 		}
-
-//		File mdFile = new File(fileDir, vo.getTitle() + ".md");
-//		try {
-//			multipartFile.transferTo(mdFile);
-//		} catch (Exception e) {
-//			logger.info(e.getMessage());
-//		}
-
 		return 0;
 	}
 
@@ -106,24 +90,24 @@ public class ArticleServiceImpl implements IArticleService {
 	 * 根据文章 id 查找文章内容
 	 */
 	public ArticleVo findArticleContentById(Integer id) {
-		Article article = articleDao.selectByPrimaryKey(id);
-
-		File file = new File(article.getFilePath());
-
-		// 先判断文件是否存在
-		if (file.exists()) {
-			try {
-				String mdContent = FileUtil.readFile(article.getFilePath());
-
-				ArticleVo vo = new ArticleVo();
-				vo.setContent(mdContent);
-
-				return vo;
-			} catch (Exception e) {
-				logger.info(e);
-			}
-
-		}
+//		Article article = articleDao.selectByPrimaryKey(id);
+//
+//		File file = new File(article.getFilePath());
+//
+//		// 先判断文件是否存在
+//		if (file.exists()) {
+//			try {
+//				String mdContent = FileUtil.readFile(article.getFilePath());
+//
+//				ArticleVo vo = new ArticleVo();
+//				vo.setContent(mdContent);
+//
+//				return vo;
+//			} catch (Exception e) {
+//				logger.info(e);
+//			}
+//
+//		}
 		return null;
 	}
 
@@ -134,7 +118,7 @@ public class ArticleServiceImpl implements IArticleService {
 		Article article = articleDao.selectByPrimaryKey(id);
 		try {
 			String mdStr = MarkdownUtil.htmlStr2MarkdownStr(htmlStr);
-			FileUtil.writeString2File(article.getFilePath(), mdStr);
+//			FileUtil.writeString2File(article.getFilePath(), mdStr);
 		} catch (Exception e) {
 			logger.error(e);
 		}
@@ -150,38 +134,38 @@ public class ArticleServiceImpl implements IArticleService {
 		if (article == null)
 			return null;
 
-		File mdFile = new File(article.getFilePath());
+//		File mdFile = new File(article.getFilePath());
 
 		String htmlStr;
 		ArticleVo vo;
 		try {
 			// 解析 md 文件
-			htmlStr = Processor.process(mdFile);
+			htmlStr = Processor.process(article.getContent());
 
 			vo = new ArticleVo();
 			vo.setId(article.getId());
 			vo.setTitle(article.getTitle());
-			vo.setCategory(article.getCategory());
+//			vo.setCategory(article.getCategory());
 			vo.setCreateTime(article.getCreateTime());
 			SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
 			vo.setCreateTimeStr(sdf.format(article.getCreateTime()));
 			vo.setHtmlStr(htmlStr);
 			vo.setBeViewdNum(article.getBeViewdNum());
 			// 组合标签信息
-			String tagIds = article.getTagIds();
-			if (!StringUtils.isEmpty(tagIds)) {
-				List<Tag> htmlTagList = new ArrayList<>();
-				String[] tagIdArr = article.getTagIds().split(",");
-				List<Tag> tagList = tagDao.getAll();
-				for (String tagId : tagIdArr) {
-					for (Tag tag : tagList) {
-						if (String.valueOf(tag.getId()).equals(tagId)) {
-							htmlTagList.add(tag);
-						}
-					}
-				}
-				vo.setTags(htmlTagList);
-			}
+//			String tagIds = article.getTagIds();
+//			if (!StringUtils.isEmpty(tagIds)) {
+//				List<Tag> htmlTagList = new ArrayList<>();
+//				String[] tagIdArr = article.getTagIds().split(",");
+//				List<Tag> tagList = tagDao.getAll();
+//				for (String tagId : tagIdArr) {
+//					for (Tag tag : tagList) {
+//						if (String.valueOf(tag.getId()).equals(tagId)) {
+//							htmlTagList.add(tag);
+//						}
+//					}
+//				}
+//				vo.setTags(htmlTagList);
+//			}
 
 			// 上一篇，下一篇文章信息
 			if (articleList.size() > 1) { // 存在有上下篇文章的情况
@@ -198,7 +182,7 @@ public class ArticleServiceImpl implements IArticleService {
 			}
 
 			return vo;
-		} catch (IOException e) {
+		} catch (Exception e) {
 			logger.error(e);
 		}
 		return null;
@@ -208,15 +192,7 @@ public class ArticleServiceImpl implements IArticleService {
 	 * 删除文章
 	 */
 	public int delete(Integer id) {
-		// 1.先删除文件
-		Article article = articleDao.selectByPrimaryKey(id);
-
-		File file = new File(article.getFilePath());
-		// TODO 目前只是删除 md 文件，若该父文件夹中只存在此 md 文件，则父文件夹一并删除
-		if (file.exists()) {
-			file.delete();
-		}
-		// 2.删除记录
+		// 删除记录
 		return articleDao.deleteByPrimaryKey(id);
 	}
 

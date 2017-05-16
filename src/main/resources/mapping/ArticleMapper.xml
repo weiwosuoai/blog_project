@@ -5,25 +5,22 @@
 	<resultMap id="BaseResultMap" type="site.exception.portal.model.vo.ArticleVo">
 		<id column="id" property="id" jdbcType="INTEGER" />
 		<result column="title" property="title" jdbcType="VARCHAR" />
-		<result column="category" property="category" jdbcType="INTEGER" />
-		<result column="file_name" property="fileName" jdbcType="VARCHAR" />
-		<result column="file_path" property="filePath" jdbcType="VARCHAR" />
 		<result column="create_time" property="createTime" jdbcType="TIMESTAMP" />
 		<result column="update_time" property="updateTime" jdbcType="TIMESTAMP" />
 		<result column="remark" property="remark" jdbcType="VARCHAR" />
 		<result column="create_user_id" property="createUserId"
 			jdbcType="INTEGER" />
 		<result column="be_viewd_num" property="beViewdNum" jdbcType="INTEGER" />
-		<result column="tag_ids" property="tagIds" jdbcType="VARCHAR" />
+		<result column="content" property="content" jdbcType="VARCHAR" />
 
 		<!-- ÒµÎñ×Ö¶Î -->
 		<result column="nums" property="nums" jdbcType="INTEGER" />
 		<result column="y_m" property="yearMonth" jdbcType="VARCHAR" />
 	</resultMap>
 	<sql id="Base_Column_List">
-		id, title, category, file_name, file_path, create_time,
+		id, title,create_time,
 		update_time,
-		remark, be_viewd_num, tag_ids
+		remark, be_viewd_num, content
 	</sql>
 	<select id="selectByPrimaryKey" resultMap="BaseResultMap"
 		parameterType="java.lang.Integer">
@@ -96,20 +93,17 @@
 		where id =
 		#{id,jdbcType=INTEGER}
 	</update>
-	<insert id="insert" parameterType="site.exception.portal.model.Article">
+	<insert id="insert" useGeneratedKeys="true" keyProperty="id" parameterType="site.exception.portal.model.Article">
 		insert into t_article (title,
-		category,
-		file_name, file_path, create_time,
+		create_time,
 		update_time, remark,
-		create_user_id, tag_ids)
+		create_user_id, content)
 		values (#{title,jdbcType=VARCHAR},
-		#{category,jdbcType=INTEGER},
-		#{fileName,jdbcType=VARCHAR},
-		#{filePath,jdbcType=VARCHAR},
 		NOW(),
-		#{updateTime,jdbcType=TIMESTAMP}, #{remark,jdbcType=VARCHAR},
+		NOW(), #{remark,jdbcType=VARCHAR},
 		#{createUserId,jdbcType=INTEGER},
-		#{tagIds,jdbcType=VARCHAR})
+		#{content,jdbcType=VARCHAR}
+		)
 	</insert>
 	<insert id="insertSelective" parameterType="site.exception.portal.model.Article">
 		insert into t_article
@@ -138,6 +132,9 @@
 			<if test="remark != null">
 				remark,
 			</if>
+			<if test="content != null">
+				content,
+			</if>
 		</trim>
 		<trim prefix="values (" suffix=")" suffixOverrides=",">
 			<if test="id != null">
@@ -164,6 +161,9 @@
 			<if test="remark != null">
 				#{remark,jdbcType=VARCHAR},
 			</if>
+			<if test="content != null">
+				#{content,jdbcType=VARCHAR},
+			</if>
 		</trim>
 	</insert>
 	<update id="updateByPrimaryKeySelective" parameterType="site.exception.portal.model.Article">
@@ -189,6 +189,9 @@
 			</if>
 			<if test="remark != null">
 				remark = #{remark,jdbcType=VARCHAR},
+			</if>
+			<if test="content != null">
+				content = #{content,jdbcType=VARCHAR},
 			</if>
 		</set>
 		where id = #{id,jdbcType=INTEGER}
