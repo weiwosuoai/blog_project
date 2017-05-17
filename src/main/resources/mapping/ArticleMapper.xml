@@ -54,16 +54,17 @@
     </select>
 
     <select id="selectByCategory" resultMap="BaseResultMap"
-            parameterType="java.lang.Integer">
-		select id, create_time, title from t_article
-		WHERE
-		category = #{category,jdbcType=INTEGER} ORDER BY create_time DESC
+            parameterType="site.exception.portal.model.vo.ArticleVo">
+		select t1.* from
+		(select id, create_time, title from t_article where create_user_id = #{createUserId,jdbcType=INTEGER}) t1
+		left join t_article_category_mapper t2 on (t1.id=t2.article_id)
+		where t2.category_id = #{category,jdbcType=INTEGER}
 	</select>
-    <select id="getByTag" resultMap="BaseResultMap"
-            parameterType="java.lang.Integer">
-		select id, create_time, title from t_article
-		WHERE
-		tag_ids LIKE concat('%', #{tagId,jdbcType=INTEGER} , '%') ORDER BY create_time DESC
+    <select id="getArticleListByTag" resultMap="BaseResultMap"
+            parameterType="site.exception.portal.model.vo.ArticleVo">
+		select t2.* from
+		(select article_id from t_article_tag_mapper where tag_id = #{tagId,jdbcType=INTEGER} ) t1
+		left join t_article t2 on (t1.article_id = t2.id) where create_user_id = #{createUserId,jdbcType=INTEGER}
 	</select>
     <select id="getByKey" resultMap="BaseResultMap"
             parameterType="java.lang.String">

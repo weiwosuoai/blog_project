@@ -25,14 +25,13 @@
         <div class="collapse navbar-collapse"
              id="bs-example-navbar-collapse-1">
             <ul class="nav navbar-nav" id="navbar">
-                <li id="index"><a href="<%=contextPath%>/index">首页 <span
+                <li id="index"><a href="<%=contextPath%>/index">首页<span
                         class="sr-only">(current)</span></a></li>
                 <li id="all"><a href="<%=contextPath%>/archive/all">存档</a></li>
-                <li id="java-web"><a href="<%=contextPath%>/archive/javaweb">Java
-                    Web</a></li>
-                <li id="android"><a href="<%=contextPath%>/archive/android">Android</a></li>
+                <%--<li id="question"><a href="<%=contextPath%>/question">问答</a></li>--%>
+                <%--<li id="wiki"><a href="<%=contextPath%>/wiki">Wiki</a></li>--%>
+                <li id="android"><a href="<%=contextPath%>/user">Users</a></li>
                 <!-- 				<li><a href="http://blog.csdn.net/weiwosuoai?viewmode=contents">CSDN</a></li> -->
-                <li id="about"><a href="<%=contextPath%>/about">关于</a></li>
             </ul>
             <form class="navbar-form navbar-left visible-lg-inline-block" action="<%=contextPath%>/archive">
                 <div class="input-group">

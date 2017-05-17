@@ -8,6 +8,9 @@
 		<result column="create_time" property="createTime" jdbcType="TIMESTAMP" />
 		<result column="update_time" property="updateTime" jdbcType="TIMESTAMP" />
 		<result column="remark" property="remark" jdbcType="VARCHAR" />
+
+		<!--业务字段-->
+
 	</resultMap>
 	<sql id="Base_Column_List">
 		id, name, create_time, update_time, remark
@@ -19,9 +22,34 @@
 		from t_tag
 		where id = #{id,jdbcType=INTEGER}
 	</select>
-	<select id="getAll" resultMap="BaseResultMap" parameterType="java.lang.Integer">
-		select id, name
-		from t_tag
+	<select id="selectByArticleId" resultMap="BaseResultMap"
+			parameterType="site.exception.portal.model.Article">
+		select t3.tag_id as id,t4.name from
+		(select t2.tag_id from
+		(select id from t_article where create_user_id = #{createUserId,jdbcType=INTEGER} and id = #{id,jdbcType=INTEGER}) t1
+		left join t_article_tag_mapper t2 on (t1.id=t2.article_id)) t3
+		left join t_tag t4 on (t3.tag_id=t4.id)
+	</select>
+	<select id="getAllTagsByUserId" resultMap="BaseResultMap" parameterType="java.lang.Integer">
+		SELECT
+		t4.name,
+		t3.tag_id as id
+		FROM
+		(
+		SELECT
+		t1.*, t2.tag_id
+		FROM
+		(
+		SELECT
+		id
+		FROM
+		t_article
+		WHERE
+		create_user_id = #{create_user_id,jdbcType=INTEGER}
+		)t1
+		LEFT JOIN t_article_tag_mapper t2 ON(t1.id = t2.article_id) group by tag_id
+		)t3
+		LEFT JOIN t_tag t4 ON(t3.tag_id = t4.id)
 	</select>
 	<delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
 		delete from t_tag

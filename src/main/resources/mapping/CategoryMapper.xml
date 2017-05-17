@@ -12,7 +12,7 @@
 		<result column="remark" property="remark" jdbcType="VARCHAR" />
 
 		<!-- 业务字段 -->
-		<result column="nums" property="nums" jdbcType="INTEGER" />
+		<result column="num" property="num" jdbcType="INTEGER" />
 	</resultMap>
 	<sql id="Base_Column_List">
 		id, name, create_time, update_time, create_user_id, remark
@@ -26,11 +26,11 @@
 	</select>
 	<select id="getArticleNumByCreateUserId" resultMap="BaseResultMap"
 		parameterType="java.lang.Integer">
-		select t.*, COUNT(category) nums from
-		(SELECT a.category,c.name,c.id from t_article a
-		left join t_category c on a.category = c.id
-		where c.create_user_id = #{create_user_id,jdbcType=INTEGER}) t GROUP BY
-		category
+		select t3.*,COUNT(t3.article_id) num from
+		(select t2.article_id, t1.name, t1.create_time, t1.id from
+		t_category t1 left join t_article_category_mapper t2
+		ON (t1.id = t2.category_id)
+		WHERE create_user_id = #{create_user_id,jdbcType=INTEGER}) t3 GROUP BY t3.name ORDER BY create_time DESC
 	</select>
 	<select id="getByCreateUserId" resultMap="BaseResultMap"
 		parameterType="java.lang.Integer">

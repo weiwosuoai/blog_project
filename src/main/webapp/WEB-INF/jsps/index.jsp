@@ -8,9 +8,6 @@
 
     <%@ include file="/includes/header.jsp" %>
     <link href="<%=contextPath%>/css/index.css" rel="stylesheet">
-    <link href="<%=contextPath%>/css/summernote.css" rel="stylesheet">
-    <link href="<%=contextPath%>/google-code-prettify/prettify.css" rel="stylesheet">
-    <link href="<%=contextPath%>/css/zoomify.css" rel="stylesheet">
 
 </head>
 <body>
@@ -110,7 +107,7 @@
                                     <%--标签和时间--%>
                                 <div style="margin-top: 5px;">
                                     <c:forEach var="tag" items="${article.tags}" varStatus="statusTag">
-                                        <a href='<%=contextPath%>/archive/tag/${tag.id}' style="margin-right: 3px;"
+                                        <a href='<%=contextPath%>/articles/tags/${tag.id}' style="margin-right: 3px;"
                                            class="label label-info m-label-info">${tag.name}</a>
                                     </c:forEach>
                                     <div class="pull-right" style="color: #999; font-size: 12px;">
@@ -176,8 +173,6 @@
             showSpinner: false
         });
         NProgress.start();
-        // 代码高亮
-//        codeHighlighting();
 
         // ajax 异步获取文章存档信息
         $.ajax({
@@ -204,13 +199,13 @@
         $.ajax({
             type: "GET",
             async: true,
-            url: "<%=contextPath%>/category/_article_num",
+            url: "<%=contextPath%>/articles/category/num",
             datatype: "json",
             success: function (data) {
                 var html = '<ul>';
                 $.each(data, function (i, item) {
-                    html += "<li><a href='<%=contextPath%>/archive/category/" + item.id + "'>" + item.name
-                            + "&nbsp;<span style='color:#6a737c'>(" + item.nums + ")</span></a></li>";
+                    html += "<li><a href='<%=contextPath%>/articles/category/" + item.id + "'>" + item.name
+                            + "&nbsp;<span style='color:#6a737c'>(" + item.num + ")</span></a></li>";
                 });
                 html += "</ul>"
                 $('#category-num').html(html);
@@ -221,17 +216,14 @@
         $.ajax({
             type: "GET",
             async: true,
-            url: "<%=contextPath%>/tags",
+            url: "<%=contextPath%>/articles/tags",
             datatype: "json",
             success: function (data) {
                 $.each(data, function (i, item) {
-                    $('#tags').append("<a href='<%=contextPath%>/archive/tag/" + item.id + "' class='label label-info m-label-info' style='margin-right: 4px'>" + item.name + "</a>");
+                    $('#tags').append("<a href='<%=contextPath%>/articles/tags/" + item.id + "' class='label label-info m-label-info' style='margin-right: 4px'>" + item.name + "</a>");
                 });
             }
         });
-
-        // 图片放大
-//        $('p img').zoomify();
 
         // 回到顶部
         // 可定制选项
