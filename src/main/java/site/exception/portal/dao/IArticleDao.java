@@ -25,7 +25,7 @@ public interface IArticleDao {
 
     List<Article> selectAll();
     
-    List<Article> selectByCategory(Integer category);
+    List<Article> selectByCategory(ArticleVo vo);
     
     List<Article> getByKey(String key);
     
@@ -39,7 +39,7 @@ public interface IArticleDao {
     
     int articleViewdIncrementById(Integer id);
 
-	List<Article> getByTag(Integer tagId);
+	List<Article> getArticleListByTag(ArticleVo vo);
 
 	List<Article> findByPagination(Pagination<ArticleVo> pagination);
 }

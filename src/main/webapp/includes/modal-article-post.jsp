@@ -24,7 +24,7 @@
 					</div>
 					<div class="form-group">
 						<label>所属分类</label> <select class="form-control"
-							name="category" id="category">
+							name="category.id" id="category">
 <!-- 																<option value="5">Java</option> -->
 						</select>
 					</div>

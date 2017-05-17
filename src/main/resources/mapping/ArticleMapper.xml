@@ -58,7 +58,7 @@
 		select t1.* from
 		(select id, create_time, title from t_article where create_user_id = #{createUserId,jdbcType=INTEGER}) t1
 		left join t_article_category_mapper t2 on (t1.id=t2.article_id)
-		where t2.category_id = #{category,jdbcType=INTEGER}
+		where t2.category_id = #{category.id,jdbcType=INTEGER}
 	</select>
     <select id="getArticleListByTag" resultMap="BaseResultMap"
             parameterType="site.exception.portal.model.vo.ArticleVo">

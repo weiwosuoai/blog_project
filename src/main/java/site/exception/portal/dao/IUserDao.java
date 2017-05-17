@@ -4,6 +4,7 @@ import site.exception.portal.model.User;
 
 public interface IUserDao {
 	User selectByUser(User user);
+	User selectByName(User user);
     int deleteByPrimaryKey(Integer id);
 
     int insert(User record);

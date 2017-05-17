@@ -20,7 +20,7 @@ public class MarkdownUtil {
 	 * 获取字符串的缩略内容
 	 */
 	public static String parse2ShortStr(String content) {
-		int limit = 200;
+		int limit = 160;
 		if (content.length() >= limit) {
 			content = content.substring(0, limit);
 		}

@@ -51,6 +51,9 @@
 		)t3
 		LEFT JOIN t_tag t4 ON(t3.tag_id = t4.id)
 	</select>
+    <select id="getAll" resultMap="BaseResultMap">
+        select * from t_tag
+    </select>
 	<delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
 		delete from t_tag
 		where id = #{id,jdbcType=INTEGER}

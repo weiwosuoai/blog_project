@@ -4,17 +4,8 @@
 <div class="sub-article-meta">
     <span>发表于&nbsp;</span> <span class="sub-article-post-time"> ${article.createTimeStr}
 </span> &nbsp;&nbsp;&nbsp; <span>分类于&nbsp;</span> <span
-        class="sub-article-category-item"> <c:choose>
-    <c:when test="${article.category == 1}">
-        <a href="<%=contextPath%>/archive/javaweb">Java</a>
-    </c:when>
-    <c:when test="${article.category == 2}">
-        <a href="<%=contextPath%>/archive/android">Android</a>
-    </c:when>
-    <c:when test="${article.category == 3}">
-        <a href="<%=contextPath%>/archive/db">DB</a>
-    </c:when>
-</c:choose>
+        class="sub-article-category-item">
+        <a href="<%=contextPath%>/articles/category/${article.category.id}">${article.category.name}</a>
 		&nbsp;&nbsp;&nbsp;
 		<span><i class="glyphicon glyphicon-eye-open"></i>&nbsp;&nbsp;${article.beViewdNum}次浏览</span>
 		&nbsp;&nbsp;&nbsp;
