@@ -8,11 +8,17 @@
 
     <%@ include file="/includes/header.jsp" %>
     <link href="<%=contextPath%>/css/index.css" rel="stylesheet">
+    <link href="<%=contextPath%>/css/pagination.css" rel="stylesheet">
 
 </head>
 <body>
 <%-- 头部导航栏 --%>
 <%@ include file="/includes/nav-top.jsp" %>
+
+<input id="pageSize" type="hidden" name="pageSize" value="10">
+<input id="currentPage" type="hidden" name="currentPage" value="1">
+<input id="isUserLogined" type="hidden" value="${sessionScope.userid}">
+
 <div class="main">
     <input id="topNavType" type="hidden" value="${topNavType}">
     <div class="container">
@@ -39,10 +45,10 @@
                     </div>
 
                     <%-- my favorite music --%>
-                    <iframe frameborder="no" border="0" marginwidth="0"
-                            marginheight="0" width=245 height=86
-                            src="//music.163.com/outchain/player?type=2&id=29567187&auto=2&height=66"
-                            style="margin-left: -10px; margin-top: -15px;"></iframe>
+                    <%--<iframe frameborder="no" border="0" marginwidth="0"--%>
+                            <%--marginheight="0" width=245 height=86--%>
+                            <%--src="//music.163.com/outchain/player?type=2&id=29567187&auto=2&height=66"--%>
+                            <%--style="margin-left: -10px; margin-top: -15px;"></iframe>--%>
 
                     <div class="panel panel-default m-panel">
                         <div class="panel-heading m-panel-heading">文章存档</div>
@@ -79,18 +85,20 @@
                     <div class="page-header m-page-header">
                         <h3 class="page-header-title">博文列表</h3>
                     </div>
-                    <c:forEach var="article" items="${articles}" varStatus="status">
-                        <div class="article-priview">
-                            <div class="sub-article-header">
+                        <div id="data-container">
 
-                                <!-- 文章标题 -->
-                                <div class="article-title">
-                                    <span class="article-type">原</span>
-                                    <span><a href="<%=contextPath%>/articles/${article.id}">${article.title}</a></span>
-                                        <%-- 用户登录后，才会显示编辑超链接 --%>
-                                    <c:if test="${sessionScope.userid != null}">
-                                        <div class="article-operate-container pull-right"
-                                             style=" margin-left: 10px;">
+                            <c:forEach var="article" items="${articles}" varStatus="status">
+                                <div class="article-priview">
+                                    <div class="sub-article-header">
+
+                                        <!-- 文章标题 -->
+                                        <div class="article-title">
+                                            <span class="article-type">原</span>
+                                            <span><a href="<%=contextPath%>/articles/${article.id}">${article.title}</a></span>
+                                                <%-- 用户登录后，才会显示编辑超链接 --%>
+                                            <c:if test="${sessionScope.userid != null}">
+                                                <div class="article-operate-container pull-right"
+                                                     style=" margin-left: 10px;">
                                                            <span>
                                                        <a href="#" data-toggle="modal" data-target="#modal-delete"
                                                           style="font-size: 13px;"
@@ -99,39 +107,43 @@
                                                        <a href="#" data-toggle="modal" data-target="#modal-edit"
                                                           style="font-size: 13px;"
                                                           data-id="${article.id}">编辑</a></span>
+                                                </div>
+                                            </c:if>
                                         </div>
-                                    </c:if>
-                                </div>
-                                <!-- 文章缩略内容-->
-                                <div class="sub-article-body">${article.shortHtmlStr}</div>
-                                    <%--标签和时间--%>
-                                <div style="margin-top: 5px;">
-                                    <c:forEach var="tag" items="${article.tags}" varStatus="statusTag">
-                                        <a href='<%=contextPath%>/articles/tags/${tag.id}' style="margin-right: 3px;"
-                                           class="label label-info m-label-info">${tag.name}</a>
-                                    </c:forEach>
-                                    <div class="pull-right" style="color: #999; font-size: 12px;">
-                                            ${article.createTimeStr}
+                                        <!-- 文章缩略内容-->
+                                        <div class="sub-article-body">${article.shortHtmlStr}</div>
+                                            <%--标签和时间--%>
+                                        <div style="margin-top: 5px;">
+                                            <c:forEach var="tag" items="${article.tags}" varStatus="statusTag">
+                                                <a href='<%=contextPath%>/articles/tags/${tag.id}' style="margin-right: 3px;"
+                                                   class="label label-info m-label-info">${tag.name}</a>
+                                            </c:forEach>
+                                            <div class="pull-right" style="color: #999; font-size: 12px;">
+                                                    ${article.createTimeStr}
+                                            </div>
+                                        </div>
+                                        <!-- 文章发表时间，分类 -->
+                                            <%--<%@ include file="/includes/article-meta-index.jsp" %>--%>
+
+                                            <%--<div>--%>
+                                            <%--<a class="btn btn-success m-btn-success"--%>
+                                            <%--href="<%=contextPath%>/articles/${article.id}"--%>
+                                            <%--role="button">阅读全文&nbsp;»</a>--%>
+                                            <%--</div>--%>
                                     </div>
+
+
                                 </div>
-                                <!-- 文章发表时间，分类 -->
-                                    <%--<%@ include file="/includes/article-meta-index.jsp" %>--%>
-
-                                    <%--<div>--%>
-                                    <%--<a class="btn btn-success m-btn-success"--%>
-                                    <%--href="<%=contextPath%>/articles/${article.id}"--%>
-                                    <%--role="button">阅读全文&nbsp;»</a>--%>
-                                    <%--</div>--%>
-                            </div>
-
+                            </c:forEach>
+                        </div>
+                        <%--分页--%>
+                        <div id="pagination-container" style="margin-top: 30px;">
 
                         </div>
-                    </c:forEach>
+
                 </div>
 
-                <input id="pageSize" type="hidden" name="pageSize" value="10">
-                <input id="currentPage" type="hidden" name="currentPage" value="1">
-                <input id="isUserLogined" type="hidden" value="${sessionScope.userid}">
+
 
                 <!-- loading more -->
                 <!-- 					<div> -->
@@ -158,21 +170,92 @@
 <%@ include file="/includes/jquery-bootstrap-js.jsp" %>
 <script src="<%=contextPath%>/js/bootstrap-notify.js"></script>
 <%@ include file="/includes/top-nav-js.jsp" %>
-<%@ include file="/includes/datetimepicker-js.jsp" %>
-<script src="<%=contextPath%>/google-code-prettify/prettify.js"></script>
 <script src="<%=contextPath%>/js/jquery.toTop.min.js"></script>
-<script src="<%=contextPath%>/js/zoomify.js"></script>
 <script src="<%=contextPath%>/js/nprogress.js"></script>
+<script src="<%=contextPath%>/js/pagination.js"></script>
 <%@ include file="/includes/modal-article-edit-js.jsp" %>
 <%@ include file="/includes/modal-article-delete-js.jsp" %>
 
 <script type="text/javascript">
+    $(function () {
+        createPagination();
+    });
+
+    var container = $('#pagination-container');
+    function createPagination() {
+        var sources = function () {
+            var result = [];
+
+            for (var i = 1; i < 196; i++) {
+                result.push(i);
+            }
+
+            return result;
+        }();
+
+        var options = {
+            dataSource: sources,
+            pageNumber: 1,
+            showGoButton: true,
+            showGoInput: true,
+            showPrevious: false,
+            showNext: false,
+            callback: function (response, pagination) {
+//                var dataHtml = '<ul>';
+//
+//                $.each(response, function (index, item) {
+//                    dataHtml += '<li>' + item + '</li>';
+//                });
+//
+//                dataHtml += '</ul>';
+//
+//                container.prev().html(dataHtml);
+            }
+        };
+
+        //$.pagination(container, options);
+        container.addHook('afterGoButtonOnClick', function () {
+            getPageData();
+        });
+        // 点击上一页
+        container.addHook('afterPreviousOnClick', function () {
+            getPageData();
+        });
+        // 点击下一页
+        container.addHook('afterNextOnClick', function () {
+            getPageData();
+        });
+        // 点击下一页
+        container.addHook('afterPageOnClick', function () {
+            getPageData();
+        });
+
+        container.pagination(options);
+        return container;
+    }
+
+    function getPageData() {
+        // 获取当前选中页码
+        var currentPage = container.pagination('getSelectedPageNum');
+        var pageSize = $("#num").text();
+        location.href = "index?pageSize=" + pageSize + "&currPage=" + currentPage;
+    }
+
+
     $(document).ready(function () {
         // 顶部加载进度条
         NProgress.configure({
             showSpinner: false
         });
         NProgress.start();
+
+//        $('#pagination-container').pagination({
+//            dataSource: [1, 2, 3, 4, 5, 6, 7, ... , 195],
+//        callback: function(data, pagination) {
+//            var html = simpleTemplating(data);
+//            $('#data-container').html(html);
+//        }
+//    });
 
         // ajax 异步获取文章存档信息
         $.ajax({

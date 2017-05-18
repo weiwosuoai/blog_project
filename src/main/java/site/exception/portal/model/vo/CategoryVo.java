@@ -10,14 +10,13 @@ public class CategoryVo extends Category implements Serializable {
 	/**
 	 * 分类发表文章数量
 	 */
-	private Integer nums;
+	private Integer num;
 
-	public Integer getNums() {
-		return nums;
+	public Integer getNum() {
+		return num;
 	}
 
-	public void setNums(Integer nums) {
-		this.nums = nums;
+	public void setNum(Integer num) {
+		this.num = num;
 	}
-
 }

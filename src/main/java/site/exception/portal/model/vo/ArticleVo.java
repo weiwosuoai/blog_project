@@ -6,6 +6,7 @@ import java.util.List;
 import org.springframework.web.multipart.MultipartFile;
 
 import site.exception.portal.model.Article;
+import site.exception.portal.model.Category;
 import site.exception.portal.model.Tag;
 
 public class ArticleVo extends Article implements Serializable {
@@ -28,12 +29,22 @@ public class ArticleVo extends Article implements Serializable {
 	 * 文章创建时间格式化
 	 */
 	private String createTimeStr;
-	
+
 	/**
 	 * 文章所属年月
 	 */
 	private String yearMonth;
-	
+
+	/**
+	 * 文章所属年
+	 */
+	private String year;
+
+	/**
+	 * 文章所属月
+	 */
+	private String month;
+
 	/**
 	 * 每个月发表文章数量
 	 */
@@ -68,7 +79,33 @@ public class ArticleVo extends Article implements Serializable {
 	 * 下一篇文章
 	 */
 	private Article nextArticle;
-	
+
+	/**
+	 * 文章所属分类
+	 */
+	private Category category;
+
+	/**
+	 * 标签id
+	 */
+	private Integer tagId;
+
+	public Integer getTagId() {
+		return tagId;
+	}
+
+	public void setTagId(Integer tagId) {
+		this.tagId = tagId;
+	}
+
+	public Category getCategory() {
+		return category;
+	}
+
+	public void setCategory(Category category) {
+		this.category = category;
+	}
+
 	public List<MultipartFile> getFiles() {
 		return files;
 	}
@@ -101,12 +138,20 @@ public class ArticleVo extends Article implements Serializable {
 		this.nums = nums;
 	}
 
-	public String getYearMonth() {
-		return yearMonth;
+	public String getYear() {
+		return year;
 	}
 
-	public void setYearMonth(String yearMonth) {
-		this.yearMonth = yearMonth;
+	public void setYear(String year) {
+		this.year = year;
+	}
+
+	public String getMonth() {
+		return month;
+	}
+
+	public void setMonth(String month) {
+		this.month = month;
 	}
 
 	public String getContent() {
@@ -159,6 +204,14 @@ public class ArticleVo extends Article implements Serializable {
 
 	public Article getNextArticle() {
 		return nextArticle;
+	}
+
+	public String getYearMonth() {
+		return yearMonth;
+	}
+
+	public void setYearMonth(String yearMonth) {
+		this.yearMonth = yearMonth;
 	}
 
 	public void setNextArticle(Article nextArticle) {
