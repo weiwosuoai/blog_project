@@ -141,4 +141,10 @@
     text-decoration: none;
 }
 
+.page-header-title span {
+    color: #999;
+    font-weight: 400;
+    margin-left: 5px;
+}
+
 

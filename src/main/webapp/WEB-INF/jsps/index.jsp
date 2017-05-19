@@ -15,12 +15,13 @@
 <%-- 头部导航栏 --%>
 <%@ include file="/includes/nav-top.jsp" %>
 
-<input id="pageSize" type="hidden" name="pageSize" value="10">
-<input id="currentPage" type="hidden" name="currentPage" value="1">
+<input id="pageNum" type="hidden" name="pageNum" value="${pageInfo.pageNum}">
+<input id="pageSize" type="hidden" name="pageSize" value="${pageInfo.pageSize}">
+<input id="total" type="hidden" name="total" value="${pageInfo.total}">
 <input id="isUserLogined" type="hidden" value="${sessionScope.userid}">
+<input id="topNavType" type="hidden" value="${topNavType}">
 
 <div class="main">
-    <input id="topNavType" type="hidden" value="${topNavType}">
     <div class="container">
         <div class="row">
             <!-- 				左边栏 -->
@@ -83,11 +84,11 @@
                 <div id="article-container">
                     <%--博文列表页头--%>
                     <div class="page-header m-page-header">
-                        <h3 class="page-header-title">博文列表</h3>
+                        <h3 class="page-header-title">博文列表<span>(${pageInfo.total})</span></h3>
                     </div>
                         <div id="data-container">
 
-                            <c:forEach var="article" items="${articles}" varStatus="status">
+                            <c:forEach var="article" items="${pageInfo.list}" varStatus="status">
                                 <div class="article-priview">
                                     <div class="sub-article-header">
 
@@ -137,19 +138,10 @@
                             </c:forEach>
                         </div>
                         <%--分页--%>
-                        <div id="pagination-container" style="margin-top: 30px;">
+                        <div id="pagination-container" style="margin-top: 30px; margin-bottom: 30px;">
 
                         </div>
-
                 </div>
-
-
-
-                <!-- loading more -->
-                <!-- 					<div> -->
-                <!-- 						<a class="btn btn-block load-more" -->
-                <!-- 							href="#" role="button">点击加载更多</a> -->
-                <!-- 					</div> -->
             </div>
 
 
@@ -186,7 +178,7 @@
         var sources = function () {
             var result = [];
 
-            for (var i = 1; i < 196; i++) {
+            for (var i = 1; i < $('#total').val(); i++) {
                 result.push(i);
             }
 
@@ -195,23 +187,19 @@
 
         var options = {
             dataSource: sources,
-            pageNumber: 1,
-            showGoButton: true,
-            showGoInput: true,
-            showPrevious: false,
-            showNext: false,
+            pageNumber: $('#pageNum').val(),
+
+//            showGoButton: true,
+//            showGoInput: true,
+            showPrevious: true,
+            showNext: true,
+            showNavigator: true,
+            formatNavigator: "<span style='color: #000; font-size: 12px;'>&nbsp;共&nbsp;" + $('#total').val() + "&nbsp;篇博文</span>",
+            pageSize: $('#pageSize').val(),
             callback: function (response, pagination) {
-//                var dataHtml = '<ul>';
-//
-//                $.each(response, function (index, item) {
-//                    dataHtml += '<li>' + item + '</li>';
-//                });
-//
-//                dataHtml += '</ul>';
-//
-//                container.prev().html(dataHtml);
             }
         };
+        container.pagination(options);
 
         //$.pagination(container, options);
         container.addHook('afterGoButtonOnClick', function () {
@@ -230,17 +218,15 @@
             getPageData();
         });
 
-        container.pagination(options);
         return container;
     }
 
     function getPageData() {
         // 获取当前选中页码
-        var currentPage = container.pagination('getSelectedPageNum');
-        var pageSize = $("#num").text();
-        location.href = "index?pageSize=" + pageSize + "&currPage=" + currentPage;
+        var pageNum = container.pagination('getSelectedPageNum');
+        var pageSize = $('#pageSize').val();
+        location.href = "articles?pageNum=" + pageNum + "&pageSize=" + pageSize;
     }
-
 
     $(document).ready(function () {
         // 顶部加载进度条
@@ -248,14 +234,6 @@
             showSpinner: false
         });
         NProgress.start();
-
-//        $('#pagination-container').pagination({
-//            dataSource: [1, 2, 3, 4, 5, 6, 7, ... , 195],
-//        callback: function(data, pagination) {
-//            var html = simpleTemplating(data);
-//            $('#data-container').html(html);
-//        }
-//    });
 
         // ajax 异步获取文章存档信息
         $.ajax({
@@ -321,97 +299,14 @@
         });
         $('[data-toggle="tooltip"]').tooltip()
 
-        // 滚动监听,加载更多
-        <%--$(window).scroll(function () {--%>
-
-        <%--if ($(document).scrollTop() >= $(document).height() - $(window).height()) {--%>
-        <%--// 加载更多 div 隐藏--%>
-        <%--// TODO--%>
-        <%--var pageSize = $('#pageSize').val();--%>
-        <%--var currentPage = parseInt($('#currentPage').val()) + 1;--%>
-
-        <%--// ajax 异步获取更多的文章信息--%>
-        <%--$.ajax({--%>
-        <%--type: "GET",--%>
-        <%--async: true,--%>
-        <%--url: "<%=contextPath%>/index/more?pageSize=" + pageSize + "&currentPage=" + currentPage,--%>
-        <%--datatype: "json",--%>
-        <%--success: function (data) {--%>
-        <%--$.each(data, function (i, item) {--%>
-        <%--var appendHtml = "<div class='article-priview'>";--%>
-        <%--appendHtml += "<div class='sub-article-header'>";--%>
-        <%--appendHtml += "<span class='article-title'>";--%>
-        <%--appendHtml += "<a href='<%=contextPath%>/articles/" + item.id + "'>" + item.title + "</a>";--%>
-        <%--appendHtml += "</span>";--%>
-
-        <%--appendHtml += "<div class='sub-article-body'>" + item.shortHtmlStr + "</div>";--%>
-        <%--appendHtml += "</div>";--%>
-
-        <%--// ========================= meta =========================--%>
-        <%--appendHtml += "<div class='sub-article-meta' style='margin-top: 5px;'>";--%>
-        <%--appendHtml += "<span style='margin-right: 2px;'><i class='glyphicon glyphicon-time'></i></span>";--%>
-        <%--appendHtml += "<span class='sub-article-post-time'>" + item.createTimeStr + "</span>";--%>
-        <%--appendHtml += "&nbsp;&nbsp;&nbsp;&nbsp; <span style='margin-right: 2px;'><i class='glyphicon glyphicon-th-list'></i></span> <span class='sub-article-category-item'>";--%>
-        <%--if (item.category == 1) {--%>
-        <%--appendHtml += "<a href='<%=contextPath%>/archive/javaweb'>Java</a>";--%>
-        <%--} else if (item.category == 2) {--%>
-        <%--appendHtml += "<a href='<%=contextPath%>/archive/android'>Android</a>";--%>
-        <%--} else if (item.category == 3) {--%>
-        <%--appendHtml += "<a href='<%=contextPath%>/archive/db'>DB</a>";--%>
-        <%--}--%>
-        <%--appendHtml += "&nbsp;&nbsp;&nbsp;&nbsp;<span><i class='glyphicon glyphicon-eye-open' style='margin-right: 3px;'></i>&nbsp;&nbsp;" + item.beViewdNum + "人浏览</span>";--%>
-        <%--appendHtml += "&nbsp;&nbsp;&nbsp;&nbsp;<span><i class='glyphicon glyphicon-tags'></i>&nbsp;&nbsp;";--%>
-
-        <%--var tags = item.tags;--%>
-        <%--for (var j = 0; j < tags.length; j++) {--%>
-        <%--appendHtml += "<a href='<%=contextPath%>/archive/tag/" + tags[j].id + "' class='label label-info m-label-info' style='margin-left: 4px;'>" + tags[j].name + "</a>";--%>
-        <%--}--%>
-
-        <%--//                            var isUserLogined = $('#isUserLogined').val();--%>
-        <%--//                            if (isUserLogined.length > 0) {--%>
-        <%--//                                appendHtml += "<span class='pull-right'><a href='#' data-toggle='modal' data-target='#modal-delete' data-id='" + item.id + "'>删除</a></span>";--%>
-        <%--//                                appendHtml += "<span class='pull-right m-pull-right'><a href='#' data-toggle='modal' data-target='#modal-edit' data-id='" + item.id + "'>编辑</a></span>";--%>
-        <%--//                            }--%>
-
-        <%--appendHtml += "</span></span>";--%>
-        <%--appendHtml += "</div>";--%>
-        <%--// ========================================================--%>
-
-        <%--appendHtml += "</div>"--%>
-
-        <%--$('#article-container').append(appendHtml);--%>
-        <%--});--%>
-
-        <%--//                        codeHighlighting();--%>
-        <%--//                        // 图片放大--%>
-        <%--//                        $('p img').zoomify();--%>
-        <%--// 更新隐藏域当前页码--%>
-        <%--$('#currentPage').val(currentPage)--%>
-        <%--}--%>
-        <%--});--%>
-
-
-        <%--}--%>
-        <%--});--%>
-
-//        // 富文本编辑器
-//        $('#summernote').summernote({
-//            height: 600, // set editor height
-//            minHeight: null, // set minimum height of editor
-//            maxHeight: null, // set maximum height of editor
-//            focus: true, // set focus to editable area after initializing summernote
-//            toolbar: [], // 去除工具栏
-//            keyMap: {}
-//        });
-
     });
 
-    /** 代码高亮 **/
-    function codeHighlighting() {
-        // 代码高亮
-        $("pre").addClass("prettyprint");
-        prettyPrint();
-    }
+//    /** 代码高亮 **/
+//    function codeHighlighting() {
+//        // 代码高亮
+//        $("pre").addClass("prettyprint");
+//        prettyPrint();
+//    }
 
     // 页面内容全部加载完成后，设置进度条消失
     $(window).load(function () {

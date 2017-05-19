@@ -103,6 +103,12 @@
             <artifactId>mybatis-spring</artifactId>
             <version>1.2.2</version>
         </dependency>
+        <!-- mybatis 三剑客之 mybatis-pagehelper -->
+        <dependency>
+            <groupId>com.github.pagehelper</groupId>
+            <artifactId>pagehelper</artifactId>
+            <version>5.0.0</version>
+        </dependency>
         <!-- 导入 mysql 数据库链接 jar -->
         <dependency>
             <groupId>mysql</groupId>
@@ -179,6 +185,9 @@
                     <overwrite>true</overwrite>
                 </configuration>
             </plugin>
+
+
+
         </plugins>
     </build>
     <packaging>war</packaging>

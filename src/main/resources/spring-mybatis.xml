@@ -39,6 +39,21 @@
         <property name="dataSource" ref="dataSource"/>
         <!-- 自动扫描 mapping.xml 文件 -->
         <property name="mapperLocations" value="classpath:mapping/*.xml"/>
+
+        <!--mybatis 分页插件-->
+        <property name="typeAliasesPackage" value="com.isea533.mybatis.model"/>
+        <property name="plugins">
+            <array>
+                <bean class="com.github.pagehelper.PageInterceptor">
+                    <!-- 这里的几个配置主要演示如何使用，如果不理解，一定要去掉下面的配置 -->
+                    <property name="properties">
+                        <value>
+                            helperDialect=mysql
+                        </value>
+                    </property>
+                </bean>
+            </array>
+        </property>
     </bean>
 
     <!-- dao 接口所在包名，spring 会自动查找其下的类 -->
