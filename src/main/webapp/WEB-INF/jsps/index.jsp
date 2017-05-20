@@ -162,8 +162,8 @@
 <%@ include file="/includes/jquery-bootstrap-js.jsp" %>
 <script src="<%=contextPath%>/js/bootstrap-notify.js"></script>
 <%@ include file="/includes/top-nav-js.jsp" %>
+<%@ include file="/includes/top-progress.jsp" %>
 <script src="<%=contextPath%>/js/jquery.toTop.min.js"></script>
-<script src="<%=contextPath%>/js/nprogress.js"></script>
 <script src="<%=contextPath%>/js/pagination.js"></script>
 <%@ include file="/includes/modal-article-edit-js.jsp" %>
 <%@ include file="/includes/modal-article-delete-js.jsp" %>
@@ -229,11 +229,6 @@
     }
 
     $(document).ready(function () {
-        // 顶部加载进度条
-        NProgress.configure({
-            showSpinner: false
-        });
-        NProgress.start();
 
         // ajax 异步获取文章存档信息
         $.ajax({
@@ -308,10 +303,6 @@
 //        prettyPrint();
 //    }
 
-    // 页面内容全部加载完成后，设置进度条消失
-    $(window).load(function () {
-        NProgress.done()
-    });
 
 </script>
 </body>
