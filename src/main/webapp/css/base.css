@@ -107,22 +107,6 @@ a {
     margin-bottom: 40px;
 }
 
-.login-title {
-    text-align: center;
-}
-
-.login-title h2 {
-    margin-top: 0;
-}
-
-.login-btn {
-    margin-top: 20px;
-}
-
-.login-footer {
-    margin: 10px 0;
-}
-
 .m-btn-danger {
     color: #cb2431;
     background-color: #fafbfc;

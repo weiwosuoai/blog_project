@@ -1,0 +1,92 @@
+@CHARSET "UTF-8";
+
+.m-nav-tabs {
+    margin-top: 20px;
+}
+
+.m-nav-tabs a {
+    color: #848d95;
+}
+
+#login-title-container {
+    font-size: 20px;
+    margin-bottom: 30px;
+    padding-top: 15px;
+    text-align: center;
+    margin-top: 10px;
+}
+
+#login-form-container {
+    width: 345px;
+    margin: 0 auto;
+    padding: 30px;
+    border: 1px solid #e4e6e8;
+}
+
+.login-footer {
+    padding: 20px;
+    border: 1px solid #e4e6e8;
+    width: 345px;
+    margin: 0 auto;
+    background: #FFF;
+    margin-top: 20px;
+    margin-bottom: 100px;
+}
+
+.m-form-control {
+    border-radius: 0;
+}
+
+.m-form-control:focus {
+    /*   border-color: #66afe9; */
+    border-color: #07C;
+    outline: 0;
+    -webkit-box-shadow: none;
+    box-shadow: none;
+}
+
+.foget-pwd {
+    font-size: 12px;
+    margin-top: 5px;
+}
+
+.login-with {
+    text-align: center;
+}
+
+.login-with h2 {
+    margin-top: 0;
+}
+
+.login-btn {
+    margin-top: 10px;
+}
+
+.login-footer {
+    margin-top: 10px;
+}
+
+.or-container {
+    text-align: center;
+    margin: 0;
+    margin-top: -20px;
+    clear: both;
+    color: #6a737c;
+    /*font-variant: small-caps;*/
+}
+
+.or-hr {
+    margin-bottom: 0;
+    position: relative;
+    top: 35px;
+    height: 0;
+    border: 0;
+    border-top: 1px solid #e4e6e8;
+}
+
+#or {
+    display: inline-block;
+    position: relative;
+    padding: 10px;
+    background-color: #FFF;
+}
