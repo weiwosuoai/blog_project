@@ -119,7 +119,7 @@
 <script src="<%=contextPath%>/google-code-prettify/prettify.js"></script>
 <script src="<%=contextPath%>/js/jquery.toTop.min.js"></script>
 <script src="<%=contextPath%>/js/zoomify.js"></script>
-<script src="<%=contextPath%>/js/nprogress.js"></script>
+<%@ include file="/includes/top-progress.jsp" %>
 <script type="text/javascript" charset="utf-8"
         src="http://static.bshare.cn/b/buttonLite.js#style=-1&amp;uuid=&amp;pophcol=2&amp;lang=zh"></script>
 <script type="text/javascript" charset="utf-8" src="http://static.bshare.cn/b/bshareC0.js"></script>
@@ -128,13 +128,6 @@
 
 <script type="text/javascript">
     $(document).ready(function () {
-
-        // 顶部加载进度条
-        NProgress.configure({
-            showSpinner: false
-        });
-        NProgress.start();
-
         $("#toc").tocify({
             selectors: "h2, h3, h4",
             // 关闭页面扩展(body下面多余的空白页)
@@ -180,11 +173,6 @@
             toolbar: [],                 // 去除工具栏
             keyMap: {}
         });
-    });
-
-    // 页面内容全部加载完成后，设置进度条消失
-    $(window).load(function () {
-        NProgress.done()
     });
 
 </script>
