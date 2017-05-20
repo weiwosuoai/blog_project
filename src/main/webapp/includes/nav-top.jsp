@@ -16,8 +16,8 @@
             <a class="navbar-brand m-navbar-brand" href="<%=contextPath%>/index">
                 <%-- 				<img alt="江冰的博客" src="<%=contextPath%>/images/logo.png"> --%>
                 <span class="logo">Exception</span>
-            </a> <a class="navbar-brand" href="<%=contextPath%>/index">Allen's
-            Blog</a>
+            </a>
+            <a class="navbar-brand" href="<%=contextPath%>/index">Allen's Blog</a>
 
         </div>
 
@@ -25,12 +25,12 @@
         <div class="collapse navbar-collapse"
              id="bs-example-navbar-collapse-1">
             <ul class="nav navbar-nav" id="navbar">
-                <li id="index"><a href="<%=contextPath%>/index">首页<span
+                <li id="blogs"><a href="<%=contextPath%>/index">博客<span
                         class="sr-only">(current)</span></a></li>
                 <li id="all"><a href="<%=contextPath%>/archive/all">存档</a></li>
                 <%--<li id="question"><a href="<%=contextPath%>/question">问答</a></li>--%>
                 <%--<li id="wiki"><a href="<%=contextPath%>/wiki">Wiki</a></li>--%>
-                <li id="android"><a href="<%=contextPath%>/user">Users</a></li>
+                <li id="users"><a href="<%=contextPath%>/users/login">Users</a></li>
                 <!-- 				<li><a href="http://blog.csdn.net/weiwosuoai?viewmode=contents">CSDN</a></li> -->
             </ul>
             <form class="navbar-form navbar-left visible-lg-inline-block" action="<%=contextPath%>/archive">
@@ -48,8 +48,7 @@
                 <c:choose>
                     <c:when test="${sessionScope.userid == null}">
                         <!-- 超链接只能是 GET 方式请求 -->
-                        <li><a id="modal_login" href="<%=contextPath%>/users/login" data-toggle="modal"
-                               data-target="#modal-login" style="color: #07C; margin-right: 5px;">登录</a></li>
+                        <li><a id="modal_login" href="<%=contextPath%>/users/login" style="color: #07C; margin-right: 5px;">登录</a></li>
                         <!-- <li><a href="#">注册</a></li> -->
                     </c:when>
                     <c:otherwise>
@@ -63,15 +62,14 @@
                     <i class="glyphicon glyphicon-pencil" style="margin-right: 3px;"></i>写博客</a>
 
                 <%--<a id="modal_login" href="<%=contextPath%>/users/write" data-toggle="modal"--%>
-                   <%--data-target="#modal-login" class="btn btn-success pull-right btn-article-post">--%>
-                    <%--<i class="glyphicon glyphicon-pencil" style="margin-right: 3px;"></i>写博客</a>--%>
+                <%--data-target="#modal-login" class="btn btn-success pull-right btn-article-post">--%>
+                <%--<i class="glyphicon glyphicon-pencil" style="margin-right: 3px;"></i>写博客</a>--%>
 
             </ul>
-
         </div>
         <!-- /.navbar-collapse -->
     </div>
     <!-- /.container-fluid -->
 </nav>
-<%@ include file="/includes/modal-login.jsp" %>
-
+<%--服务端返回的 navbar 标识，以便动态为 navbar 添加 active 属性--%>
+<input id="navbarRef" type="hidden" value="${navbarRef}">
