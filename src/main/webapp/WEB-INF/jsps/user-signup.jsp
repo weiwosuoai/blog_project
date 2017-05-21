@@ -42,8 +42,8 @@
                 <form action="<%=contextPath%>/users/login" method="post">
                     <div class="form-group">
                         <label>昵称</label>
-                        <input class="form-control m-form-control" placeholder="取一个专属于你个人的昵称吧"
-                               name="name">
+                        <input class="form-control m-form-control" placeholder="取一个专属于你个人的社区昵称吧"
+                               name="name" style="font-size: 12px;">
                     </div>
                     <div class="form-group">
                         <label>Email</label>
@@ -56,7 +56,10 @@
                                class="form-control m-form-control" placeholder="*******" name="password">
                     </div>
 
+                    <div class="pull-right">
                     <button type="submit" class="btn btn-success login-btn">注&nbsp;册</button>
+
+                    </div>
                 </form>
 
             </div>
