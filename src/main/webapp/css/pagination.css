@@ -41,7 +41,7 @@
     display: block;
     background: #fff;
     font-size: 12px;
-    color: #333;
+    color: #848d95;
     text-decoration: none;
     text-align: center
 }
@@ -79,7 +79,8 @@
 }
 
 .paginationjs .paginationjs-pages li:last-child > a {
-    border-radius: 0 3px 3px 0
+    border-radius: 0 3px 3px 0;
+    padding: 0 5px;
 }
 
 .paginationjs .paginationjs-go-input > input[type=text] {
