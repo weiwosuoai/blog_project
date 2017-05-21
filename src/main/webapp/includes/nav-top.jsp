@@ -25,6 +25,7 @@
         <div class="collapse navbar-collapse"
              id="bs-example-navbar-collapse-1">
             <ul class="nav navbar-nav" id="navbar">
+                <li id="questions"><a href="<%=contextPath%>/questions">问答</a></li>
                 <li id="blogs"><a href="<%=contextPath%>/index">博客<span
                         class="sr-only">(current)</span></a></li>
                 <li id="all"><a href="<%=contextPath%>/archive/all">存档</a></li>

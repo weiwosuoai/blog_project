@@ -43,5 +43,29 @@
 	margin-top: 10px;
 }
 
+p {
+	margin: 0 0 25px;
+	line-height: 1.9;
+}
+
+pre {
+	margin: 0 0 25px;
+}
+
+blockquote p {
+    margin: 0 0 10px;
+}
+
+.category-a {
+    text-decoration: none;
+    border-bottom: 1px solid #0c73c2;
+}
+
+.category-a:hover {
+    text-decoration: none;
+    border-bottom: 1px solid #0760a4;
+}
+
+
 
 
