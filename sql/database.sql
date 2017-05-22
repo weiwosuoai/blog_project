@@ -53,6 +53,11 @@ ALTER TABLE t_article DROP COLUMN file_name;
 ALTER TABLE t_article DROP COLUMN tag_ids;
 ALTER TABLE t_article DROP COLUMN category;
 
+-- 向用户表中添加 email 字段
+ALTER TABLE t_user ADD email VARCHAR(50) NOT NULL COMMENT '邮箱';
+-- 修改用户表中 name（昵称） 字段为唯一字段
+ALTER TABLE t_user ADD UNIQUE(name);
+
 -- 分类表 Create on 2017-03-30 by Allen.
 DROP TABLE IF EXISTS t_category;
 CREATE TABLE t_category (
