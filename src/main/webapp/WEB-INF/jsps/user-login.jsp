@@ -8,6 +8,7 @@
 
     <%@ include file="/includes/header.jsp" %>
     <link href="<%=contextPath%>/css/user.css" rel="stylesheet">
+    <link href="<%=contextPath%>/css/validetta.css" rel="stylesheet">
 
 </head>
 <body>
@@ -26,7 +27,7 @@
         </ul>
         <div id="myTabContent" class="tab-content">
             <%--描述--%>
-            <div id="login-title-container">exception 社区,一个干净简洁程序员社区</div>
+            <div id="login-title-container">exception 社区,一个干净简洁的程序员社区</div>
             <%--登录视图--%>
             <div id="login-form-container">
                 <div class="login-with">
@@ -38,11 +39,11 @@
                         <div id="or">使用 GitHub 登录 <br>或者</div>
                     </div>
                 </div>
-                <form action="<%=contextPath%>/users/login" method="post">
+                <form id="form" action="<%=contextPath%>/users/login" method="post">
                     <div class="form-group">
                         <label>Email</label>
-                        <input class="form-control m-form-control" placeholder="you@example.com"
-                               name="name">
+                        <input id="email" type="email" class="form-control m-form-control" placeholder="you@example.com"
+                               name="email">
                     </div>
                     <div class="form-group">
                         <label>密码</label>
@@ -51,7 +52,7 @@
                         <a class="pull-right foget-pwd" href="#">忘记密码?</a>
                     </div>
 
-                    <button type="submit" class="btn btn-success login-btn">登&nbsp;录</button>
+                    <button id="login" class="btn btn-success login-btn">登&nbsp;录</button>
                 </form>
 
             </div>
@@ -67,8 +68,70 @@
 
 <%@ include file="/includes/jquery-bootstrap-js.jsp" %>
 <%@ include file="/includes/top-nav-js.jsp" %>
-<%@ include file="/includes/datetimepicker-js.jsp" %>
 <%@ include file="/includes/top-progress.jsp" %>
+<%--<script src="<%=contextPath%>/js/jquery.validate.js"></script>--%>
+<script src="<%=contextPath%>/js/validetta.js"></script>
+<%--<script src="https://cdn.bootcss.com/jquery-validate/1.9.0/jquery.validate.js"></script>--%>
+<script type="text/javascript">
+    $(document).ready(function() {
+        $("#form").validetta();
+    });
+//    $(function(){
+//        $("#form").validate({
+//            rules: {
+//                email: "required"
+//            },
+//            messages: {
+//                email: "Email 格式不正确！"
+//            },
+//            submitHandler: function () {
+//                alert('success');
+//            }
+//
+//        });
+//    });
+//    $("#login").click(function() {
+//        $("#email").notify(
+//                "邮箱 或 密码 填写错误！",
+//                {
+//                    position: 'right',
+//                    className: 'error',
+//                }
+//        );
+//    });
+
+//jQuery(function ($) {
+//    $('form').validatr();
+//});
+
+    <%--email 失去焦点事件--%>
+    <%--$('#email').blur(function() {--%>
+        <%--// ajax 检查该邮箱是否注册--%>
+        <%--$.ajax({--%>
+            <%--type: "GET",--%>
+            <%--async: true,--%>
+            <%--url: "<%=contextPath%>/users/month",--%>
+            <%--datatype: "json",--%>
+            <%--success: function (data) {--%>
+                <%--var html = '<ul>';--%>
+                <%--$.each(data, function (i, item) {--%>
+                    <%--html += "<li><a href='<%=contextPath%>/articles/"--%>
+                            <%--+ item.year + "/" + item.month + "'>"--%>
+                            <%--+ item.yearMonth--%>
+                            <%--+ "&nbsp;<span style='color:#6a737c'>("--%>
+                            <%--+ item.nums + ")</span></a></li>";--%>
+                <%--});--%>
+
+                <%--html += "</ul>"--%>
+                <%--$('#archive-month').html(html);--%>
+            <%--}--%>
+        <%--});--%>
+
+
+//    });
+
+
+</script>
 
 </body>
 </html>
