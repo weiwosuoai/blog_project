@@ -7,8 +7,8 @@
 <head>
 
     <%@ include file="/includes/header.jsp" %>
+    <link href="<%=contextPath%>/css/validate/validate-head.css" rel="stylesheet">
     <link href="<%=contextPath%>/css/user.css" rel="stylesheet">
-    <link href="<%=contextPath%>/css/validetta.css" rel="stylesheet">
 
 </head>
 <body>
@@ -39,15 +39,15 @@
                         <div id="or">使用 GitHub 登录 <br>或者</div>
                     </div>
                 </div>
-                <form id="form" action="<%=contextPath%>/users/login" method="post">
-                    <div class="form-group">
+                <form id="form"  action="<%=contextPath%>/users/login" method="post">
+                    <div id="email-group" class="form-group">
                         <label>Email</label>
                         <input id="email" type="email" class="form-control m-form-control" placeholder="you@example.com"
                                name="email">
                     </div>
                     <div class="form-group">
                         <label>密码</label>
-                        <input type="password"
+                        <input id="password" type="password"
                                class="form-control m-form-control" placeholder="*******" name="password">
                         <a class="pull-right foget-pwd" href="#">忘记密码?</a>
                     </div>
@@ -67,71 +67,47 @@
 </div>
 
 <%@ include file="/includes/jquery-bootstrap-js.jsp" %>
+
 <%@ include file="/includes/top-nav-js.jsp" %>
 <%@ include file="/includes/top-progress.jsp" %>
-<%--<script src="<%=contextPath%>/js/jquery.validate.js"></script>--%>
-<script src="<%=contextPath%>/js/validetta.js"></script>
-<%--<script src="https://cdn.bootcss.com/jquery-validate/1.9.0/jquery.validate.js"></script>--%>
+<script src="<%=contextPath%>/js/jquery/validate/jquery.validate.js"></script>
+<script src="<%=contextPath%>/js/jquery/validate/messages_zh.js"></script>
+
 <script type="text/javascript">
-    $(document).ready(function() {
-        $("#form").validetta();
-    });
-//    $(function(){
-//        $("#form").validate({
-//            rules: {
-//                email: "required"
-//            },
-//            messages: {
-//                email: "Email 格式不正确！"
-//            },
-//            submitHandler: function () {
-//                alert('success');
-//            }
-//
-//        });
-//    });
-//    $("#login").click(function() {
-//        $("#email").notify(
-//                "邮箱 或 密码 填写错误！",
-//                {
-//                    position: 'right',
-//                    className: 'error',
-//                }
-//        );
-//    });
+        $(function(){
+            $("#form").validate({
+                rules: {
+                    email: {
+                        required: true,
+                        email: true
+                    },
+                    password: "required"
+                },
+                messages: {
+                },
+                submitHandler: function () {
+                    // ajax login
+                    $.ajax({
+                        type: "POST",
+                        async: true,
+                        url: "<%=contextPath%>/users/login",
+                        data: $('form').serialize(),
+                        success: function (data) {
+                            if (data && data.success == "true") {
+                                // 重定向到首页
+                                window.location.href = "/index";
+                            } else {
+                                // 显示错误消息
+                                $("#email").addClass("error");
+                                $("#password").addClass("error");
+                                $("#email-group").append("<div for='email' class='error'>邮箱 或 密码 填写错误，请重新登录</div>");
+                            }
+                        }
+                    });
+                }
 
-//jQuery(function ($) {
-//    $('form').validatr();
-//});
-
-    <%--email 失去焦点事件--%>
-    <%--$('#email').blur(function() {--%>
-        <%--// ajax 检查该邮箱是否注册--%>
-        <%--$.ajax({--%>
-            <%--type: "GET",--%>
-            <%--async: true,--%>
-            <%--url: "<%=contextPath%>/users/month",--%>
-            <%--datatype: "json",--%>
-            <%--success: function (data) {--%>
-                <%--var html = '<ul>';--%>
-                <%--$.each(data, function (i, item) {--%>
-                    <%--html += "<li><a href='<%=contextPath%>/articles/"--%>
-                            <%--+ item.year + "/" + item.month + "'>"--%>
-                            <%--+ item.yearMonth--%>
-                            <%--+ "&nbsp;<span style='color:#6a737c'>("--%>
-                            <%--+ item.nums + ")</span></a></li>";--%>
-                <%--});--%>
-
-                <%--html += "</ul>"--%>
-                <%--$('#archive-month').html(html);--%>
-            <%--}--%>
-        <%--});--%>
-
-
-//    });
-
-
+            });
+        });
 </script>
-
 </body>
 </html>

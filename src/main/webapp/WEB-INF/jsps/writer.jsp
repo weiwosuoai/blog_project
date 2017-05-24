@@ -58,29 +58,10 @@
 <script src="<%=contextPath%>/js/bootstrap-notify.js"></script>
 <%@ include file="/includes/modal-article-post.jsp" %>
 <%@ include file="/includes/modal-article-post-js.jsp" %>
-<script src="<%=contextPath%>/js/nprogress.js"></script>
+<%@ include file="/includes/top-progress.jsp" %>
 <script src="<%=contextPath%>/js/Markdown.Converter.js"></script>
 <script src="<%=contextPath%>/js/Markdown.Editor.js"></script>
 <script src="<%=contextPath%>/js/Markdown.Sanitizer.js"></script>
 
-
-<script type="text/javascript">
-    $(document).ready(function () {
-        // 顶部加载进度条
-        NProgress.configure({
-            showSpinner: false
-        });
-        NProgress.start();
-
-        var converter = Markdown.getSanitizingConverter();
-        var editor = new Markdown.Editor(converter);
-        editor.run();
-
-    });
-    // 页面内容全部加载完成后，设置进度条消失
-    $(window).load(function () {
-        NProgress.done()
-    });
-</script>
 </body>
 </html>

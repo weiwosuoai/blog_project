@@ -7,6 +7,7 @@
 <head>
 
     <%@ include file="/includes/header.jsp" %>
+    <link href="<%=contextPath%>/css/validate/validate-head.css" rel="stylesheet">
     <link href="<%=contextPath%>/css/user.css" rel="stylesheet">
 
 </head>
@@ -27,7 +28,7 @@
         </ul>
         <div id="myTabContent" class="tab-content">
             <%--描述--%>
-            <div id="login-title-container">来创建属于你的 exception 社区账号吧</div>
+            <div id="login-title-container">创建属于你的 exception 社区账号吧</div>
             <%--登录视图--%>
             <div id="login-form-container">
                 <div class="login-with">
@@ -39,29 +40,25 @@
                         <div id="or">使用 GitHub 注册 <br>或者</div>
                     </div>
                 </div>
-                <form action="<%=contextPath%>/users/login" method="post">
+                <form id="form" action="<%=contextPath%>/users/signup" method="post">
                     <div class="form-group">
                         <label>昵称</label>
-                        <input class="form-control m-form-control" placeholder="取一个专属于你个人的社区昵称吧"
-                               name="name" style="font-size: 12px;">
+                        <input id="name" class="form-control m-form-control" placeholder="取一个专属于你个人的社区昵称吧"
+                               name="name" style="font-size: 13px;">
                     </div>
                     <div class="form-group">
                         <label>Email</label>
-                        <input type="email" class="form-control m-form-control" placeholder="you@example.com"
-                               name="name">
+                        <input id="email" type="email" class="form-control m-form-control" placeholder="you@example.com"
+                               name="email">
                     </div>
                     <div class="form-group">
                         <label>密码</label>
-                        <input type="password"
+                        <input id="password" type="password"
                                class="form-control m-form-control" placeholder="*******" name="password">
                     </div>
 
-                    <div class="pull-right">
                     <button type="submit" class="btn btn-success login-btn">注&nbsp;册</button>
-
-                    </div>
                 </form>
-
             </div>
 
             <div class="login-footer">
@@ -77,6 +74,28 @@
 <%@ include file="/includes/top-nav-js.jsp" %>
 <%@ include file="/includes/datetimepicker-js.jsp" %>
 <%@ include file="/includes/top-progress.jsp" %>
+<script src="<%=contextPath%>/js/jquery/validate/jquery.validate.js"></script>
+<script src="<%=contextPath%>/js/jquery/validate/messages_zh.js"></script>
+<script type="text/javascript">
+    $(function(){
+        $("#form").validate({
+            rules: {
+                name: "required",
+                email: {
+                    required: true,
+                    email: true
+                },
+                password: "required"
+            },
+            messages: {
+            },
+            submitHandler: function () {
+                alert('注册功能暂时不开放！');
+            }
+
+        });
+    });
+</script>
 
 </body>
 </html>
