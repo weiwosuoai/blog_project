@@ -1,0 +1,78 @@
+/**********************************
+
+Name: cmxform Styles
+
+***********************************/
+form.cmxform {
+    width: 370px;
+    font-size: 1.0em;
+    color: #333;
+}
+
+form.cmxform legend {
+    padding-left: 0;
+}
+
+form.cmxform legend, form.cmxform label {
+    color: #333;
+}
+
+form.cmxform fieldset {
+    border: none;
+    border-top: 1px solid #C9DCA6;
+    background: url(../images/cmxform-fieldset.gif) left bottom repeat-x;
+    background-color: #F8FDEF;
+}
+
+form.cmxform fieldset fieldset {
+    background: none;
+}
+
+form.cmxform fieldset p, form.cmxform fieldset fieldset {
+    padding: 5px 10px 7px;
+    background: url(../images/cmxform-divider.gif) left bottom repeat-x;
+}
+
+form.cmxform label.error, label.error {
+    /* remove the next line when you have trouble in IE6 with labels in list */
+    color: #C04848;
+    font-style: italic
+}
+
+div.error {
+    z-index: 1;
+    display: none;
+    color: #FCB2B1;
+    background-color: #C04848;
+    text-align: left;
+    width: auto;
+    font-family: Arial,"Helvetica Neue",Helvetica,sans-serif;
+    font-size: 13px;
+    line-height: 1.3em;
+    color: rgb(255, 255, 255);
+    position: absolute;
+    top: 389.5px;
+    left: 933.5px;
+    display: block;
+    padding: 13px 15px;
+}
+
+input {
+    border: 1px solid black;
+}
+
+input.checkbox {
+    border: none
+}
+
+input:focus {
+    border: 1px solid black;
+}
+
+input.error {
+    border: 1px solid #C04848;
+}
+
+form.cmxform .gray * {
+    color: gray;
+}
