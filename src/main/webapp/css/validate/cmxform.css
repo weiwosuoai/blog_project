@@ -35,11 +35,6 @@ form.cmxform fieldset p, form.cmxform fieldset fieldset {
 
 form.cmxform label.error, label.error {
     /* remove the next line when you have trouble in IE6 with labels in list */
-    color: #C04848;
-    font-style: italic
-}
-
-div.error {
     z-index: 1;
     display: none;
     color: #FCB2B1;
@@ -56,6 +51,25 @@ div.error {
     display: block;
     padding: 13px 15px;
     margin-left: 10px;
+}
+
+div.error {
+    z-index: 1;
+    display: none;
+    color: #FCB2B1;
+    background-color: #C04848;
+    text-align: left;
+    width: auto;
+    font-family: Arial,"Helvetica Neue",Helvetica,sans-serif;
+    font-size: 13px;
+    line-height: 1.3em;
+    color: rgb(255, 255, 255);
+    position: absolute;
+    /*top: 389.5px;*/
+    left: 940px;
+    display: block;
+    padding: 13px 15px;
+    margin-left: 5px;
 }
 
 input {
