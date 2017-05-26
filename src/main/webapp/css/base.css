@@ -40,6 +40,14 @@ blockquote, p {
     padding: 0;
 }
 
+.navbar .container .exception-navbar-brand {
+    font-size: 26px;
+    padding-top: 12px;
+    padding-left: 10px;
+    color: #465C60;
+    font-family: Futura,Franklin Gothic Medium;
+}
+
 .main {
     padding-top: 60px;
 }
