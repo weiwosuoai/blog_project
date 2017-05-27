@@ -1,9 +1,7 @@
 @CHARSET "UTF-8";
 
 body {
-    font: 14px/1.7 "Helvetica Neue", Helvetica, Arial, "Hiragino Sans GB",
-    "Hiragino Sans GB W3", "WenQuanYi Micro Hei", "Microsoft YaHei UI",
-    "Microsoft YaHei", sans-serif;
+    font: 14px/1.7 -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
 }
 
 .m-container {
@@ -231,15 +229,16 @@ a {
 }
 
 .page-header-title {
-    font-weight: 700;
-    color: #3b4045;
-    font-size: 15px;
+    font-weight: 600;
+    color: #24292e;
+    font-size: 20px;
+    line-height: 1.5;
 }
 
 .m-page-header {
-    margin: 30px 0 0;
+    margin: 20px 0 0;
     padding-bottom: 0;
-    border-bottom: 1px solid #e4e6e8;
+    border-bottom: 1px solid #e1e4e8;
 }
 
 .main .container .article-type {
@@ -258,5 +257,9 @@ h2 {
     margin: 20px 0 20px;
     margin-top: 15px;
     border-bottom: 1px solid #eee;
+}
+
+.text-gray {
+    color: #586069;
 }
 
