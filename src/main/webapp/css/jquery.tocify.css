@@ -1,4 +1,5 @@
 /*
+ * 	目录插件
  * jquery.tocify.css 1.9.0
  * Author: @gregfranko
  */
@@ -8,7 +9,7 @@
 	width: 20%;
 	max-height: 90%;
 	overflow: auto;
-	margin-left: 2%;
+	margin-left: 3%;
 	position: fixed;
 	background-color: #f8f8f8;
 	margin-top: 20px;

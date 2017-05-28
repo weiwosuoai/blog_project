@@ -19,7 +19,7 @@ body {
     /*padding: 4px;*/
     line-height: 1.42857143;
     background-color: #fff;
-    border: 1px solid #ddd;
+    /*border: 1px solid #ddd;*/
     /*border-radius: 4px;*/
     -webkit-transition: all .2s ease-in-out;
     -o-transition: all .2s ease-in-out;
@@ -92,7 +92,7 @@ a {
     background-position: 0 -500px;
 }
 
-.sub-article-meta .m-pull-right {
+.author .m-pull-right {
     margin-right: 10px;
 }
 
@@ -263,3 +263,10 @@ h2 {
     color: #586069;
 }
 
+.margin-right5 {
+    margin-right: 5px;
+}
+
+.margin-right10 {
+    margin-right: 10px;
+}
