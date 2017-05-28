@@ -54,14 +54,19 @@
 </div>
 
 <%@ include file="/includes/jquery-bootstrap-js.jsp" %>
+<script src="<%=contextPath%>/js/Markdown.Converter.js"></script>
+<script src="<%=contextPath%>/js/Markdown.Editor.js"></script>
+<script src="<%=contextPath%>/js/Markdown.Sanitizer.js"></script>
 <%@ include file="/includes/top-nav-js.jsp" %>
 <script src="<%=contextPath%>/js/bootstrap-notify.js"></script>
 <%@ include file="/includes/modal-article-post.jsp" %>
 <%@ include file="/includes/modal-article-post-js.jsp" %>
 <%@ include file="/includes/top-progress.jsp" %>
-<script src="<%=contextPath%>/js/Markdown.Converter.js"></script>
-<script src="<%=contextPath%>/js/Markdown.Editor.js"></script>
-<script src="<%=contextPath%>/js/Markdown.Sanitizer.js"></script>
+<script type="text/javascript">
+    var converter = Markdown.getSanitizingConverter();
+    var editor = new Markdown.Editor(converter);
+    editor.run();
+</script>
 
 </body>
 </html>
