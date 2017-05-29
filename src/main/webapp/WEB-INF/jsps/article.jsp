@@ -12,17 +12,6 @@
           rel="stylesheet">
     <link href="<%=contextPath%>/css/summernote.css" rel="stylesheet">
     <link href="<%=contextPath%>/css/zoomify.css" rel="stylesheet">
-
-    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
-    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
-    <!--[if lt IE 9]>
-    <script src="https://cdn.bootcss.com/html5shiv/3.7.3/html5shiv.min.js"></script>
-    <script src="https://cdn.bootcss.com/respond.js/1.4.2/respond.min.js"></script>
-    <![endif]-->
-
-    <!--       <script> -->
-
-    <!--       </script> -->
 </head>
 <body>
 
@@ -34,9 +23,9 @@
 
         <div class="row">
             <!-- 左边栏 -->
-            <!-- <div class="col-md-2"></div> -->
+            <div class="col-md-2"></div>
             <!-- 中间栏 -->
-            <div class="col-md-9" role="main">
+            <div class="col-md-8 blog-content">
                 <!-- 文章展示区域 -->
                 <div id="article-priview">
 
@@ -45,7 +34,65 @@
                         <!-- 文章标题 -->
                         <h1>${article.title}</h1>
                         <!-- 文章发表时间，分类 -->
-                        <%@ include file="/includes/article-meta.jsp" %>
+                        <div class="author">
+
+                            <a class="avatar" href="/u/be61ee50d630">
+                                <img src="http://localhost:8090/images/avatar.jpg">
+                            </a>
+
+                            <div class="info">
+                                <%--<span class="tag">签约作者</span>--%>
+                                <span class="name"><a href="/u/be61ee50d630">allen</a></span>
+                                <!-- 关注用户按钮 -->
+                                <%--<a class="btn btn-success follow"><i class="iconfont ic-follow"></i><span>关注</span></a>--%>
+                                <!-- 文章数据信息 -->
+                                <div class="meta">
+                                    <span class="publish-time margin-right10">
+                                        <i class="glyphicon glyphicon-calendar margin-right5"></i>${article.createTimeStr}
+                                    </span>
+                                    <span class="category margin-right10">
+                                        <i class="glyphicon glyphicon-folder-open margin-right5"></i>
+                                        <a href="<%=contextPath%>/articles/category/${article.category.id}">${article.category.name}</a>
+                                    </span>
+                                    <span class="views-count margin-right10">
+                                        <i class="glyphicon glyphicon-eye-open" style="margin-right: 2px;"></i>
+                                        ${article.beViewdNum}次浏览
+                                    </span>
+                                    <span class="tags">
+                                        <i class="glyphicon glyphicon-tags" style="margin-right: 2px;"></i>
+                                        		<c:forEach var="tag" items="${article.tags}" varStatus="statusTag">
+                                                    <a href='<%=contextPath%>/archive/tag/${tag.id}'
+                                                       class="label label-info m-label-info margin-left5">${tag.name}</a>
+                                                </c:forEach>
+                                    </span>
+                                    <%--<span class="likes-count">喜欢 52</span>--%>
+                                </div>
+                            </div>
+                            <%--<span>发表于&nbsp;</span> <span class="sub-article-post-time"> ${article.createTimeStr}--%>
+                            <%--</span> &nbsp;&nbsp;&nbsp;&nbsp; <span>分类于&nbsp;</span> <span--%>
+                            <%--class="sub-article-category-item">--%>
+                            <%--<a href="<%=contextPath%>/articles/category/${article.category.id}"--%>
+                            <%--class="category-a">${article.category.name}</a>--%>
+                            <%--&nbsp;&nbsp;&nbsp;&nbsp;--%>
+                            <%--<span><i class="glyphicon glyphicon-eye-open"></i>&nbsp;&nbsp;${article.beViewdNum}次浏览</span>--%>
+                            <%--&nbsp;&nbsp;&nbsp;&nbsp;--%>
+                            <%--<span><i class="glyphicon glyphicon-tags"></i>--%>
+                            <%--<c:forEach var="tag" items="${article.tags}" varStatus="statusTag">--%>
+                            <%--<a href='<%=contextPath%>/archive/tag/${tag.id}' class="label label-info m-label-info"--%>
+                            <%--style="margin-left: 5px;">${tag.name}</a>--%>
+                            <%--</c:forEach>--%>
+                            <%--<!-- 		&nbsp;<a class="label label-info m-label-info">android studio</a> -->--%>
+                            <%--</span>--%>
+                            <%--</span>--%>
+                            <%-- 用户登录后，才会显示编辑超链接 --%>
+                            <c:if test="${sessionScope.userid != null}">
+                            <span class="pull-right">
+                            <a href="#" data-toggle="modal" data-target="#modal-delete" data-id="${article.id}">删除</a></span>
+                            <span class="pull-right m-pull-right">
+                            <a href="#" data-toggle="modal" data-target="#modal-edit" data-id="${article.id}">编辑</a></span>
+                            </c:if>
+                        </div>
+
                         <!-- 文章具体内容 -->
                         <div class="sub-article-body">${article.htmlStr}</div>
                     </div>
@@ -72,27 +119,30 @@
 
                                 <a href="<%=contextPath%>/articles/${article.previousArticle.id}"
                                    style="border-radius: 0">
-                                    <i class="glyphicon glyphicon-menu-up" style="margin-right: 5px;"></i>
+                                    <i class="glyphicon glyphicon-chevron-up" style="margin-right: 5px;"></i>
                                     上一篇&nbsp;:&nbsp;${article.previousArticle.title}</a>
                             </li>
                         </c:if>
                         <c:if test="${not empty article.nextArticle}">
                             <li class="previous"><a href="<%=contextPath%>/articles/${article.nextArticle.id}"
                                                     style="border-radius: 0">
-                                <i class="glyphicon glyphicon-menu-down" style="margin-right: 5px;"></i>
+                                <i class="glyphicon glyphicon-chevron-down" style="margin-right: 5px;"></i>
 
                                 下一篇&nbsp;:&nbsp;${article.nextArticle.title}</a></li>
                         </c:if>
                     </ul>
                 </nav>
             </div>
+            <%--<div class="col-md-9" role="main">--%>
+
+            <%--</div>--%>
 
             <!-- 右边栏 -->
-            <div class="col-md-3" role="complementary">
-                <!-- 文章目录 -->
-                <div class="span3">
-                    <div id="toc"></div>
-                </div>
+            <div class="col-md-2" role="complementary">
+            <!-- 文章目录 -->
+            <div class="span3">
+            <div id="toc"></div>
+            </div>
             </div>
 
             <!-- 回到顶部 -->
@@ -113,7 +163,7 @@
 
 <%@ include file="/includes/jquery-bootstrap-js.jsp" %>
 <%@ include file="/includes/top-nav-js.jsp" %>
-<%@ include file="/includes/datetimepicker-js.jsp" %>
+<%--<%@ include file="/includes/datetimepicker-js.jsp" %>--%>
 <script src="<%=contextPath%>/js/jquery-ui-1.9.1.custom.min.js"></script>
 <script src="<%=contextPath%>/js/jquery.tocify.js"></script>
 <script src="<%=contextPath%>/google-code-prettify/prettify.js"></script>
@@ -165,14 +215,14 @@
         });
 
         // 富文本编辑器
-        $('#summernote').summernote({
-            height: 600,                 // set editor height
-            minHeight: null,             // set minimum height of editor
-            maxHeight: null,             // set maximum height of editor
-            focus: true,                 // set focus to editable area after initializing summernote
-            toolbar: [],                 // 去除工具栏
-            keyMap: {}
-        });
+//        $('#summernote').summernote({
+//            height: 600,                 // set editor height
+//            minHeight: null,             // set minimum height of editor
+//            maxHeight: null,             // set maximum height of editor
+//            focus: true,                 // set focus to editable area after initializing summernote
+//            toolbar: [],                 // 去除工具栏
+//            keyMap: {}
+//        });
     });
 
 </script>
