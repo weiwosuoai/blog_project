@@ -19,8 +19,8 @@
 <div class="main">
     <div class="container">
 
-        <div class="page-header">
-            <h1>用户榜</h1>
+        <div class="page-header m-page-header">
+            <h3 class="page-header-title">用户</h3>
         </div>
 
         <div class="page-query">
@@ -30,16 +30,16 @@
                 <tr>
                     <td>
                         <%--<input id="userfilter" name="userfilter" class="form-control m-form-control" type="text"--%>
-                               <%--value="" style="margin-left: 10px;">--%>
+                               <%--value="" style="m    argin-left: 10px;">--%>
 
                         <input id="total" type="hidden" name="total" value="${pageInfo.total}">
                         <form class="form-inline" action="/users">
                             <input id="pageNum" type="hidden" name="pageNum" value="${pageInfo.pageNum}">
                             <input id="pageSize" type="hidden" name="pageSize" value="${pageInfo.pageSize}">
                             <div class="input-group">
-                                <input id="search" name="search" type="text" value="${search}" class="form-control m-form-control" placeholder="搜索用户...">
+                                <input id="search" name="search" type="text" value="${search}" class="form-control" placeholder="搜索用户...">
                               <span class="input-group-btn">
-                                <button class="btn btn-default user-search" type="submit">search</button>
+                                <button class="btn btn-default" type="submit">搜索</button>
                               </span>
                             </div>
                         </form>
@@ -108,8 +108,10 @@
             </table>
             <%--分页--%>
             <div id="pagination-container" style="margin-top: 30px; margin-bottom: 30px;" class="pull-right">
-
             </div>
+
+            <%--<ul id="pagination-demo" class="pagination-sm"></ul>--%>
+
         </div>
 
     </div>
@@ -121,8 +123,21 @@
 <%@ include file="/includes/top-nav-js.jsp" %>
 <%@ include file="/includes/top-progress.jsp" %>
 <script src="<%=contextPath%>/js/pagination.js"></script>
+<%--<script src="<%=contextPath%>/js/jquery.twbsPagination.js.js"></script>--%>
 
 <script type="text/javascript">
+
+//    $(document).ready(function() {
+//        $('#pagination-demo').twbsPagination({
+//            totalPages: 35,
+//            visiblePages: 7,
+//            onPageClick: function (event, page) {
+//                $('#page-content').text('Page ' + page);
+//            }
+//        });
+//    });
+
+
 
     $(function () {
         createPagination();
