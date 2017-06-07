@@ -1,7 +1,7 @@
 @CHARSET "UTF-8";
 
 body {
-    font: 14px/1.7 -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+    font: 14px/1.7 "Helvetica Neue",Helvetica,"Hiragino Sans GB","Microsoft YaHei",Arial,sans-serif;
 }
 
 .m-container {
@@ -10,6 +10,36 @@ body {
 
 .main ul {
     font-size: 14px;
+}
+
+/*.btn {*/
+    /*position: relative;*/
+    /*display: inline-block;*/
+    /*padding: 6px 12px;*/
+    /*font-size: 14px;*/
+    /*font-weight: 600;*/
+    /*line-height: 20px;*/
+    /*white-space: nowrap;*/
+    /*vertical-align: middle;*/
+    /*cursor: pointer;*/
+    /*-webkit-user-select: none;*/
+    /*-moz-user-select: none;*/
+    /*-ms-user-select: none;*/
+    /*user-select: none;*/
+    /*background-repeat: repeat-x;*/
+    /*background-position: -1px -1px;*/
+    /*background-size: 110% 110%;*/
+    /*border: 1px solid rgba(27,31,35,0.2);*/
+    /*border-radius: 0.25em;*/
+    /*-webkit-appearance: none;*/
+    /*-moz-appearance: none;*/
+    /*appearance: none;*/
+/*}*/
+
+.btn-default {
+    color: #24292e;
+    background-color: #eff3f6;
+    background-image: linear-gradient(-180deg, #fafbfc 0%, #eff3f6 90%);
 }
 
 .main img {
@@ -31,7 +61,7 @@ body {
 }
 
 blockquote, p {
-    font-size: 15px;
+    font-size: 14px;
 }
 
 .navbar .container .m-navbar-brand {
@@ -77,7 +107,7 @@ blockquote, p {
 }
 
 a {
-    color: #0c73c2;
+    color: #0366d6;
 }
 
 .logo {
@@ -178,7 +208,7 @@ a {
     background-color: #E1ECF4;
     border-color: transparent;
     border-style: solid;
-    border-radius: 0;
+    border-radius: 2px;
     text-align: center;
     border-width: 1px;
     font-weight: normal;
@@ -198,6 +228,7 @@ a {
     background-color: #0095ff;
     border-color: #07c;
     box-shadow: inset 0 1px 0 #66bfff;
+    background-image: none;
 }
 
 .btn-search:hover {
@@ -229,7 +260,7 @@ a {
 }
 
 .page-header-title {
-    font-weight: 600;
+    font-weight: 500;
     color: #24292e;
     font-size: 20px;
     line-height: 1.5;
@@ -249,6 +280,7 @@ a {
     margin-right: 5px;
     font-size: 12px;
     line-height: 1.3;
+    font-weight: 500;
 }
 
 /* 自定义 h2,使其带分界线 */
@@ -267,6 +299,27 @@ h2 {
     margin-right: 5px;
 }
 
+.margin-right3 {
+    margin-right: 3px;
+}
+
 .margin-right10 {
     margin-right: 10px;
 }
+
+pre, code {
+    font-family: "Input Mono","PT Mono",Consolas,Monaco,Menlo,monospace;
+}
+
+.counter {
+    display: inline-block;
+    padding: 2px 5px;
+    font-size: 12px;
+    font-weight: 600;
+    line-height: 1;
+    color: #586069;
+    background-color: rgba(27,31,35,0.08);
+    border-radius: 20px;
+}
+
+

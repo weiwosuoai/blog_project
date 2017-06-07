@@ -7,7 +7,7 @@
 <head>
 
     <%@ include file="/includes/header.jsp" %>
-    <link href="<%=contextPath%>/css/user.css" rel="stylesheet">
+    <link href="<%=contextPath%>/css/user-login-signup.css" rel="stylesheet">
 
 </head>
 <body>

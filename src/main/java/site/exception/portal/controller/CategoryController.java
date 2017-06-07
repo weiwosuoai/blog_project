@@ -36,7 +36,6 @@ public class CategoryController {
 	 * 获取分类信息(包括分类中包含的文章信息)
 	 * 
 	 * @param model
-	 * @param session
 	 * @return
 	 */
 	@ResponseBody
@@ -47,17 +46,17 @@ public class CategoryController {
 	}
 	
 	/**
-	 * 获取分类信息  TODO 未来添加缓存
+	 * 获取分类信息
 	 * 
 	 * @param model
-	 * @param session
 	 * @return
 	 */
 	@ResponseBody
 	@RequestMapping(value = "/category", produces = "application/json", method = RequestMethod.GET)
 	public List<Category> info(Model model) {
-		logger.info("info");
 		return categoryService.getByCreateUserId(1);
 	}
+
+
 
 }

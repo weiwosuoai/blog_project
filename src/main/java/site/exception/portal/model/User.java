@@ -25,6 +25,12 @@ public class User implements Serializable {
 
     private String remark;
 
+    private String email;
+
+    private Integer sex;
+
+    private String address;
+
     public Integer getId() {
         return id;
     }
@@ -80,5 +86,28 @@ public class User implements Serializable {
 	public void setCreateUserId(Integer createUserId) {
 		this.createUserId = createUserId;
 	}
-    
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public Integer getSex() {
+        return sex;
+    }
+
+    public void setSex(Integer sex) {
+        this.sex = sex;
+    }
+
+    public String getAddress() {
+        return address;
+    }
+
+    public void setAddress(String address) {
+        this.address = address;
+    }
 }

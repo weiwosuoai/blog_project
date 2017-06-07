@@ -14,7 +14,7 @@
 </div>
 <%-- 登录表单 --%>
 <div class="modal-body m-modal-body-login">
-    <div class="login-title">
+    <div class="login-with">
         <h2>Exception</h2>
     </div>
     <form action="<%=contextPath%>/users/login" method="post">

@@ -17,7 +17,6 @@
 
 <div class="main">
     <div class="container">
-        <input id="topNavType" type="hidden" value="${topNavType}">
         <!-- 面包屑导航 -->
         <ol class="breadcrumb m-breadcrumb">
             <li>共发表&nbsp;<span class="article-total-no">${fn:length(articles)}</span>&nbsp;篇博文

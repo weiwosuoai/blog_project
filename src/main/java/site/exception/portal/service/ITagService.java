@@ -7,6 +7,7 @@ import site.exception.portal.model.Tag;
 
 public interface ITagService {
 	
+	List<Tag> getAllTagsByUserId(Integer id);
 	List<Tag> getAll();
-	
+
 }

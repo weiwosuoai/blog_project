@@ -10,21 +10,21 @@ import site.exception.portal.model.Category;
 import site.exception.portal.model.Tag;
 
 public class ArticleVo extends Article implements Serializable {
-	
+
 	private static final long serialVersionUID = -8232083665413751738L;
 
 	private List<MultipartFile> files;
-	
+
 	/**
 	 * 文章格式化后 html 内容
 	 */
 	private String htmlStr;
-	
+
 	/**
 	 * 首页文章缩略
 	 */
 	private String shortHtmlStr;
-	
+
 	/**
 	 * 文章创建时间格式化
 	 */
@@ -49,22 +49,22 @@ public class ArticleVo extends Article implements Serializable {
 	 * 每个月发表文章数量
 	 */
 	private Integer nums;
-	
+
 	/**
 	 * 文章内容
 	 */
 	private String content;
-	
+
 	/**
 	 * 文章标签
 	 */
 	private List<Tag> tags;
-	
+
 	/**
 	 * 文章标签(提交博客表单中的选中的 checkbox 值)
 	 */
 	private List<String> postTags;
-	
+
 	/**
 	 * 用户是否登录
 	 */
@@ -89,6 +89,19 @@ public class ArticleVo extends Article implements Serializable {
 	 * 标签id
 	 */
 	private Integer tagId;
+
+	/**
+	 * 文档中第一张图片
+	 */
+	private String firstImg;
+
+	public String getFirstImg() {
+		return firstImg;
+	}
+
+	public void setFirstImg(String firstImg) {
+		this.firstImg = firstImg;
+	}
 
 	public Integer getTagId() {
 		return tagId;

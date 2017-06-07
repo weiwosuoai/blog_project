@@ -31,16 +31,13 @@ public class TagController {
 	private ITagService tagService;
 
 	/**
-	 * 获取分类信息 TODO 未来添加缓存
-	 * 
-	 * @param model
-	 * @param session
+	 * 获取分类信息
+	 *
 	 * @return
 	 */
 	@ResponseBody
 	@RequestMapping(value = "/tags", produces = "application/json", method = RequestMethod.GET)
-	public List<Tag> list(Model model) {
-		logger.info("list");
+	public List<Tag> getAllTagsJson() {
 		return tagService.getAll();
 	}
 

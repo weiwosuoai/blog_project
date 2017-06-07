@@ -21,11 +21,13 @@ public class MarkdownUtil {
 	 */
 	public static String parse2ShortStr(String content) {
 		int limit = 160;
+		content += content.trim();
+
 		if (content.length() >= limit) {
-			content = content.substring(0, limit);
+			content = content.substring(0, limit) + " ...";
 		}
 		content = content.replaceAll(">", "").replaceAll("#", "");
-		return content.trim() + " ...";
+		return content;
 	}
 	
 	public static void main(String[] args) {

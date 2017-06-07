@@ -903,7 +903,7 @@
             	
                 this.element.find(headerClass + "," + subheaderClass).addClass("nav nav-list");
 
-                this.focusClass = "active";
+                this.focusClass = "m-active";
                 
             }
 

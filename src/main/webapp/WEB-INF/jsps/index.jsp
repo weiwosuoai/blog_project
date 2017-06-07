@@ -19,7 +19,6 @@
 <input id="pageSize" type="hidden" name="pageSize" value="${pageInfo.pageSize}">
 <input id="total" type="hidden" name="total" value="${pageInfo.total}">
 <input id="isUserLogined" type="hidden" value="${sessionScope.userid}">
-<input id="topNavType" type="hidden" value="${topNavType}">
 
 <div class="main">
     <div class="container">
@@ -27,123 +26,180 @@
             <!-- 				左边栏 -->
             <!-- 				<div class="col-md-2"></div> -->
             <!-- 左边栏 -->
-            <div class="col-md-3 left-col-md">
-                <div class="col-md-container">
-
-                    <!-- profile -->
-                    <div class="panel panel-default m-panel m-panel-margin">
-                        <!-- 						<div class="panel-heading">Panel heading without title</div> -->
-                        <div class="panel-body avatar-container">
-                            <div class="user">
-                                <img alt="profile" class="no-border profile-img"
-                                     src="/images/avatar.jpg">
-
-                                <div class="user-name">Allen Jiang</div>
-
-                                <p>面朝大海,春暖花开</p>
-                            </div>
-                        </div>
-                    </div>
-
-                    <%-- my favorite music --%>
-                    <%--<iframe frameborder="no" border="0" marginwidth="0"--%>
-                            <%--marginheight="0" width=245 height=86--%>
-                            <%--src="//music.163.com/outchain/player?type=2&id=29567187&auto=2&height=66"--%>
-                            <%--style="margin-left: -10px; margin-top: -15px;"></iframe>--%>
-
-                    <div class="panel panel-default m-panel">
-                        <div class="panel-heading m-panel-heading">文章存档</div>
-                        <div class="panel-body m-panel-body" id="archive-month">
-                            <!--<p><a href="#">2017年3月</a></p> -->
-                        </div>
-                    </div>
-
-                    <div class="panel panel-default m-panel">
-                        <div class="panel-heading m-panel-heading">文章分类</div>
-                        <div class="panel-body m-panel-body" id="category-num">
-                            <ul>
-                                <%--<li><a href="<%=contextPath%>/archive/javaweb">Jave Web</a></li> --%>
-                            </ul>
-                        </div>
-                    </div>
-
-                    <div class="panel panel-default m-panel">
-                        <div class="panel-heading m-panel-heading">标签</div>
-                        <div class="panel-body m-panel-body" id="tags">
-                            <!--<a class="label label-info m-label-info">工具</a> -->
-                        </div>
-                    </div>
-
-                    <%-- weibo --%>
-                    <iframe width="100%" height="550" class="share_self" frameborder="0" scrolling="no"
-                            src="http://widget.weibo.com/weiboshow/index.php?language=&width=0&height=550&fansRow=2&ptype=1&speed=0&skin=1&isTitle=1&noborder=1&isWeibo=1&isFans=1&uid=3932230692&verifier=9cd40337&dpc=1"></iframe>
-                </div>
-            </div>
-            <!-- 右边栏 -->
             <div class="col-md-9">
                 <div id="article-container">
                     <%--博文列表页头--%>
                     <div class="page-header m-page-header">
                         <h3 class="page-header-title">博文列表<span>(${pageInfo.total})</span></h3>
                     </div>
-                        <div id="data-container">
+                    <div id="data-container">
 
-                            <c:forEach var="article" items="${pageInfo.list}" varStatus="status">
-                                <div class="article-priview">
-                                    <div class="sub-article-header">
+                        <c:forEach var="article" items="${pageInfo.list}" varStatus="status">
+                            <div class="article-priview">
 
-                                        <!-- 文章标题 -->
-                                        <div class="article-title">
-                                            <span class="article-type">原</span>
-                                            <span><a href="<%=contextPath%>/articles/${article.id}">${article.title}</a></span>
-                                                <%-- 用户登录后，才会显示编辑超链接 --%>
-                                            <c:if test="${sessionScope.userid != null}">
-                                                <div class="article-operate-container pull-right"
-                                                     style=" margin-left: 10px;">
-                                                           <span>
-                                                       <a href="#" data-toggle="modal" data-target="#modal-delete"
-                                                          style="font-size: 13px;"
-                                                          data-id="${article.id}">删除</a></span>
-                                                       <span>
-                                                       <a href="#" data-toggle="modal" data-target="#modal-edit"
-                                                          style="font-size: 13px;"
-                                                          data-id="${article.id}">编辑</a></span>
+                                    <div class="body">
+
+                                        <c:choose>
+                                            <c:when test="${!empty article.firstImg}">
+                                            <div class="row">
+                                                <div class="col-xs-8 col-sm-9" style="padding-right: 0;">
+
+                                                    <div class="sub-article-header">
+
+                                                        <!-- 文章作者 -->
+                                                        <div class="author">
+                                                            <a href="#">
+                                                                <img src="/images/avatar.jpg" class="avatar" width="32" height="32">
+                                                            </a>
+
+                                                            <div class="name">
+                                                                <a href="#">allen</a><span>昨天 11:36</span>
+                                                            </div>
+
+                                                                <%--&lt;%&ndash; 用户登录后，才会显示编辑超链接 &ndash;%&gt;--%>
+                                                            <%--<c:if test="${sessionScope.userid != null}">--%>
+                                                                <%--<div class="article-operate-container pull-right"--%>
+                                                                     <%--style=" margin-left: 10px;">--%>
+                                                           <%--<span>--%>
+                                                       <%--<a href="#" data-toggle="modal" data-target="#modal-delete"--%>
+                                                          <%--style="font-size: 13px;"--%>
+                                                          <%--data-id="${article.id}">删除</a></span>--%>
+                                                       <%--<span>--%>
+                                                       <%--<a href="#" data-toggle="modal" data-target="#modal-edit"--%>
+                                                          <%--style="font-size: 13px;"--%>
+                                                          <%--data-id="${article.id}">编辑</a></span>--%>
+                                                                <%--</div>--%>
+                                                            <%--</c:if>--%>
+                                                        </div>
+
+                                                        <!-- 文章标题 -->
+                                                        <div class="article-title" style="margin-top: 10px;">
+                                                            <h3>
+
+                                                                <a href="<%=contextPath%>/articles/${article.id}">${article.title}</a>
+                                                                    <%--<span class="article-type">原</span>--%>
+                                                            </h3>
+
+                                                        </div>
+                                                        <!-- 文章缩略内容-->
+                                                        <p class="sub-article-body text-gray">${article.shortHtmlStr}</p>
+                                                            <%--标签和时间--%>
+                                                        <div style="margin-top: 10px;">
+                                                            <c:forEach var="tag" items="${article.tags}" varStatus="statusTag">
+                                                                <a href='<%=contextPath%>/articles/tags/${tag.id}'
+                                                                   style="margin-right: 3px;"
+                                                                   class="label label-info m-label-info">${tag.name}</a>
+                                                            </c:forEach>
+                                                                <%--<div class="pull-right" style="color: #999; font-size: 12px;">--%>
+                                                                <%--${article.createTimeStr}--%>
+                                                                <%--</div>--%>
+
+
+                                                        </div>
+                                                        <!-- 文章发表时间，分类 -->
+                                                            <%--<%@ include file="/includes/article-meta-index.jsp" %>--%>
+
+                                                            <%--<div>--%>
+                                                            <%--<a class="btn btn-success m-btn-success"--%>
+                                                            <%--href="<%=contextPath%>/articles/${article.id}"--%>
+                                                            <%--role="button">阅读全文&nbsp;»</a>--%>
+                                                            <%--</div>--%>
+                                                    </div>
                                                 </div>
-                                            </c:if>
-                                        </div>
-                                        <!-- 文章缩略内容-->
-                                        <div class="sub-article-body">${article.shortHtmlStr}</div>
-                                            <%--标签和时间--%>
-                                        <div style="margin-top: 5px;">
-                                            <c:forEach var="tag" items="${article.tags}" varStatus="statusTag">
-                                                <a href='<%=contextPath%>/articles/tags/${tag.id}' style="margin-right: 3px;"
-                                                   class="label label-info m-label-info">${tag.name}</a>
-                                            </c:forEach>
-                                            <div class="pull-right" style="color: #999; font-size: 12px;">
-                                                    ${article.createTimeStr}
-                                            </div>
-                                        </div>
-                                        <!-- 文章发表时间，分类 -->
-                                            <%--<%@ include file="/includes/article-meta-index.jsp" %>--%>
 
-                                            <%--<div>--%>
-                                            <%--<a class="btn btn-success m-btn-success"--%>
-                                            <%--href="<%=contextPath%>/articles/${article.id}"--%>
-                                            <%--role="button">阅读全文&nbsp;»</a>--%>
-                                            <%--</div>--%>
+                                                <div class="col-xs-4 col-sm-3 img-container" style="padding-left: 40px; padding-top: 29px;">
+                                                    <a class="wrap-img" href="/p/e3c971cfe414" target="_blank">
+                                                        <img src="${article.firstImg}"
+                                                             style="width: 140px;height: 110px;">
+                                                    </a>
+                                                </div>
+                                            </c:when>
+                                            <c:otherwise>
+                                                <div class="sub-article-header">
+
+                                                    <!-- 文章作者 -->
+                                                    <div class="author">
+                                                        <a href="/users/${article.createUserId}/detail">
+                                                            <img src="https://avatars.githubusercontent.com/u/4217102?v=3" class="avatar" width="32" height="32">
+                                                        </a>
+
+                                                        <div class="name">
+                                                            <a href="/users/${article.createUserId}/detail">allen</a><span>昨天 11:36</span>
+                                                        </div>
+
+                                                            <%--&lt;%&ndash; 用户登录后，才会显示编辑超链接 &ndash;%&gt;--%>
+                                                        <%--<c:if test="${sessionScope.userid != null}">--%>
+                                                            <%--<div class="article-operate-container pull-right"--%>
+                                                                 <%--style=" margin-left: 10px;">--%>
+                                                           <%--<span>--%>
+                                                       <%--<a href="#" data-toggle="modal" data-target="#modal-delete"--%>
+                                                          <%--style="font-size: 13px;"--%>
+                                                          <%--data-id="${article.id}">删除</a></span>--%>
+                                                       <%--<span>--%>
+                                                       <%--<a href="#" data-toggle="modal" data-target="#modal-edit"--%>
+                                                          <%--style="font-size: 13px;"--%>
+                                                          <%--data-id="${article.id}">编辑</a></span>--%>
+                                                            <%--</div>--%>
+                                                        <%--</c:if>--%>
+                                                    </div>
+
+                                                    <!-- 文章标题 -->
+                                                    <div class="article-title" style="margin-top: 10px;">
+                                                        <h3>
+
+                                                            <a href="<%=contextPath%>/articles/${article.id}">${article.title}</a>
+                                                                <%--<span class="article-type">原</span>--%>
+                                                        </h3>
+
+
+
+                                                    </div>
+                                                    <!-- 文章缩略内容-->
+                                                    <p class="sub-article-body text-gray">${article.shortHtmlStr}</p>
+                                                        <%--标签和时间--%>
+                                                    <div style="margin-top: 10px;">
+                                                        <c:forEach var="tag" items="${article.tags}" varStatus="statusTag">
+                                                            <a href='<%=contextPath%>/articles/tags/${tag.id}'
+                                                               style="margin-right: 3px;"
+                                                               class="label label-info m-label-info">${tag.name}</a>
+                                                        </c:forEach>
+                                                            <%--<div class="pull-right" style="color: #999; font-size: 12px;">--%>
+                                                            <%--${article.createTimeStr}--%>
+                                                            <%--</div>--%>
+
+
+                                                    </div>
+
+                                            </c:otherwise>
+                                        </c:choose>
                                     </div>
-
-
                                 </div>
-                            </c:forEach>
-                        </div>
-                        <%--分页--%>
-                        <div id="pagination-container" style="margin-top: 30px; margin-bottom: 30px;">
-
-                        </div>
+                            </div>
+                        </c:forEach>
+                    </div>
+                    <%--分页--%>
+                    <div id="pagination-container" style="margin-top: 30px; margin-bottom: 30px;" class="pull-right">
+                    </div>
                 </div>
             </div>
-
+            <!-- 右边栏 -->
+            <div class="col-md-3" style="margin-top: 24px;">
+                <div class="panel panel-default m-panel">
+                    <div class="panel-body category-container">
+                        <h2 class="category">博客分类</h2>
+                        <ul>
+                            <li><a href="#" class="category-filter-item">移动开发<span class="count">101,232</span></a></li>
+                            <li><a href="#" class="category-filter-item">前端开发<span class="count">1,322</span></a></li>
+                            <li><a href="#" class="category-filter-item">后端开发<span class="count">12</span></a></li>
+                            <li><a href="#" class="category-filter-item">基础知识<span class="count">32,432</span></a></li>
+                            <li><a href="#" class="category-filter-item">云计算&大数据<span class="count">12</span></a></li>
+                            <li><a href="#" class="category-filter-item">智能硬件&物联网<span class="count">546</span></a></li>
+                            <li><a href="#" class="category-filter-item">数据库<span class="count">78</span></a></li>
+                            <li><a href="#" class="category-filter-item">设计&产品&测试<span class="count">234</span></a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
 
             <%-- back to top --%>
             <a class="to-top" data-toggle="tooltip" data-placement="left" title="回到顶部">
@@ -178,7 +234,8 @@
         var sources = function () {
             var result = [];
 
-            for (var i = 1; i < $('#total').val(); i++) {
+            var total = Number($('#total').val()) + 1;
+            for (var i = 1; i < total; i++) {
                 result.push(i);
             }
 
@@ -295,14 +352,6 @@
         $('[data-toggle="tooltip"]').tooltip()
 
     });
-
-//    /** 代码高亮 **/
-//    function codeHighlighting() {
-//        // 代码高亮
-//        $("pre").addClass("prettyprint");
-//        prettyPrint();
-//    }
-
 
 </script>
 </body>

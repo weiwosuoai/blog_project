@@ -81,13 +81,13 @@
                     <td>
                         <div class="user-info user-hover">
                             <div class="user-gravatar">
-                                <a href="/articles">
-                                    <div class="gravatar-wrapper-48"><img src="/images/avatar.jpg" alt="" width="48"
+                                <a href="/users/${user.id}/detail">
+                                    <div class="gravatar-wrapper-48"><img src="https://avatars.githubusercontent.com/u/4217102?v=3" alt="" width="48"
                                                                           height="48"></div>
                                 </a>
                             </div>
                             <div class="user-details">
-                                <a href="/articles">${user.name}</a>
+                                <a href="/users/${user.id}/detail">${user.name}</a>
                                 <span class="user-location">${user.address}</span>
                                 <div class="-flair">
                                     <span class="reputation-score"
@@ -109,7 +109,6 @@
             <%--分页--%>
             <div id="pagination-container" style="margin-top: 30px; margin-bottom: 30px;" class="pull-right">
             </div>
-
             <%--<ul id="pagination-demo" class="pagination-sm"></ul>--%>
 
         </div>
@@ -126,6 +125,7 @@
 <%--<script src="<%=contextPath%>/js/jquery.twbsPagination.js.js"></script>--%>
 
 <script type="text/javascript">
+
 
 //    $(document).ready(function() {
 //        $('#pagination-demo').twbsPagination({

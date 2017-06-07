@@ -20,6 +20,10 @@ public class TagServiceImpl implements ITagService {
 	@Resource
 	private ITagDao tagDao;
 
+	public List<Tag> getAllTagsByUserId(Integer id) {
+		return tagDao.getAllTagsByUserId(id);
+	}
+
 	public List<Tag> getAll() {
 		return tagDao.getAll();
 	}

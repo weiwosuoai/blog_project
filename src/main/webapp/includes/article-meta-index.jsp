@@ -1,19 +1,11 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
          pageEncoding="UTF-8" %>
 <%-- 文章发表时间，分类 --%>
-<div class="sub-article-meta" style="margin-top: 5px;">
+<div class="author" style="margin-top: 5px;">
     <span><i class="glyphicon glyphicon-time"></i></span> <span class="sub-article-post-time"> ${article.createTimeStr}
 </span> &nbsp;&nbsp;&nbsp;&nbsp; <span style="margin-right: 2px;"><i class="glyphicon glyphicon-th-list"></i></span> <span
         class="sub-article-category-item"> <c:choose>
-    <c:when test="${article.category == 1}">
-        <a href="<%=contextPath%>/archive/javaweb">Java</a>
-    </c:when>
-    <c:when test="${article.category == 2}">
-        <a href="<%=contextPath%>/archive/android">Android</a>
-    </c:when>
-    <c:when test="${article.category == 3}">
-        <a href="<%=contextPath%>/archive/db">DB</a>
-    </c:when>
+    <a href="<%=contextPath%>/articles/category/${article.category.id}">${article.category.name}</a>
 </c:choose>
 		&nbsp;&nbsp;&nbsp;&nbsp;
 		<span><i class="glyphicon glyphicon-eye-open" style="margin-right: 3px;"></i>${article.beViewdNum}次浏览</span>

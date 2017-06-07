@@ -17,7 +17,7 @@
                 <%-- 				<img alt="江冰的博客" src="<%=contextPath%>/images/logo.png"> --%>
                 <span class="logo">Exception</span>
             </a>
-            <a class="navbar-brand" href="<%=contextPath%>/index">Allen's Blog</a>
+            <a class="navbar-brand exception-navbar-brand" href="<%=contextPath%>/index"><b>exception</b></a>
 
         </div>
 
@@ -25,13 +25,14 @@
         <div class="collapse navbar-collapse"
              id="bs-example-navbar-collapse-1">
             <ul class="nav navbar-nav" id="navbar">
-                <li id="questions"><a href="<%=contextPath%>/questions">问答</a></li>
                 <li id="blogs"><a href="<%=contextPath%>/index">博客<span
                         class="sr-only">(current)</span></a></li>
-                <li id="all"><a href="<%=contextPath%>/archive/all">存档</a></li>
+                <%--<li id="questions"><a href="<%=contextPath%>/questions">问答校译</a></li>--%>
+                <%--<i style="color: #F48024;"><b>stackoverflow</b></i>--%>
+            <%--<li id="all"><a href="<%=contextPath%>/archive/all">存档</a></li>--%>
                 <%--<li id="question"><a href="<%=contextPath%>/question">问答</a></li>--%>
                 <%--<li id="wiki"><a href="<%=contextPath%>/wiki">Wiki</a></li>--%>
-                <li id="users"><a href="<%=contextPath%>/users/login">Users</a></li>
+                <li id="users"><a href="<%=contextPath%>/users">用户</a></li>
                 <!-- 				<li><a href="http://blog.csdn.net/weiwosuoai?viewmode=contents">CSDN</a></li> -->
             </ul>
             <form class="navbar-form navbar-left visible-lg-inline-block" action="<%=contextPath%>/archive">

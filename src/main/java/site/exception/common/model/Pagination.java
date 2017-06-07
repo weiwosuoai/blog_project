@@ -1,7 +1,6 @@
 package site.exception.common.model;
 
 import java.io.Serializable;
-import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -20,7 +19,7 @@ public class Pagination<T> implements Serializable {
 	private int pageSize;
 
 	/** 当前所在页码 **/
-	private int currentPage;
+	private int pageNum;
 
 	/** 总记录数 **/
 	private int totalRecord;
@@ -43,14 +42,14 @@ public class Pagination<T> implements Serializable {
 			int totalPage, List<T> recordList) {
 		super();
 		this.pageSize = pageSize;
-		this.currentPage = currentPage;
+		this.pageNum = currentPage;
 		this.totalRecord = totalRecord;
 		this.totalPage = totalPage;
 		this.recordList = recordList;
 	}
 
 	public void setOffset() {
-		this.offset = (this.currentPage - 1) * this.pageSize;
+		this.offset = (this.pageNum - 1) * this.pageSize;
 	}
 
 	/**
@@ -70,12 +69,12 @@ public class Pagination<T> implements Serializable {
 		this.pageSize = pageSize;
 	}
 
-	public int getCurrentPage() {
-		return currentPage;
+	public int getPageNum() {
+		return pageNum;
 	}
 
-	public void setCurrentPage(int currentPage) {
-		this.currentPage = currentPage;
+	public void setPageNum(int pageNum) {
+		this.pageNum = pageNum;
 	}
 
 	public int getTotalRecord() {

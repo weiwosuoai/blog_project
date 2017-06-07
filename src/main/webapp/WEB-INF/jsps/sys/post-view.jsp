@@ -22,19 +22,19 @@
 						<form action="<%=contextPath%>/sys/post"
 							enctype="multipart/form-data" method="post">
 							<div class="form-group">
-								<label for="username">文章标题</label> <input class="form-control"
+								<label>文章标题</label> <input class="form-control"
 									placeholder="文章标题" name="title">
 							</div>
 							<div class="form-group">
-								<label for="password">所属分类</label> <select class="form-control"
-									name="category">
+								<label>所属分类</label> <select class="form-control"
+									name="category.id">
 									<option value="1">Java</option>
 									<option value="2">Android</option>
 									<option value="3">DB</option>
 								</select>
 							</div>
 							<div class="form-group post-time">
-								<label for="post_time">发表时间</label>
+								<label>发表时间</label>
 								<div class="input-group date form_datetime"
 									data-date-format="yyyy-mm-dd hh:ii:ss"
 									data-link-field="dtp_input1">

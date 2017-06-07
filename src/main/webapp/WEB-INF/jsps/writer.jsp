@@ -67,6 +67,5 @@
     var editor = new Markdown.Editor(converter);
     editor.run();
 </script>
-
 </body>
 </html>

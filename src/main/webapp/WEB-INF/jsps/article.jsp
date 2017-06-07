@@ -23,9 +23,9 @@
 
         <div class="row">
             <!-- 左边栏 -->
-            <div class="col-md-2"></div>
+            <%--<div class="col-md-2"></div>--%>
             <!-- 中间栏 -->
-            <div class="col-md-8 blog-content">
+            <div class="col-md-9 blog-content">
                 <!-- 文章展示区域 -->
                 <div id="article-priview">
 
@@ -36,13 +36,13 @@
                         <!-- 文章发表时间，分类 -->
                         <div class="author">
 
-                            <a class="avatar" href="/u/be61ee50d630">
-                                <img src="http://localhost:8090/images/avatar.jpg">
+                            <a class="avatar" href="/users/${article.createUserId}/detail">
+                                <img src="https://avatars.githubusercontent.com/u/4217102?v=3">
                             </a>
 
                             <div class="info">
                                 <%--<span class="tag">签约作者</span>--%>
-                                <span class="name"><a href="/u/be61ee50d630">allen</a></span>
+                                <span class="name"><a href="/users/${article.createUserId}/detail">allen</a></span>
                                 <!-- 关注用户按钮 -->
                                 <%--<a class="btn btn-success follow"><i class="iconfont ic-follow"></i><span>关注</span></a>--%>
                                 <!-- 文章数据信息 -->
@@ -59,10 +59,10 @@
                                         ${article.beViewdNum}次浏览
                                     </span>
                                     <span class="tags">
-                                        <i class="glyphicon glyphicon-tags" style="margin-right: 2px;"></i>
+                                        <i class="glyphicon glyphicon-tags" style="margin-right: 4px;"></i>
                                         		<c:forEach var="tag" items="${article.tags}" varStatus="statusTag">
                                                     <a href='<%=contextPath%>/archive/tag/${tag.id}'
-                                                       class="label label-info m-label-info margin-left5">${tag.name}</a>
+                                                       class="label label-info m-label-info margin-right3">${tag.name}</a>
                                                 </c:forEach>
                                     </span>
                                     <%--<span class="likes-count">喜欢 52</span>--%>
@@ -138,7 +138,7 @@
             <%--</div>--%>
 
             <!-- 右边栏 -->
-            <div class="col-md-2" role="complementary">
+            <div class="col-md-3" role="complementary">
             <!-- 文章目录 -->
             <div class="span3">
             <div id="toc"></div>
@@ -150,8 +150,6 @@
                 <i class="glyphicon glyphicon-menu-up"></i>
             </a>
         </div>
-
-
     </div>
 
     <%-- 引入的 modal --%>

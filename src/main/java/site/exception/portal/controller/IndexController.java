@@ -1,10 +1,9 @@
 package site.exception.portal.controller;
 
-import java.util.List;
-
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 
+import com.github.pagehelper.PageInfo;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.springframework.stereotype.Controller;
@@ -12,11 +11,14 @@ import org.springframework.ui.Model;
 import org.springframework.util.StringUtils;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.ResponseBody;
 
+import org.springframework.web.bind.annotation.RequestParam;
 import site.exception.common.model.Pagination;
+import site.exception.portal.model.Article;
 import site.exception.portal.model.vo.ArticleVo;
+import site.exception.portal.service.IArticleService;
 import site.exception.portal.service.IIndexService;
+import site.exception.portal.service.ITagService;
 
 /**
  * 首页
@@ -30,26 +32,22 @@ public class IndexController {
 
 	private static final Log logger = LogFactory.getLog(IndexController.class);
 	
-	private Pagination<ArticleVo> pagination = new Pagination<>(); 
-
 	@Resource
 	private IIndexService indexService;
+	@Resource
+	private IArticleService articleService;
 
+	/**
+	 * 首页信息
+	 * @param model
+	 * @return
+	 */
 	@RequestMapping(value = "/index", method = RequestMethod.GET)
-	public String viewIndex(HttpServletRequest request, Model model) {
-		String ip = request.getRemoteAddr();
-		logger.info("request ip ： " + ip);
-		// 查询首页信息 TODO 分页待优化,准备用插件
-
-		String pageSize = request.getParameter("pageSize");
-		String currentPage = request.getParameter("currPage");
-
-		pagination.setPageSize(StringUtils.isEmpty(pageSize) ? 3 : Integer.valueOf(pageSize));
-		pagination.setCurrentPage(StringUtils.isEmpty(currentPage) ? 1 : Integer.valueOf(currentPage));
-		pagination.setOffset();
-		
-		model.addAttribute("articles", indexService.findByPagination(pagination));
-		model.addAttribute("topNavType", 0);
+	public String viewIndex(@RequestParam(value = "pageNum", defaultValue = "1") int pageNum,
+							@RequestParam(value = "pageSize", defaultValue = "10") int pageSize,
+							Model model) {
+		model.addAttribute("pageInfo", articleService.findByPagination(pageNum, pageSize));
+		model.addAttribute("navbarRef", "blogs");
 		return "index";
 	}
 

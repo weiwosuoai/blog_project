@@ -3,8 +3,8 @@ package site.exception.portal.service;
 import java.util.List;
 
 
-
-
+import com.github.pagehelper.PageInfo;
+import site.exception.common.model.Pagination;
 import site.exception.portal.model.Article;
 import site.exception.portal.model.vo.ArticleVo;
 
@@ -13,17 +13,19 @@ public interface IArticleService {
 	
 	List<Article> findAll();
 	
-	List<Article> findByCategory(Integer category);
+	List<Article> findByCategory(ArticleVo vo);
 	
 	List<Article> findByKey(String key);
 	
-	List<Article> getByTag(Integer tagId);
-	
+	List<Article> getArticleListByTag(ArticleVo vo);
+
+	PageInfo findByPagination(int pageNum, int pageSize);
+
 	ArticleVo parseMarkdown(Integer id);
 	
 	List<ArticleVo> findArticleNumPerMonth();
 	
-	List<ArticleVo> findArticleByYearMonth(String yearMonth);
+	List<ArticleVo> findArticleByYearMonth(String year, String month);
 	
 	ArticleVo findArticleContentById(Integer id);
 	

@@ -8,6 +8,7 @@ import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.springframework.stereotype.Service;
 
+import site.exception.portal.dao.IArticleCategoryMapDao;
 import site.exception.portal.dao.ICategoryDao;
 import site.exception.portal.model.Category;
 import site.exception.portal.model.vo.CategoryVo;
@@ -20,8 +21,11 @@ public class CategoryServiceImpl implements ICategoryService {
 	
 	@Resource
 	private ICategoryDao categoryDao;
+	@Resource
+	private IArticleCategoryMapDao articleCategoryMapperDao;
 
 	public List<CategoryVo> getArticleNumByCreateUserId(Integer id) {
+
 		return categoryDao.getArticleNumByCreateUserId(id);
 	}
 

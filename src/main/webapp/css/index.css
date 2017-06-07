@@ -10,7 +10,7 @@
 
 .author {
     color: #999;
-    font-size: 12px;
+    font-size: 13px;
 }
 
 .sub-article-body {
@@ -29,8 +29,8 @@
 .article-title h3 {
     margin-top: 0;
     margin-bottom: 0;
-    font-size: 20px;
-    font-weight: 600;
+    font-size: 18px;
+    font-weight: 700;
 }
 
 .article-title a {
@@ -105,9 +105,14 @@
 }
 
 .main .profile-img {
-    width: 164px;
-    height: 164px;
-    border-radius: 2px;
+    margin-top: 24px;
+    width: 100%;
+    height: 230px;
+    border-radius: 6px;
+    display: inline-block;
+    overflow: hidden;
+    line-height: 1;
+    vertical-align: middle;
 }
 
 .main .avatar-container {
@@ -177,7 +182,7 @@
 
 .author .name span {
     display: inline-block;
-    padding-left: 5px;
+    padding-left: 8px;
     color: #969696;
     font-size: 12px;
 }
